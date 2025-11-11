@@ -110,18 +110,18 @@ const SectionWeTeach = () => {
 
                 <div className="relative shrink-0 px-2">
                   <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-48 md:h-64 rounded-full items-center justify-center overflow-hidden left-0">
-                    <Image
+                    {/* <Image
                       src={card.image}
                       alt={card.title}
                       fill
                       className="object-contain"
-                    />
+                    /> */}
                   </div>
 
                   {/* Number Badge */}
-                  <div className="absolute bottom-0 right-0 bg-white text-[#ff6d3a] font-grobold text-2xl sm:text-3xl md:text-4xl w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg">
+                  {/* <div className="absolute bottom-0 right-0 bg-white text-[#ff6d3a] font-grobold text-2xl sm:text-3xl md:text-4xl w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg">
                     {index + 1}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </SwiperSlide>
