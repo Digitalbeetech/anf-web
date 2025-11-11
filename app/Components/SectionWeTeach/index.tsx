@@ -74,62 +74,59 @@ const SectionWeTeach = () => {
             Teach
           </span>
         </h1>
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Optional heading */}
-        {/* <h2 className="text-center text-3xl font-grobold text-gray-800 mb-8">Values We Teach</h2> */}
-
-        {/* GRID – full-screen cards */}
-        <div
-          className="
-            grid grid-cols-1 
-            md:grid-cols-2 
-            lg:grid-cols-3 xl:grid-cols-4 
-            gap-6 lg:gap-8 
-            h-[calc(100vh-6rem)]   /* full height minus top/bottom padding */
-            overflow-y-auto
-          "
+      </div>
+      <div className="bg-[#c7e560] pt-14 mb-12 py-12">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={24}
+          slidesPerView={1}
+          //   navigation
+          //   pagination={{
+          //     clickable: true,
+          //   }}
+          loop={true}
+          className="w-full px-4 md:px-8 lg:px-12"
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+            1280: { slidesPerView: 4 },
+          }}
         >
-          {teachCards.map((item, idx) => (
-            <div
-              key={idx}
-              className={`
-                ${item.bgColor} 
-                relative shadow-xl rounded-3xl 
-                flex flex-col items-center 
-                transition-transform duration-300 
-                hover:scale-105 hover:shadow-2xl 
-                overflow-visible
-              `}
-            >
-              {/* Image – white circle, pops out from top */}
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 z-10">
-                <div className="bg-white p-3 rounded-full shadow-lg">
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+          {teachCards.map((card, index) => (
+            <SwiperSlide key={index} className="px-2">
+              <div
+                className={`${card.bgColor} relative rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-2 p-4`}
+              >
+                {/* Left: Text */}
+                <div className="flex-1 text-left md:text-left space-y-3 z-10 px-2">
+                  <h3 className="text-white font-grobold text-2xl sm:text-3xl md:text-4xl">
+                    {card.title}
+                  </h3>
+                  <p className="text-white font-medium text-sm sm:text-base md:text-lg leading-relaxed">
+                    {card.text}
+                  </p>
+                </div>
+
+                <div className="relative shrink-0 px-2">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-48 md:h-64 rounded-full items-center justify-center overflow-hidden left-0">
                     <Image
-                      src={item.image}
-                      alt={item.title}
+                      src={card.image}
+                      alt={card.title}
                       fill
-                      className="object-contain drop-shadow-md"
+                      className="object-contain"
                     />
+                  </div>
+
+                  {/* Number Badge */}
+                  <div className="absolute bottom-0 right-0 bg-white text-[#ff6d3a] font-grobold text-2xl sm:text-3xl md:text-4xl w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg">
+                    {index + 1}
                   </div>
                 </div>
               </div>
-
-              {/* Title (optional – hide with `hidden` if not needed) */}
-              <h3 className="mt-16 text-white font-grobold text-lg sm:text-xl md:text-2xl">
-                {item.title}
-              </h3>
-
-              {/* Text – white area */}
-              <div className="mt-4 w-full bg-white rounded-b-3xl p-5 pt-8 text-center flex-1">
-                <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-                  {item.text}
-                </p>
-              </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
-        </div>
+        </Swiper>
       </div>
     </>
   );
