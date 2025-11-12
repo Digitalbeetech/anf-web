@@ -13,7 +13,10 @@ export default function Header() {
         {/* White header content */}
         <div className="bg-white flex items-center w-full md:grow relative py-10 md:py-3.5 mx-2 rounded-xl shadow-sm px-6 md:mx-2">
           {/* Absolute logo on the left */}
-          <div className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10">
+          <Link
+            href={"/"}
+            className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10"
+          >
             <Image
               src="/assets/main-logo.png"
               alt="Main Logo"
@@ -22,13 +25,10 @@ export default function Header() {
               sizes="100vw"
               className="object-contain w-32 sm:w-36 md:w-40 lg:w-[200px]"
             />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[200px] lg:pl-[220px] mx-4 md:mx-12 font-grobold">
-            <Link href="/" className="text-[#365a77] text-lg lg:text-xl">
-              Home
-            </Link>
             <Link href="/books" className="text-[#365a77] text-lg lg:text-xl">
               Books
             </Link>
@@ -43,6 +43,12 @@ export default function Header() {
               className="text-[#365a77] text-lg lg:text-xl"
             >
               Activities
+            </Link>
+            <Link
+              href="/activities"
+              className="text-[#365a77] text-lg lg:text-xl"
+            >
+              Membership
             </Link>
           </nav>
 
@@ -98,7 +104,7 @@ export default function Header() {
 
         {/* Shop Button - Now responsive */}
         <button className="hidden lg:flex font-grobold border-3 bg-[#ff625a] text-white px-6 md:px-8 py-2.5 rounded-2xl hover:bg-red-600 transition ml-2 md:ml-0">
-          Shop
+          Login
         </button>
       </div>
     </header>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <>
@@ -76,12 +78,6 @@ const Footer = () => {
               href="#"
               className="hover:underline font-comic text-2xl font-semibold"
             >
-              Home
-            </a>
-            <a
-              href="#"
-              className="hover:underline font-comic text-2xl font-semibold"
-            >
               Books
             </a>
             <a
@@ -90,15 +86,21 @@ const Footer = () => {
             >
               Games
             </a>
+            <a
+              href="#"
+              className="hover:underline font-comic text-2xl font-semibold"
+            >
+              Membership
+            </a>
           </div>
 
-          <div className="mb-4 sm:mb-0">
+          <Link href={"/"} className="mb-4 sm:mb-0">
             <img
               src="/assets/main-logo.png"
               alt="Abdullah & Fatima"
               className="h-24"
             />
-          </div>
+          </Link>
 
           <div className="flex space-x-6">
             <a
@@ -117,7 +119,7 @@ const Footer = () => {
               href="#"
               className="bg-[#ff6d3a] px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
             >
-              Shop
+              Login
             </a>
           </div>
         </div>
