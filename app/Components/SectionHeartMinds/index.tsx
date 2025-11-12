@@ -29,8 +29,9 @@ const SectionHeartMinds = () => {
   ];
   return (
     <>
+    
       <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold inline-block text-center">
+        <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
           <span
             className="text-[#f9be49] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
             style={{
@@ -50,12 +51,12 @@ const SectionHeartMinds = () => {
             and Minds
           </span>
         </h1>
-        <p className="mt-3 text-sm sm:text-2xl text-center font-comic line-clamp-2 w-2/3">
+        <p className="mt-3 text-sm sm:text-2xl text-center font-comic w-2/3">
           From read-alouds to hands-on practice, every format nurtures Islamic
           values. Choose what fits your moment—at home, in class, or on the go.
         </p>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 mt-12">
+        <div className="max-w-7xl mx-auto mt-9">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-4 mt-12">
             {heartMinds.map((item, index) => (
               <div
                 key={index}
@@ -66,9 +67,9 @@ const SectionHeartMinds = () => {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={200}
+                    width={300}
                     height={200}
-                    className="w-28 h-28 sm:w-74 sm:h-32 object-contain drop-shadow-lg"
+                    className="w-28 h-28 md:w-48 md:h-32 object-cover drop-shadow-lg"
                   />
                 </div>
 
@@ -86,7 +87,7 @@ const SectionHeartMinds = () => {
           </div>
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-full bg-transparent">
         <img
           src="/assets/heart-mind-bg.png"
           className="w-full h-auto object-cover"

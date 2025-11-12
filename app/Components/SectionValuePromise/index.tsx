@@ -26,8 +26,8 @@ const SectionValuePromise = () => {
 
   return (
     <>
-      <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold inline-block text-center">
+      <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center">
+        <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
           <span
             className="text-[#f9be49] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
             style={{
@@ -55,9 +55,9 @@ const SectionValuePromise = () => {
         <span className="mt-2 block text-2xl font-semibold font-comic">
           Why families love it:
         </span>
-        <div className="mt-6 w-full h-[1550px] sm:h-[500px] md:h-[1070px] lg:h-[600px] bg-[url('/assets/clouds.svg')] bg-repeat-x">
+        <div className="mt-3 w-full h-[1550px] sm:h-[500px] md:h-[1070px] lg:h-[600px] bg-[url('/assets/clouds.svg')] bg-size-[1400px_auto] bg-repeat-x bg-position-[50%_30%]">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mt-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mt-30 px-4">
               {valuePromises.map((item, index) => (
                 <div
                   key={index}
@@ -75,7 +75,6 @@ const SectionValuePromise = () => {
                     />
                   </div>
 
-                  {/* Text Area */}
                   <div className="bg-white p-5 pt-10 text-center flex-1 rounded-b-2xl">
                     <p className="text-gray-800 text-lg sm:text-xl leading-relaxed font-comic font-bold">
                       {item.text}
@@ -84,7 +83,6 @@ const SectionValuePromise = () => {
                 </div>
               ))}
             </div>
-            {/* Cards Grid */}
           </div>
         </div>
       </div>

@@ -80,12 +80,12 @@ const SectionWeTeach = () => {
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
-          //   navigation
-          //   pagination={{
-          //     clickable: true,
-          //   }}
+          pagination={{
+            clickable: true,
+            el: ".custom-pagination", // We'll target this
+          }}
           loop={true}
-          className="w-full px-4 md:px-8 lg:px-12"
+          className="w-full px-4 md:px-8 lg:px-12 pb-20"
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
@@ -96,36 +96,40 @@ const SectionWeTeach = () => {
           {teachCards.map((card, index) => (
             <SwiperSlide key={index} className="px-2">
               <div
-                className={`${card.bgColor} relative rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-2 p-4`}
+                className={`${card.bgColor} rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-6 p-6 md:p-8 transition-all duration-300 hover:shadow-2xl`}
               >
                 {/* Left: Text */}
-                <div className="flex-1 text-left md:text-left space-y-3 z-10 px-2">
-                  <h3 className="text-white font-grobold text-2xl sm:text-3xl md:text-4xl">
+                <div className="flex-1 text-left space-y-4 order-2 md:order-1">
+                  <h3 className="text-white font-grobold text-2xl sm:text-3xl md:text-3xl lg:text-4xl leading-tight">
                     {card.title}
                   </h3>
-                  <p className="text-white font-medium text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-white font-medium text-sm sm:text-base md:text-lg leading-relaxed opacity-90">
                     {card.text}
                   </p>
                 </div>
 
-                <div className="relative shrink-0 px-2">
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-48 md:h-64 rounded-full items-center justify-center overflow-hidden left-0">
-                    {/* <Image
+                {/* Right: Image Container */}
+                <div className="relative w-full max-w-[180px] sm:max-w-[220px] md:max-w-[180px] lg:max-w-[200px] aspect-square order-1 md:order-2">
+                  {/* Circular Image */}
+                  <div className="relative w-full h-full rounded-full overflow-hidden p-3">
+                    <Image
                       src={card.image}
                       alt={card.title}
                       fill
-                      className="object-contain"
-                    /> */}
+                      className="object-contain drop-shadow-md"
+                      sizes="(max-width: 768px) 180px, 200px"
+                    />
                   </div>
 
-                  {/* Number Badge */}
-                  {/* <div className="absolute bottom-0 right-0 bg-white text-[#ff6d3a] font-grobold text-2xl sm:text-3xl md:text-4xl w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg">
+                  {/* Number Badge - Bottom Right */}
+                  <div className="absolute -bottom-3 -right-3 bg-white text-[#ff6d3a] font-grobold text-xl sm:text-2xl md:text-2xl lg:text-3xl w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl border-4 border-white">
                     {index + 1}
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
+          <div className="custom-pagination mx-auto! w-fit! mt-8" />
         </Swiper>
       </div>
     </>
