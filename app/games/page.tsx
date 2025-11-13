@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { X } from "lucide-react";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -28,6 +29,7 @@ type Game = {
   mode: string;
   platforms: Platform[];
   thumbUrl?: string;
+  url?: string;
 };
 
 const GAMES: Game[] = [
@@ -41,7 +43,9 @@ const GAMES: Game[] = [
     values: ["Sabr", "Adab", "Rahmah"],
     age: "5–12",
     mode: "Story & Mini-quests",
+    thumbUrl:'/assets/game-img.png',
     platforms: ["Web", "iOS", "Android"],
+    url: "https://abdullahandfatima.com/play/adventure/",
   },
   {
     id: "g2",
@@ -54,6 +58,7 @@ const GAMES: Game[] = [
     age: "8–12",
     mode: "Endless runner · Levels",
     platforms: ["Web"],
+    url: "https://abdullahandfatima.com/play/the-run/",
   },
   {
     id: "g3",
@@ -65,6 +70,7 @@ const GAMES: Game[] = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
+    url: "https://abdullahandfatima.com/play/the-escape/",
   },
 ];
 
@@ -111,73 +117,94 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 function GameCard({ game }: { game: Game }) {
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
-      <div className="aspect-[16/9] w-full bg-gradient-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
-        {game.thumbUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={game.thumbUrl}
-            alt={`${game.title} gameplay`}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <span>Gameplay visual</span>
-        )}
-      </div>
-
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <h2 className="text-base font-grobold text-slate-900 leading-snug drop-shadow-sm">
-          {game.title}
-        </h2>
-        <p className="text-sm font-comic text-slate-700/90">{game.blurb}</p>
-
-        <div className="mt-1 flex flex-wrap items-center gap-2">
-          {game.values.map((v) => (
-            <Tag key={v}>{v}</Tag>
-          ))}
-          <Tag>{game.age}</Tag>
-        </div>
-
-        <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-xs font-comic text-slate-600">
-          <span>{game.mode}</span>
-          <span>{game.platforms.join(" · ")}</span>
-        </div>
-
-        <div className="mt-3 flex flex-wrap items-center gap-3">
-          {game.platforms.includes("Web") && (
-            <Link
-              href={`/play/${game.slug}`}
-              className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
-            >
-              Play on Web
-            </Link>
+    <>
+      <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
+        <div className="aspect-[16/9] w-full bg-gradient-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
+          {game.thumbUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={game.thumbUrl}
+              alt={`${game.title} gameplay`}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <span>Gameplay visual</span>
           )}
-          {(["iOS", "Android"] as Platform[]).map((p) => (
-            <button
-              key={p}
-              type="button"
-              className={`inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-xs font-grobold ${
-                game.platforms.includes(p)
-                  ? "border-sky-500 text-sky-700 bg-white hover:bg-sky-50"
-                  : "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
         </div>
 
-        <div className="pt-1">
-          <Link
-            href={`/games/${game.slug}`}
-            className="text-xs font-comic text-sky-700 underline-offset-2 hover:text-sky-900 hover:underline"
-          >
-            View details
-          </Link>
+        <div className="flex flex-1 flex-col gap-3 p-4">
+          <h2 className="text-base font-grobold text-slate-900 leading-snug drop-shadow-sm">
+            {game.title}
+          </h2>
+          <p className="text-sm font-comic text-slate-700/90">{game.blurb}</p>
+
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            {game.values.map((v) => (
+              <Tag key={v}>{v}</Tag>
+            ))}
+            <Tag>{game.age}</Tag>
+          </div>
+
+          <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-xs font-comic text-slate-600">
+            <span>{game.mode}</span>
+            <span>{game.platforms.join(" · ")}</span>
+          </div>
+
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            {game.platforms.includes("Web") && (
+              <div
+                onClick={() => setSelectedGame(game)}
+                className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+              >
+                Play on Web
+              </div>
+            )}
+            {(["iOS", "Android"] as Platform[]).map((p) => (
+              <button
+                key={p}
+                type="button"
+                className={`inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-xs font-grobold ${
+                  game.platforms.includes(p)
+                    ? "border-sky-500 text-sky-700 bg-white hover:bg-sky-50"
+                    : "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed"
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+
+          <div className="pt-1">
+            <p className="text-xs font-comic cursor-pointer text-sky-700 underline-offset-2 hover:text-sky-900 hover:underline">
+              View details
+            </p>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+      {selectedGame && (
+        <div className="fixed inset-0 z-50 bg-black flex flex-col">
+          {/* Close Button - Top Right */}
+          <button
+            onClick={() => setSelectedGame(null)}
+            className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
+            aria-label="Close Game"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Game Iframe */}
+          <iframe
+            src={selectedGame.url}
+            title={selectedGame.title}
+            className="w-full h-full border-none"
+            allow="autoplay; fullscreen"
+          />
+        </div>
+      )}
+    </>
   );
 }
 
