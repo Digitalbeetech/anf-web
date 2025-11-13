@@ -45,7 +45,7 @@ export default function Header() {
               Activities
             </Link>
             <Link
-              href="/activities"
+              href="/membership"
               className="text-[#365a77] text-lg lg:text-xl"
             >
               Membership
