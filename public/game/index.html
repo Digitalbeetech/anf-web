@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embeddable HTML Game Player (Standalone)</title>
+  <!-- Tailwind CDN (for quick styling) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Minimal fallback if aspect classes aren't present yet */
+    .aspect-16-9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    .aspect-4-3 {
+      aspect-ratio: 4 / 3;
+    }
+
+    .aspect-9-16 {
+      aspect-ratio: 9 / 16;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+  <div class="max-w-6xl mx-auto p-4 sm:p-6">
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100">
+      <div class="p-6 pb-2">
+        <h1 class="text-2xl font-semibold">HTML Game Player</h1>
+        <p class="text-sm text-gray-500">Paste your game link or upload a .html file. Then press <strong>Play</strong>.
+        </p>
+      </div>
+      <div class="p-6 space-y-4 pt-2">
+        <!-- Controls Row -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          <div class="md:col-span-6 flex items-center gap-2">
+            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 11-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l3-3a4 4 0 115.656 5.656l-1.5 1.5" />
+            </svg>
+            <input id="urlInput"
+              class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="https://your-domain.com/path/to/game/index.html" />
+            <button id="loadBtn" class="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">Load</button>
+          </div>
+          <div class="md:col-span-3 flex items-center gap-2">
+            <select id="aspectSelect" class="w-full border rounded-lg px-3 py-2 text-sm">
+              <option value="16:9">16:9 (Widescreen)</option>
+              <option value="4:3">4:3 (Classic)</option>
+              <option value="9:16">9:16 (Vertical)</option>
+              <option value="Fill">Fill (Fluid Height)</option>
+            </select>
+          </div>
+          <div class="md:col-span-3 flex flex-wrap gap-2 justify-end">
+            <label class="relative">
+              <input id="fileInput" type="file" accept=".html" class="hidden" />
+              <span
+                class="px-3 py-2 rounded-lg border text-sm bg-white hover:bg-gray-50 cursor-pointer inline-block">Upload
+                .html</span>
+            </label>
+            <button id="playBtn"
+              class="px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 text-sm">Play</button>
+            <button id="reloadBtn" class="px-3 py-2 rounded-lg border bg-white hover:bg-gray-50 text-sm">Reload</button>
+            <button id="stopBtn" class="px-3 py-2 rounded-lg border bg-white hover:bg-gray-50 text-sm">Stop</button>
+            <button id="openBtn" class="px-3 py-2 rounded-lg border bg-white hover:bg-gray-50 text-sm">Open</button>
+            <button id="fsBtn" class="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-sm">Fullscreen</button>
+          </div>
+        </div>
+
+        <!-- Env note + options -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-500">
+          <div id="envNote"></div>
+          <label class="inline-flex items-center gap-2 select-none">
+            <input id="autoOpenChk" type="checkbox" class="rounded" checked />
+            <span>Auto-open in new tab when blocked</span>
+          </label>
+        </div>
+
+        <!-- Player -->
+        <div id="playerContainer"
+          class="relative w-full bg-gray-100 rounded-2xl overflow-hidden shadow-inner aspect-16-9">
+          <!-- Idle overlay -->
+          <div id="idleOverlay" class="absolute inset-0 grid place-items-center p-6 text-center">
+            <div class="space-y-3">
+              <div class="text-lg font-medium">Ready to play</div>
+              <p class="text-sm text-gray-500 max-w-md mx-auto">
+                Paste a game link above or upload a .html file, then press <span class="font-semibold">Play</span>.
+              </p>
+              <div class="flex items-center justify-center gap-3 text-xs text-gray-500">
+                <span class="inline-flex items-center gap-1">🖥️ Desktop</span>
+                <span class="inline-flex items-center gap-1">📱 Mobile</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading overlay -->
+          <div id="loadingOverlay" class="hidden absolute inset-0 grid place-items-center bg-white/60 backdrop-blur-sm">
+            <div class="flex items-center gap-2 text-sm">
+              <svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9" stroke-width="2" class="opacity-25"></circle>
+                <path d="M21 12a9 9 0 01-9 9" stroke-width="2" class="opacity-75"></path>
+              </svg>
+              Loading game...
+            </div>
+          </div>
+
+          <!-- Error overlay -->
+          <div id="errorOverlay"
+            class="hidden absolute inset-0 grid place-items-center p-6 text-center bg-white/80 backdrop-blur-sm">
+            <div class="max-w-md space-y-3">
+              <div class="text-base font-semibold">Can't display the game here</div>
+              <p class="text-sm text-gray-600">
+                Some sites block embedding with security headers (X-Frame-Options / Content-Security-Policy). Click
+                <span class="font-semibold">Open</span> to launch in a new tab, or host the game on a domain you control
+                and allow embedding.
+              </p>
+            </div>
+          </div>
+
+          <!-- Actual player -->
+          <iframe id="gameFrame" class="w-full h-full" title="Game Player"
+            onload="window.__onFrameLoad && window.__onFrameLoad()" referrerpolicy="no-referrer"
+            allow="autoplay; clipboard-read; clipboard-write; fullscreen; gamepad; xr-spatial-tracking; microphone; camera; accelerometer; magnetometer; gyroscope"
+            sandbox="allow-scripts allow-forms allow-same-origin allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-modals allow-orientation-lock allow-presentation allow-top-navigation-by-user-activation"></iframe>
+        </div>
+
+        <!-- Tips -->
+        <div class="text-xs text-gray-500 leading-relaxed">
+          <p class="mb-1"><span class="font-semibold">Tip:</span> If your game doesn't appear, the host may restrict
+            embedding. Re-host the game and remove <code>X-Frame-Options</code> or add
+            <code>Content-Security-Policy: frame-ancestors 'self' https://your-site.com</code> to allow embedding on
+            your domain.</p>
+          <p class="mb-1"><span class="font-semibold">Extension:</span> In extension sandboxes, cross-origin iframes
+            often need a new tab. Enable "Auto-open in new tab when blocked" above.</p>
+          <p><span class="font-semibold">Note:</span> Browsers don't allow controlling the game's audio from outside the
+            iframe when it's on a different domain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- State ---
+    let url = "";
+    let objectUrl = "";
+    let running = false;
+    let autoOpenOnError = true;
+    let loadTimeout = null;
+
+    const urlInput = document.getElementById("urlInput");
+    const fileInput = document.getElementById("fileInput");
+    const aspectSelect = document.getElementById("aspectSelect");
+    const playerContainer = document.getElementById("playerContainer");
+    const gameFrame = document.getElementById("gameFrame");
+    const idleOverlay = document.getElementById("idleOverlay");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+    const errorOverlay = document.getElementById("errorOverlay");
+    const loadBtn = document.getElementById("loadBtn");
+    const playBtn = document.getElementById("playBtn");
+    const reloadBtn = document.getElementById("reloadBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const openBtn = document.getElementById("openBtn");
+    const fsBtn = document.getElementById("fsBtn");
+    const autoOpenChk = document.getElementById("autoOpenChk");
+    const envNote = document.getElementById("envNote");
+
+    // Environment note
+    try {
+      if (typeof chrome !== "undefined" && chrome?.runtime?.id) {
+        envNote.innerHTML = 'Extension sandbox detected. You may see a permission dialog ("Allow network access?"). Choose <strong>Allow selected</strong>.';
+      } else {
+        envNote.textContent = "Tip: If a permission dialog appears, allow network access for the game host.";
+      }
+    } catch (e) {
+      envNote.textContent = "Tip: If a permission dialog appears, allow network access for the game host.";
+    }
+
+    // Helpers
+    function getAspectClass(v) {
+      switch (v) {
+        case "16:9": return "aspect-16-9";
+        case "4:3": return "aspect-4-3";
+        case "9:16": return "aspect-9-16";
+        case "Fill": return ""; // handled by height class
+        default: return "aspect-16-9";
+      }
+    }
+
+    function setAspect(v) {
+      playerContainer.classList.remove("aspect-16-9", "aspect-4-3", "aspect-9-16");
+      if (v === "Fill") {
+        playerContainer.style.height = "78vh";
+      } else {
+        playerContainer.style.height = "";
+        playerContainer.classList.add(getAspectClass(v));
+      }
+    }
+
+    function buildReloadUrl(src) {
+      try {
+        const u = new URL(src, window.location.origin);
+        u.searchParams.set("_", String(Date.now()));
+        return u.toString();
+      } catch {
+        return src + (src && src.includes("?") ? "&" : "?") + "_=" + Date.now();
+      }
+    }
+
+    function start() {
+      const finalSrc = url.trim() || objectUrl;
+      if (!finalSrc) return;
+      running = true;
+      errorOverlay.classList.add("hidden");
+      idleOverlay.classList.add("hidden");
+      loadingOverlay.classList.remove("hidden");
+      // Assign src
+      gameFrame.src = finalSrc;
+      // Fallback timeout in case onerror doesn't fire
+      clearTimeout(loadTimeout);
+      loadTimeout = setTimeout(() => {
+        if (!gameFrame.contentWindow || gameFrame.src === "about:blank") {
+          onFrameError();
+        }
+      }, 6000);
+    }
+
+    function stop() {
+      running = false;
+      clearTimeout(loadTimeout);
+      loadingOverlay.classList.add("hidden");
+      idleOverlay.classList.remove("hidden");
+      errorOverlay.classList.add("hidden");
+      gameFrame.src = "about:blank";
+    }
+
+    function reload() {
+      if (!running) return start();
+      loadingOverlay.classList.remove("hidden");
+      const finalSrc = url.trim() || objectUrl;
+      try {
+        gameFrame.src = buildReloadUrl(finalSrc);
+      } catch {
+        gameFrame.src = finalSrc + (finalSrc && finalSrc.includes("?") ? "&" : "?") + "_=" + Date.now();
+      }
+    }
+
+    function openNewTab() {
+      const finalSrc = url.trim() || objectUrl;
+      if (finalSrc) window.open(finalSrc, "_blank", "noopener,noreferrer");
+    }
+
+    function goFullscreen() {
+      const el = playerContainer;
+      const req = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+      if (req) req.call(el);
+    }
+
+    // Iframe events (wire global so inline onload can call)
+    window.__onFrameLoad = function () {
+      clearTimeout(loadTimeout);
+      loadingOverlay.classList.add("hidden");
+      errorOverlay.classList.add("hidden");
+    };
+
+    function onFrameError() {
+      clearTimeout(loadTimeout);
+      loadingOverlay.classList.add("hidden");
+      errorOverlay.classList.remove("hidden");
+      if (autoOpenOnError) openNewTab();
+    }
+
+    // Some browsers don't fire iframe onerror reliably for cross-origin; use message/timeout fallback
+    window.addEventListener("error", (ev) => {
+      if (ev.target === gameFrame) onFrameError();
+    }, true);
+
+    // Wire controls
+    urlInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        url = urlInput.value;
+        running = false;
+        setTimeout(start, 20);
+      }
+    });
+    loadBtn.addEventListener("click", () => {
+      url = urlInput.value;
+      running = false;
+      setTimeout(start, 20);
+    });
+    playBtn.addEventListener("click", start);
+    reloadBtn.addEventListener("click", reload);
+    stopBtn.addEventListener("click", stop);
+    openBtn.addEventListener("click", openNewTab);
+    fsBtn.addEventListener("click", goFullscreen);
+    autoOpenChk.addEventListener("change", (e) => autoOpenOnError = e.target.checked);
+    aspectSelect.addEventListener("change", (e) => setAspect(e.target.value));
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (!file.name.endsWith(".html")) {
+        alert("Please upload a .html file.");
+        return;
+      }
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      objectUrl = URL.createObjectURL(file);
+      url = "";
+      urlInput.value = "";
+      running = false;
+      setTimeout(start, 50);
+    });
+
+    // ✅ Read ?url= query parameter if present
+    const params = new URLSearchParams(window.location.search);
+    const passedUrl = params.get("url");
+    if (passedUrl) {
+      urlInput.value = passedUrl;
+      url = passedUrl;
+      setTimeout(start, 100); // auto start the game
+    }
+
+
+    // Initial aspect
+    setAspect(aspectSelect.value);
+  </script>
+</body>
+
+</html>
