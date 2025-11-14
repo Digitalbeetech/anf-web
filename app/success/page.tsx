@@ -28,9 +28,14 @@ export default function SuccessPage() {
           setError(data.error);
         } else {
           setSession(data);
+
           const email = data?.customer_details?.email;
+          console.log("Stripe session email:", email);
 
           if (email) {
+            // ---------------------------------
+            // 1. REGISTER USER
+            // ---------------------------------
             const registerRes = await fetch(
               "https://anf-dev-server-903cd9f18f9b.herokuapp.com/api/auth/register",
               {
@@ -39,8 +44,8 @@ export default function SuccessPage() {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                  username: email.split("@")[0], // auto-generate username
-                  password: "", // OR generate random password
+                  username: email.split("@")[0],
+                  password: "",
                   email: email,
                 }),
               }
@@ -48,6 +53,37 @@ export default function SuccessPage() {
 
             const registerData = await registerRes.json();
             console.log("Register API Response:", registerData);
+
+            // ---------------------------------
+            // 2. SEND RESET PASSWORD EMAIL
+            // ---------------------------------
+            const resetPasswordLink = `${process.env.NEXT_PUBLIC_BASE_URL}/reset-password?email=${email}`;
+
+            await fetch("/api/send-email", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                to: email,
+                subject: "Reset Your Password",
+                html: `
+                    <div style="font-family: Arial; padding: 20px;">
+                        <h2>Welcome to ANF!</h2>
+                        <p>Click the button below to set your password:</p>
+                        <a 
+                        href="${resetPasswordLink}" 
+                        style="display:inline-block;padding:12px 20px;background:#4CAF50;color:white;text-decoration:none;border-radius:6px;font-weight:bold"
+                        >
+                        Set Password
+                        </a>
+                        <p>This link will remain valid for a limited time.</p>
+                    </div>
+                `,
+              }),
+            });
+
+            console.log("Reset password email sent!");
           }
         }
       } catch (err) {
