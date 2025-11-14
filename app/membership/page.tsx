@@ -216,7 +216,10 @@ const MembershipPage: React.FC = () => {
                                     "Content-Type": "application/json",
                                   },
                                   body: JSON.stringify({
-                                    priceId: "price_1SSyA0RkL8Pyo27Mr7wR9vqN",
+                                    priceId:
+                                      plan.id === "monthly"
+                                        ? "price_1SSyA0RkL8Pyo27Mr7wR9vqN"
+                                        : "price_1SSyCFRkL8Pyo27MwqVZakMD",
                                   }),
                                 }
                               );
