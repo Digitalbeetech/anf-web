@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { extraReducersBuilder } from "./apiReducer";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_APPAPIURL;
 
 axios.interceptors.request.use(
   (config) => {
