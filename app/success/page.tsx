@@ -9,6 +9,37 @@ export default function SuccessPage() {
   const [error, setError] = useState("");
   console.log(session);
 
+  const [emailState, setEmailState] = useState<String>("");
+
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setMessage("");
+
+    const res = await fetch(
+      "https://anf-dev-server-903cd9f18f9b.herokuapp.com/api/auth/set-password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ emailState, password }),
+      }
+    );
+
+    const data = await res.json();
+
+    if (data?.success) {
+      setMessage("🎉 Your password has been set successfully!");
+    } else {
+      setMessage("❌ Failed to update password.");
+    }
+
+    setLoading(false);
+  };
+
   useEffect(() => {
     const fetchSession = async () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -30,7 +61,8 @@ export default function SuccessPage() {
           setSession(data);
 
           const email = data?.customer_details?.email;
-          console.log("Stripe session email:", email);
+          setEmailState(email ? email : "");
+          // console.log("Stripe session email:", email);
 
           if (email) {
             // ---------------------------------
@@ -101,6 +133,41 @@ export default function SuccessPage() {
 
   return (
     <div style={{ padding: 40 }}>
+      <div style={{ maxWidth: 500, margin: "50px auto", textAlign: "center" }}>
+        <h1>Set Your Password</h1>
+        <p>
+          <strong>Email:</strong> {emailState}
+        </p>
+
+        <input
+          type="password"
+          placeholder="Enter new password"
+          style={{ padding: "10px", width: "100%", marginTop: 20 }}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button
+          style={{
+            marginTop: 20,
+            padding: "10px 20px",
+            width: "100%",
+            backgroundColor: "#4CAF50",
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+          }}
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? "Setting Password..." : "Submit"}
+        </button>
+
+        {message && (
+          <p style={{ marginTop: 20, fontWeight: "bold" }}>{message}</p>
+        )}
+      </div>
+
       <h1>🎉 Payment Successful!</h1>
 
       <p>Thank you for your purchase.</p>
