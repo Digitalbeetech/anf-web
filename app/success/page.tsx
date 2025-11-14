@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export default function SuccessPage() {
   const [loading, setLoading] = useState(true);
@@ -84,7 +85,10 @@ export default function SuccessPage() {
             );
 
             const registerData = await registerRes.json();
-            console.log("Register API Response:", registerData);
+            console.log("Register API Response:", registerData?.accessToken);
+            Cookies.set("token", registerData?.accessToken, {
+              expires: 7,
+            });
 
             // ---------------------------------
             // 2. SEND RESET PASSWORD EMAIL
