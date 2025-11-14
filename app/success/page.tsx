@@ -19,13 +19,13 @@ export default function SuccessPage() {
     setMessage("");
 
     const res = await fetch(
-      "https://anf-dev-server-903cd9f18f9b.herokuapp.com/api/auth/set-password",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/set-password`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ emailState, password }),
+        body: JSON.stringify({ email: emailState, password }),
       }
     );
 
@@ -69,7 +69,7 @@ export default function SuccessPage() {
             // 1. REGISTER USER
             // ---------------------------------
             const registerRes = await fetch(
-              "https://anf-dev-server-903cd9f18f9b.herokuapp.com/api/auth/register",
+              `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
               {
                 method: "POST",
                 headers: {
@@ -134,6 +134,10 @@ export default function SuccessPage() {
   return (
     <div style={{ padding: 40 }}>
       <div style={{ maxWidth: 500, margin: "50px auto", textAlign: "center" }}>
+        <h1>🎉 Payment Successful!</h1>
+
+        <p>Thank you for your purchase.</p>
+
         <h1>Set Your Password</h1>
         <p>
           <strong>Email:</strong> {emailState}
@@ -168,14 +172,10 @@ export default function SuccessPage() {
         )}
       </div>
 
-      <h1>🎉 Payment Successful!</h1>
-
-      <p>Thank you for your purchase.</p>
-
-      <h3>Session Details</h3>
+      {/* <h3>Session Details</h3>
       <pre style={{ background: "#f4f4f4", padding: 20 }}>
         {JSON.stringify(session, null, 2)}
-      </pre>
+      </pre> */}
     </div>
   );
 }

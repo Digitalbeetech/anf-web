@@ -16,7 +16,7 @@ export default function ResetPassword() {
     setMessage("");
 
     const res = await fetch(
-      "https://anf-dev-server-903cd9f18f9b.herokuapp.com/api/auth/set-password",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/auth/set-password`,
       {
         method: "POST",
         headers: {
