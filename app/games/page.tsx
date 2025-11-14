@@ -43,7 +43,7 @@ const GAMES: Game[] = [
     values: ["Sabr", "Adab", "Rahmah"],
     age: "5–12",
     mode: "Story & Mini-quests",
-    thumbUrl:'/assets/game-img.png',
+    thumbUrl: "/assets/game-img.png",
     platforms: ["Web", "iOS", "Android"],
     url: "https://abdullahandfatima.com/play/adventure/",
   },
@@ -94,20 +94,6 @@ const VALUE_OPTIONS = [
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–12"] as const;
 const PLATFORM_OPTIONS = ["All Platforms", "Web", "iOS", "Android"] as const;
 
-// Decorative bits (reuse style from books)
-const TopClouds = () => (
-  <svg
-    aria-hidden
-    viewBox="0 0 1440 160"
-    className="block w-full text-[#EAF7FF]"
-  >
-    <path
-      fill="currentColor"
-      d="M0,64L60,85.3C120,107,240,149,360,149.3C480,149,600,107,720,96C840,85,960,107,1080,122.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-    />
-  </svg>
-);
-
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span className="rounded-md bg-white/80 px-2 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -122,7 +108,7 @@ function GameCard({ game }: { game: Game }) {
   return (
     <>
       <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
-        <div className="aspect-[16/9] w-full bg-gradient-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
+        <div className="aspect-video w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
           {game.thumbUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -177,11 +163,11 @@ function GameCard({ game }: { game: Game }) {
             ))}
           </div>
 
-          <div className="pt-1">
+          <Link href={`/games/${game.slug}`} className="pt-1">
             <p className="text-xs font-comic cursor-pointer text-sky-700 underline-offset-2 hover:text-sky-900 hover:underline">
               View details
             </p>
-          </div>
+          </Link>
         </div>
       </article>
       {selectedGame && (
@@ -250,11 +236,11 @@ export default function GamesPage() {
       <main className="min-h-dvh bg-[#EAF7FF]">
         <Header />
         {/* Hero */}
-        <section className="relative border-b border-white/60 bg-gradient-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
           <div className="mx-auto max-w-6xl px-4 py-12 text-center">
             <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
               <span
-                className="text-[#f9be49] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
                 style={{
                   WebkitTextStroke: "2px white",
                   paintOrder: "stroke fill",
@@ -378,7 +364,7 @@ export default function GamesPage() {
         </section>
 
         {/* Teaching strip */}
-        <section className="border-t border-white/60 bg-gradient-to-b from-[#FFEAA0] to-[#FFB580]">
+        <section className="border-t border-white/60 bg-linear-to-b from-[#FFEAA0] to-[#FFB580]">
           <div className="mx-auto max-w-6xl px-4 py-8">
             <p className="text-sm font-comic text-slate-900">
               Stories plant the idea. Games let kids practice. Reflection
