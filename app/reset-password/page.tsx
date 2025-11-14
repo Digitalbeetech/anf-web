@@ -1,11 +1,13 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export default function ResetPassword() {
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  // const searchParams = useSearchParams();
+  const { email } = useParams();
+
+  // const email = searchParams.get("email");
 
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
