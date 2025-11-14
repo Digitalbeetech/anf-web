@@ -218,8 +218,8 @@ const MembershipPage: React.FC = () => {
                                   body: JSON.stringify({
                                     priceId:
                                       plan.id === "monthly"
-                                        ? "price_1SSyA0RkL8Pyo27Mr7wR9vqN"
-                                        : "price_1SSyCFRkL8Pyo27MwqVZakMD",
+                                        ? process.env.MONTHLY_PRICEID
+                                        : process.env.YEARLY_PRICEID,
                                   }),
                                 }
                               );
