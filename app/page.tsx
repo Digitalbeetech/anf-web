@@ -8,6 +8,7 @@ import FeaturedGames from "./Components/FeaturedGames";
 import WatchLearn from "./Components/WatchLearn";
 import Activities from "./Components/Activities";
 import Footer from "./Components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -20,7 +21,10 @@ export default function Home() {
               {/* Hero Section Images */}
               <div className="relative w-full h-full">
                 {/* Image 1 */}
-                <div className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-8 md:left-1 lg:left-20 xl:left-48 horizontal-bounce">
+                <Link
+                  href={"/videos"}
+                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-8 md:left-1 lg:left-20 xl:left-48 horizontal-bounce"
+                >
                   <Image
                     src="/assets/hero-sec-1.svg"
                     alt=""
@@ -28,10 +32,13 @@ export default function Home() {
                     height={180}
                     className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto "
                   />
-                </div>
+                </Link>
 
                 {/* Image 2 */}
-                <div className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[30%] horizontal-bounce">
+                <Link
+                  href={"/activities"}
+                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[30%] horizontal-bounce"
+                >
                   <Image
                     src="/assets/hero-sec-2.svg"
                     alt=""
@@ -39,10 +46,13 @@ export default function Home() {
                     height={180}
                     className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
                   />
-                </div>
+                </Link>
 
                 {/* Image 3 */}
-                <div className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[34%] horizontal-bounce">
+                <Link
+                  href={"/videos"}
+                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[34%] horizontal-bounce"
+                >
                   <Image
                     src="/assets/hero-sec-3.svg"
                     alt=""
@@ -50,10 +60,13 @@ export default function Home() {
                     height={180}
                     className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
                   />
-                </div>
+                </Link>
 
                 {/* Image 4 */}
-                <div className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-10 xl:right-[10%] horizontal-bounce">
+                <Link
+                  href={"/books"}
+                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-10 xl:right-[10%] horizontal-bounce"
+                >
                   <Image
                     src="/assets/hero-sec-4.svg"
                     alt=""
@@ -61,10 +74,13 @@ export default function Home() {
                     height={180}
                     className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
                   />
-                </div>
+                </Link>
 
                 {/* Image 5 */}
-                <div className="absolute bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce">
+                <Link
+                  href={"/games"}
+                  className="absolute bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce"
+                >
                   <Image
                     src="/assets/hero-sec-5.svg"
                     alt=""
@@ -72,7 +88,7 @@ export default function Home() {
                     height={180}
                     className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto"
                   />
-                </div>
+                </Link>
               </div>
             </div>
           </div>

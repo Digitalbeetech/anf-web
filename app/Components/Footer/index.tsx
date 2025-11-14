@@ -29,8 +29,6 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
                   color: "#f9be49",
                   WebkitTextStroke: "2px white",
                   paintOrder: "stroke fill",
-                  textShadow:
-                    "0 2px 0 #fff, 0 4px 0 #ccc, 0 6px 0 #aaa, 0 8px 0 #999, 0 0 10px rgba(0,0,0,0.1)",
                 }}
               >
                 Newsletter

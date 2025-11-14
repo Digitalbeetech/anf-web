@@ -77,19 +77,6 @@ const VALUE_OPTIONS = [
 ] as const;
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12"] as const;
 
-const TopClouds = () => (
-  <svg
-    aria-hidden
-    viewBox="0 0 1440 160"
-    className="block w-full text-[#EAF7FF]"
-  >
-    <path
-      fill="currentColor"
-      d="M0,64L60,85.3C120,107,240,149,360,149.3C480,149,600,107,720,96C840,85,960,107,1080,122.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-    />
-  </svg>
-);
-
 function Tag({ children }: { children: React.ReactNode }) {
   return (
     <span className="rounded-md bg-white/80 px-2 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -109,7 +96,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 function ActivityCard({ activity }: { activity: Activity }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
-      <div className="relative aspect-[4/3] w-full bg-gradient-to-br from-sky-200 via-sky-400 to-purple-500">
+      <div className="relative aspect-4/3 w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500">
         {activity.thumbUrl ? (
           <img
             src={activity.thumbUrl}
@@ -173,11 +160,11 @@ export default function ActivitiesPage() {
       <main className="min-h-dvh bg-[#EAF7FF]">
         <Header />
         {/* Hero */}
-        <section className="relative border-b border-white/60 bg-gradient-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
           <div className="mx-auto max-w-6xl text-center px-4 py-12">
             <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
               <span
-                className="text-[#f9be49] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
                 style={{
                   WebkitTextStroke: "2px white",
                   paintOrder: "stroke fill",
@@ -186,7 +173,7 @@ export default function ActivitiesPage() {
                 Activities &
               </span>{" "}
               <span
-                className="text-[#9acb4e] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
                 style={{
                   WebkitTextStroke: "2px white",
                   paintOrder: "stroke fill",

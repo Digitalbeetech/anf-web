@@ -29,7 +29,7 @@ const SectionValuePromise = () => {
       <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center">
         <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
           <span
-            className="text-[#f9be49] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+            className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
             style={{
               WebkitTextStroke: "2px white",
               paintOrder: "stroke fill",
@@ -38,7 +38,7 @@ const SectionValuePromise = () => {
             Value
           </span>{" "}
           <span
-            className="text-[#9acb4e] [text-shadow:0_2px_0_#fff,0_4px_0_#ccc,0_6px_0_#aaa,0_8px_0_#999,0_0_10px_rgba(0,0,0,0.1)] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+            className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
             style={{
               WebkitTextStroke: "2px white",
               paintOrder: "stroke fill",
