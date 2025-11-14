@@ -5,6 +5,17 @@ import Link from "next/link";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 
+// lib/stripeClient.ts
+import { loadStripe, Stripe } from "@stripe/stripe-js";
+
+let stripePromise: Promise<Stripe | null>;
+
+export const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+  }
+  return stripePromise;
+};
 type PlanId = "monthly" | "annual" | "box";
 
 interface Plan {
@@ -195,6 +206,30 @@ const MembershipPage: React.FC = () => {
                               ? "bg-sky-600 text-white hover:bg-sky-700"
                               : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
                           }`}
+                          onClick={async () => {
+                            try {
+                              const res = await fetch(
+                                "/api/create-subscription",
+                                {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    priceId: "price_1SSyA0RkL8Pyo27Mr7wR9vqN",
+                                  }),
+                                }
+                              );
+                              const data = await res.json();
+                              if (data.url) {
+                                window.location.href = data.url;
+                              } else {
+                                alert("Error: " + data.error);
+                              }
+                            } catch (err) {
+                              console.error(err);
+                            }
+                          }}
                         >
                           {plan.ctaLabel}
                         </button>
