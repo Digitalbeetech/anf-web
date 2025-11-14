@@ -218,8 +218,10 @@ const MembershipPage: React.FC = () => {
                                   body: JSON.stringify({
                                     priceId:
                                       plan.id === "monthly"
-                                        ? process.env.MONTHLY_PRICEID
-                                        : process.env.YEARLY_PRICEID,
+                                        ? process.env
+                                            .NEXT_PUBLIC_MONTHLY_PRICEID
+                                        : process.env
+                                            .NEXT_PUBLIC_YEARLY_PRICEID,
                                   }),
                                 }
                               );
