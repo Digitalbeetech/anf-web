@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import { booksData } from "@/utils/constants";
 
 type Book = {
   id: string;
@@ -100,48 +101,33 @@ function Tag({ children }: { children: React.ReactNode }) {
   );
 }
 
-function BookCard({ book }: { book: Book }) {
+function BookCard({ book }: any) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
-      <div className="aspect-3/4 w-full bg-linear-to-br from-sky-50 to-white grid place-items-center text-slate-400 text-sm">
-        {book.coverUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={book.coverUrl}
-            alt={`${book.title} cover`}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <div className="select-none font-comic">Cover</div>
-        )}
-      </div>
-
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <h2 className="text-xl font-grobold">{book.title}</h2>
-        <p className="text-md font-comic">{book.description}</p>
-
-        <div className="mt-1 flex flex-wrap items-center gap-2">
-          {book.values.map((v) => (
-            <Tag key={v}>{v}</Tag>
-          ))}
-          <Tag>Age {book.age}</Tag>
+    <Link href={`books/${book.slug}`}>
+      <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition h-full">
+        {/* Image Section */}
+        <div className="w-full h-64 bg-linear-to-br from-sky-50 to-white grid place-items-center text-slate-400 text-sm">
+          {book.cover_image ? (
+            <img
+              src={book.cover_image}
+              alt={`${book.title} cover`}
+              className="h-full w-full object-contain"
+            />
+          ) : (
+            <div className="select-none font-comic">Cover</div>
+          )}
         </div>
 
-        <div className="mt-auto flex items-center gap-2 pt-1">
-          {book.sample && <Pill kind="free">Sample</Pill>}
-          {book.premium && <Pill kind="premium">Full in Box Set</Pill>}
+        {/* Content Section */}
+        <div className="flex flex-1 flex-col gap-3 p-4">
+          <h2 className="text-xl font-grobold">{book.title}</h2>
+          <p className="text-md font-comic">{book.tagline}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            <Tag>Age {book.age_group}</Tag>
+          </div>
         </div>
-
-        <div className="pt-2">
-          <Link
-            href={`/books/${book.slug}`}
-            className="text-sm font-grobold text-sky-700 hover:text-sky-900 hover:underline"
-          >
-            View details
-          </Link>
-        </div>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 }
 
@@ -154,18 +140,18 @@ export default function BooksPage() {
     useState<(typeof SERIES_OPTIONS)[number]>("All Series");
 
   const filtered = useMemo(() => {
-    return BOOKS.filter((b) => {
+    return booksData.filter((b) => {
       const q = query.trim().toLowerCase();
       const matchesQuery = !q
         ? true
         : b.title.toLowerCase().includes(q) ||
-          b.description.toLowerCase().includes(q);
-      const matchesAge = age === "All Ages" ? true : b.age === age;
-      const matchesValue =
-        value === "All Values" ? true : b.values.includes(value as any);
+          b.tagline.toLowerCase().includes(q);
+      const matchesAge = age === "All Ages" ? true : b.age_group === age;
+      // const matchesValue =
+      //   value === "All Values" ? true : b?.values?.includes(value as any);
       const matchesSeries =
         series === "All Series" ? true : b.series === series;
-      return matchesQuery && matchesAge && matchesValue && matchesSeries;
+      return matchesQuery && matchesAge  && matchesSeries;
     });
   }, [query, age, value, series]);
 
@@ -270,8 +256,8 @@ export default function BooksPage() {
         <section>
           <div className="mx-auto max-w-6xl px-4 py-10">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((book) => (
-                <BookCard key={book.id} book={book} />
+              {filtered.map((book, index) => (
+                <BookCard key={index} book={book} />
               ))}
               {filtered.length === 0 && (
                 <div className="col-span-full rounded-3xl border border-white/60 bg-white/80 p-8 text-center font-comic text-slate-600 shadow-md">

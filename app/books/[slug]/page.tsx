@@ -1,65 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
+import { useParams } from "next/navigation";
+import { booksData } from "@/utils/constants";
 
-interface BookDetailProps {
-  title: string;
-  description: string;
-  values: string[];
-  age: string;
-  overview: string;
-  learningNotes: string[];
-  parentTips: string[];
-  related: { href: string; label: string }[];
-  samplePages: string[];
-}
-
-// Decorative waves reused from list page
-const TopClouds = () => (
-  <svg
-    aria-hidden
-    viewBox="0 0 1440 160"
-    className="block w-full text-[#EAF7FF]"
-  >
-    <path
-      fill="currentColor"
-      d="M0,64L60,85.3C120,107,240,149,360,149.3C480,149,600,107,720,96C840,85,960,107,1080,122.7C1200,139,1320,149,1380,154.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-    />
-  </svg>
-);
-
-export default function BookDetailPage({
-  title = "The Day We Almost Missed Salah",
-  description = "A busy family morning turns into a gentle reminder about planning, prayer and helping each other.",
-  values = ["Sabr", "Amanah"],
-  age = "5–9",
-  overview = "When everything runs late, Abdullah and Fatima race the clock to catch their salah on time. With warmth and humour, they discover that good planning, teamwork and respect for prayer can turn a stressful morning into a moment of growth.",
-  learningNotes = [
-    "Noticing prayer times and preparing early.",
-    "Helping one another get ready without anger.",
-    "Understanding salah as a priority, not a rush.",
-  ],
-  parentTips = [
-    "What could we have done earlier to be ready for salah?",
-    "How do we feel when someone helps us instead of shouting?",
-    "Try a weekly ‘salah checklist’ printable (included).",
-  ],
-  related = [
-    { href: "/books/the-masjid-race", label: "The Masjid Race" },
-    { href: "/games/the-run", label: "Game: The Run" },
-    { href: "/activities/salah-checklist", label: "Activity: Salah checklist" },
-  ],
-  samplePages = ["Sample spread 1", "Sample spread 2", "Sample spread 3"],
-}: BookDetailProps) {
+export default function BookDetailPage({ params }: any) {
   const [activeTab, setActiveTab] = useState<
     | "Overview"
     | "Learning Notes"
     | "Islamic References"
     | "For Parents & Teachers"
   >("Overview");
+
+  const { slug } = useParams();
+  const [bookDetail, setBookDetail] = useState<any>("");
+
+  useEffect(() => {
+    if (booksData && slug) {
+      const findBook = booksData.find((item: any) => item.slug === slug);
+      setBookDetail(findBook);
+    }
+  }, [booksData, slug]);
 
   return (
     <>
@@ -74,33 +38,27 @@ export default function BookDetailPage({
                   Abdullah &amp; Fatima • Picture Book
                 </span>
                 <h1 className="mt-4 text-3xl md:text-4xl font-grobold text-slate-900 drop-shadow-sm">
-                  {title}
+                  {bookDetail?.title}
                 </h1>
                 <p className="mt-3 font-comic text-slate-700/90">
-                  {description}
+                  {bookDetail?.tagline}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {values.map((v) => (
-                    <span
-                      key={v}
-                      className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60"
-                    >
-                      {v}
-                    </span>
-                  ))}
                   <span className="rounded-md bg-[#FFEAA0] px-2.5 py-0.5 text-xs font-comic text-slate-900 shadow-sm ring-1 ring-amber-200">
-                    Age {age}
+                    Age {bookDetail?.age_group}
                   </span>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href={`/shop/${title.toLowerCase().replaceAll(" ", "-")}`}
+                  <div
+                    // href={`/shop/${bookDetail?.title
+                    //   .toLowerCase()
+                    //   .replaceAll(" ", "-")}`}
                     className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
                   >
                     Buy print edition
-                  </Link>
+                  </div>
                   <a
                     href="#sample"
                     className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white/80 px-5 py-2.5 text-sm font-grobold text-sky-700 shadow-sm hover:bg-sky-50"
@@ -111,10 +69,23 @@ export default function BookDetailPage({
               </div>
 
               <div className="flex justify-center">
-                <div className="relative h-72 w-56 rounded-3xl border border-white/70 bg-white/90 shadow-xl shadow-sky-100">
+                <div className="relative rounded-3xl border border-white/70 bg-white/90 shadow-xl shadow-sky-100">
+                  {/* Background Gradient */}
                   <div className="absolute inset-3 rounded-2xl bg-linear-to-br from-sky-300 via-sky-500 to-purple-500" />
-                  <div className="relative m-4 flex h-[calc(100%-2rem)] items-center justify-center rounded-2xl bg-white/90 font-comic text-slate-500">
-                    Book Cover
+
+                  {/* Image Container */}
+                  <div className="relative rounded-2xl bg-white/90 flex items-center justify-center shadow-2xl">
+                    {bookDetail.cover_image ? (
+                      <img
+                        src={bookDetail.cover_image}
+                        alt={`${bookDetail.title} cover`}
+                        className="h-full w-full object-contain rounded-2xl"
+                      />
+                    ) : (
+                      <div className="font-comic text-slate-500">
+                        Book Cover
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -161,18 +132,18 @@ export default function BookDetailPage({
                     Story overview
                   </h2>
                   <p className="mt-2 font-comic text-slate-700/90">
-                    {overview}
+                    {bookDetail?.overview}
                   </p>
                 </div>
               )}
 
-              {activeTab === "Learning Notes" && (
+              {/* {activeTab === "Learning Notes" && (
                 <div>
                   <h2 className="text-xl font-grobold text-slate-900">
                     Learning notes
                   </h2>
                   <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                    {learningNotes.map((note, i) => (
+                    {bookDetail?.learningNotes.map((note, i) => (
                       <li key={i}>{note}</li>
                     ))}
                   </ul>
@@ -185,7 +156,7 @@ export default function BookDetailPage({
                     For parents &amp; teachers
                   </h2>
                   <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                    {parentTips.map((tip, i) => (
+                    {bookDetail?.parentTips.map((tip, i) => (
                       <li key={i}>{tip}</li>
                     ))}
                   </ul>
@@ -202,7 +173,7 @@ export default function BookDetailPage({
                     simple child-friendly wording.
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </section>
@@ -219,8 +190,8 @@ export default function BookDetailPage({
             <p className="mt-1 font-comic text-slate-700/90">
               A quick look at a few spreads from the book.
             </p>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {samplePages.map((p, i) => (
+            {/* <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {bookDetail?.samplePages.map((p, i) => (
                 <div
                   key={i}
                   className="aspect-3/4 rounded-2xl border border-white/80 bg-white/90 bg-[radial-gradient(circle_at_top,#FFEAA0,transparent_60%)] grid place-items-center font-comic text-slate-600 shadow-md"
@@ -228,15 +199,15 @@ export default function BookDetailPage({
                   {p}
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+            {/* <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="rounded-3xl bg-white/90 p-6 shadow-sm ring-1 ring-slate-100">
                 <h3 className="text-xl font-grobold text-slate-900">
                   Learning notes
                 </h3>
                 <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                  {learningNotes.map((note, i) => (
+                  {bookDetail?.learningNotes.map((note, i) => (
                     <li key={i}>{note}</li>
                   ))}
                 </ul>
@@ -246,12 +217,12 @@ export default function BookDetailPage({
                   For parents &amp; teachers
                 </h3>
                 <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                  {parentTips.map((tip, i) => (
+                  {bookDetail?.parentTips.map((tip, i) => (
                     <li key={i}>{tip}</li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -264,8 +235,8 @@ export default function BookDetailPage({
             <p className="mt-1 font-comic text-slate-700/90">
               Connect this story with other books, games, and activities.
             </p>
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {related.map((r, i) => (
+            {/* <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {bookDetail?.related.map((r, i) => (
                 <Link
                   key={i}
                   href={r.href}
@@ -274,12 +245,12 @@ export default function BookDetailPage({
                   {r.label}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
         </section>
       </main>
       <div className="bg-[#EAF7FF]">
-        <Footer bgWhite={true}/>
+        <Footer bgWhite={true} />
       </div>
     </>
   );
