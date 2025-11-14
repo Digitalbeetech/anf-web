@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`hidden lg:flex relative cursor-pointer font-grobold border-3 bg-[#ff625a] text-white px-6 md:px-8 py-2.5 rounded-2xl hover:bg-red-600 transition ml-2 md:ml-0 ${className}`}
+      className={`hidden text-center lg:flex relative cursor-pointer font-grobold border-3 bg-[#ff625a] text-white px-6 md:px-8 py-2.5 rounded-2xl hover:bg-red-600 transition ml-2 md:ml-0 ${className}`}
       disabled={loader}
     >
       {!loader && children}
