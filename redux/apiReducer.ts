@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { getUser, signIn, signUp } from "./apiSlice";
+import { getUser, logout, signIn, signUp } from "./apiSlice";
 import Cookies from "js-cookie";
 
 export const extraReducersBuilder = (builder: any) => {
@@ -49,6 +49,23 @@ export const extraReducersBuilder = (builder: any) => {
       localStorage.setItem("user", JSON.stringify(action?.payload?.user));
     })
     .addCase(getUser.rejected, (state: any, action: any) => {
+      state.status = "failed";
+      state.error = action?.payload?.meta?.message;
+      toast.error(action?.payload?.meta?.message);
+    })
+
+    // Log out
+    .addCase(logout.pending, (state: any, action: any) => {
+      state.status = "loading";
+    })
+    .addCase(logout.fulfilled, (state: any, action: any) => {
+      state.status = "succeeded";
+      state.error = null;
+      localStorage.removeItem("user");
+      Cookies.remove("token");
+      toast.success(action?.payload?.message);
+    })
+    .addCase(logout.rejected, (state: any, action: any) => {
       state.status = "failed";
       state.error = action?.payload?.meta?.message;
       toast.error(action?.payload?.meta?.message);

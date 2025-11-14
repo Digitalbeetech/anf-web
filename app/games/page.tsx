@@ -5,6 +5,8 @@ import Link from "next/link";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { X } from "lucide-react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -30,6 +32,7 @@ type Game = {
   platforms: Platform[];
   thumbUrl?: string;
   url?: string;
+  premiumUrl?: string;
 };
 
 const GAMES: Game[] = [
@@ -45,7 +48,8 @@ const GAMES: Game[] = [
     mode: "Story & Mini-quests",
     thumbUrl: "/assets/game-img.png",
     platforms: ["Web", "iOS", "Android"],
-    url: "https://abdullahandfatima.com/play/adventure/",
+    url: "https://tourmaline-treacle-839185.netlify.app/",
+    premiumUrl: "",
   },
   {
     id: "g2",
@@ -58,7 +62,8 @@ const GAMES: Game[] = [
     age: "8–12",
     mode: "Endless runner · Levels",
     platforms: ["Web"],
-    url: "https://abdullahandfatima.com/play/the-run/",
+    url: "https://starlit-dodol-9596c0.netlify.app/",
+    premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
   },
   {
     id: "g3",
@@ -70,7 +75,21 @@ const GAMES: Game[] = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
-    url: "https://abdullahandfatima.com/play/the-escape/",
+    url: "https://wonderful-rugelach-0d3354.netlify.app/",
+    premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
+  },
+  {
+    id: "g3",
+    slug: "road-cross",
+    title: "The Escape",
+    blurb: "Practice safe crossing, patience and awareness at a busy junction.",
+    type: "Puzzle",
+    values: ["Sabr", "Amanah"],
+    age: "5–7",
+    mode: "Level-based safety puzzles",
+    platforms: ["Web", "Android"],
+    url: "https://fantastic-biscuit-f72cfd.netlify.app/",
+    premiumUrl: "https://storied-pika-64151a.netlify.app/",
   },
 ];
 
@@ -104,6 +123,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 function GameCard({ game }: { game: Game }) {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const user = useSelector((state: RootState) => state.api.user);
 
   return (
     <>
@@ -183,7 +203,7 @@ function GameCard({ game }: { game: Game }) {
 
           {/* Game Iframe */}
           <iframe
-            src={selectedGame.url}
+            src={user ? selectedGame?.premiumUrl : selectedGame.url}
             title={selectedGame.title}
             className="w-full h-full border-none"
             allow="autoplay; fullscreen"
