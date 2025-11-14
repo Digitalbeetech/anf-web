@@ -33,7 +33,7 @@ const Activities = () => {
               paintOrder: "stroke fill",
             }}
           >
-            Printables
+           Get Printables
           </span>
         </h1>
         <p className="mt-3 text-sm sm:text-2xl text-center font-comic text-white">

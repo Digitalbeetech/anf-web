@@ -70,7 +70,7 @@ const FeaturedBooks = () => {
             {featuredBooks.map((book, index) => (
               <div
                 key={index}
-                className={`${book.bgColor} relative w-full rounded-3xl shadow-lg pt-40 sm:pt-48 pb-14 px-4 sm:px-6 flex flex-col items-center text-start`}
+                className={`bg-white relative w-full rounded-3xl shadow-lg pt-40 sm:pt-48 pb-14 px-4 sm:px-6 flex flex-col items-center text-start`}
               >
                 {/* Book Image */}
                 <div className="absolute -top-16 sm:-top-18 flex justify-center w-full">
@@ -82,12 +82,12 @@ const FeaturedBooks = () => {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-xl sm:text-2xl text-start w-full font-semibold text-white mt-16 font-comic">
+                <h2 className="text-xl sm:text-2xl text-start w-full font-semibold text-black mt-16 font-comic">
                   {book.title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-white text-sm sm:text-md mt-3 mb-6 font-comic leading-relaxed">
+                <p className="text-black text-sm sm:text-md mt-3 mb-6 font-comic leading-relaxed">
                   {book.text}
                 </p>
 
@@ -95,13 +95,28 @@ const FeaturedBooks = () => {
                 <div className="border-t border-white w-full mb-4" />
 
                 {/* Values & Age */}
-                <div className="text-white text-sm sm:text-md space-y-1 w-full mt-2 px-1 sm:px-2 text-start">
+                <div className="text-black text-sm sm:text-md space-y-1 w-full mt-2 px-1 sm:px-2 text-start">
                   <p className="font-comic">
                     <span className="font-semibold">Values:</span> {book.values}
                   </p>
                   <p className="font-comic">
                     <span className="font-semibold">Age:</span> {book.age}
                   </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 mt-3 ">
+                  <button className="border px-3 py-1 text-sm rounded-3xl ">
+                    Sidq
+                  </button>
+                  <button className="border px-3 py-1 text-sm rounded-3xl">
+                    5-9
+                  </button>
+                  <button className="border border-[#E8F8EE] bg-[#E8F8EE] px-3 py-1 text-sm rounded-3xl">
+                    Simple
+                  </button>
+                  <button className="border border-[#FDF3D9] bg-[#FDF3D9] px-3 py-1 text-sm rounded-3xl">
+                    Full in Box set
+                  </button>
                 </div>
 
                 {/* Arrow Button */}
@@ -118,8 +133,8 @@ const FeaturedBooks = () => {
         </div>
       </div>
       <div className="absolute left-1/2 pt-2 -translate-x-1/2">
-        <button className="bg-[#ff6d3a] text-white px-6 py-2.5 rounded-full transition font-comic">
-          Browse Videos
+        <button className="bg-[#FF625C] text-white px-6 py-2.5 rounded-full transition font-comic">
+          Browse Books
         </button>
       </div>
 
