@@ -21,6 +21,11 @@ export async function POST(req: Request) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
+    console.log("🎉 CHECKOUT SUCCESS!");
+    console.log("Email:", session.customer_details?.email);
+    console.log("Customer ID:", session.customer);
+    console.log("Subscription ID:", session.subscription);
+
     return NextResponse.json({ url: session.url });
   } catch (error: any) {
     console.error("Stripe subscription error:", error);
