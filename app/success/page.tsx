@@ -3,8 +3,10 @@
 
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function SuccessPage() {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>(null);
   const [error, setError] = useState("");
@@ -34,6 +36,7 @@ export default function SuccessPage() {
 
     if (data?.success) {
       setMessage("🎉 Your password has been set successfully!");
+      router.push("/membership");
     } else {
       setMessage("❌ Failed to update password.");
     }
