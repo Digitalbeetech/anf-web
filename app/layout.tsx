@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./providers/ReduxProvider";
 import { Toaster } from "react-hot-toast";
+import InitializeAuth from "./Components/InitializeAuth/InitializeAuth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,7 +43,10 @@ export default function RootLayout({
             duration: 1500,
           }}
         />
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <InitializeAuth />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );

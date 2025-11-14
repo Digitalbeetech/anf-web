@@ -1,17 +1,17 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, User, X } from "lucide-react";
 import Modal from "../Modal";
-import Input from "../Input";
-import Button from "../Button";
 import Login from "../Login";
 import Signup from "../Signup";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/rootReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/rootReducer";
+import { logout, setUser } from "@/redux/apiSlice";
 
 export default function Header() {
+  const dispatch = useDispatch<AppDispatch>();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -19,7 +19,6 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const user = useSelector((state: RootState) => state.api.user);
-  console.log("check user>>>", user);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,6 +35,15 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logout(""))?.unwrap();
+      dispatch(setUser(null));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -141,7 +149,7 @@ export default function Header() {
                 {/* Profile Circle */}
                 <button
                   onClick={() => setDropdownOpen((prev) => !prev)}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-[#ff625a] text-white hover:bg-red-600 transition"
+                  className="flex items-center justify-center cursor-pointer w-10 h-10 rounded-full bg-[#ff625a] text-white hover:bg-red-600 transition"
                 >
                   <User size={24} />
                 </button>
@@ -158,14 +166,14 @@ export default function Header() {
                       </p>
                     </div>
                     <button
-                      // onClick={onLogout}
-                      className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+                      onClick={handleLogout}
+                      className="w-full cursor-pointer text-left px-4 py-2 hover:bg-gray-100 transition"
                     >
                       Logout
                     </button>
                     <button
                       onClick={() => alert("Profile Clicked")}
-                      className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+                      className="w-full cursor-pointer text-left px-4 py-2 hover:bg-gray-100 transition"
                     >
                       Profile
                     </button>
