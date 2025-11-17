@@ -9,6 +9,7 @@ import Signup from "../Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/rootReducer";
 import { logout, setUser } from "@/redux/apiSlice";
+import Cookies from "js-cookie";
 
 export default function Header() {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,7 +39,8 @@ export default function Header() {
 
   const handleLogout = async () => {
     try {
-      await dispatch(logout(""))?.unwrap();
+      // await dispatch(logout(""))?.unwrap();
+      Cookies.remove("token");
       dispatch(setUser(null));
     } catch (error) {
       console.log(error);
