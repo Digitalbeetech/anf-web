@@ -253,7 +253,7 @@ export default function SuccessPage() {
                                       } (${
                   data?.subscription?.plan?.billing_scheme
                 })</td></tr>
-                                      <tr><td><b>Amount:</b></td><td>${(
+                                      <tr><td><b>Amount:</b></td><td>£${(
                                         data?.amount_total / 100
                                       ).toFixed(2)}</td></tr>
                                       <tr><td><b>Date:</b></td><td>${moment()?.format(
