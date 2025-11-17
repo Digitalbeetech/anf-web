@@ -1,43 +1,9 @@
-import { ArrowRight } from "lucide-react";
+import { booksData } from "@/utils/constants";
 
 const FeaturedBooks = () => {
-  const featuredBooks = [
-    {
-      image: "/assets/book-1.png",
-      title: "The Day We Almost Missed Salah",
-      text: "A gentle reminder about time, focus, and Salah as a priority.",
-      values: "Sabr, Amanah",
-      age: "5–9",
-      bgColor: "bg-[#8ed7b2]",
-    },
-    {
-      image: "/assets/book-2.png",
-      title: "Fatima’s First Fast",
-      text: "Managing energy, empathy at home, and the joy of Suhoor & Iftar.",
-      values: "Sabr, Shukr",
-      age: "5–9",
-      bgColor: "bg-[#f9be49]",
-    },
-    {
-      image: "/assets/books-3.png",
-      title: "Abdullah’s Angry Day",
-      text: "Naming feelings, pausing with A‘ūdhu billāh, and choosing better actions.",
-      values: "Rahmah, Adab",
-      age: "5–9",
-      bgColor: "bg-[#729eef]",
-    },
-    {
-      image: "/assets/book-4.png",
-      title: "The Masjid Race",
-      text: "A gentle reminder about time, focus, and Salah as a priority.",
-      values: "Sabr, Shukr",
-      age: "5–9",
-      bgColor: "bg-[#ff6d3a]",
-    },
-  ];
   return (
     <>
-      <div className="bg-[#c7e560] flex flex-col px-4 py-8 relative">
+      <div className="flex flex-col px-4 py-8 relative">
         <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold inline-block text-center">
           <span
             className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
@@ -63,83 +29,60 @@ const FeaturedBooks = () => {
           questions and kindness.
         </p>
         <div className="max-w-[1600px] mx-auto mt-8 px-4 sm:px-6 lg:px-8">
-          <div className="absolute -left-48 bottom-36 hidden lg:flex">
-            <img src="/assets/featured-side.png" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-28 lg:gap-8 mt-14">
-            {featuredBooks.map((book, index) => (
-              <div
-                key={index}
-                className={`bg-white relative w-full rounded-3xl shadow-lg pt-40 sm:pt-48 pb-14 px-4 sm:px-6 flex flex-col items-center text-start`}
-              >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-28 lg:gap-8 mt-16">
+            {booksData?.slice(0, 4)?.map((book, index) => (
+              <div key={index} className="relative w-full flex flex-col">
                 {/* Book Image */}
-                <div className="absolute -top-16 sm:-top-18 flex justify-center w-full">
+                <div className="absolute left-1/2 -translate-x-1/2 -top-6 sm:-top-8 md:-top-12 z-10">
                   <img
-                    src={book.image}
+                    src={book.featuredImage}
                     alt={book.title}
-                    className="w-48 sm:w-64 md:w-72 lg:w-80 h-auto object-contain drop-shadow-lg"
+                    className="w-56 sm:w-72 md:w-80 lg:w-136 xl:w-[20rem] h-auto object-contain drop-shadow-lg max-w-none -mt-6"
                   />
                 </div>
+                <div className="bg-white mt-24 sm:mt-32 rounded-3xl rounded-br-[44px] px-4 sm:px-6 pt-20 sm:pt-18 pb-8 h-full flex flex-col justify-between">
+                  {/* Top content */}
+                  <div>
+                    <h2 className="text-xl sm:text-2xl text-black font-grobold text-start">
+                      {book.title}
+                    </h2>
+                    <p className="text-black text-sm sm:text-lg mt-3 mb-6 font-comic leading-relaxed">
+                      {book.tagline}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-3 font-comic font-semibold">
+                      <button className="border px-3 text-sm rounded-3xl">
+                        Sidq
+                      </button>
+                      <button className="border px-3 text-sm rounded-3xl">
+                        5-9
+                      </button>
+                    </div>
+                    <div className="flex flex-wrap gap-2 font-comic font-semibold">
+                      <button className="border border-[#E8F8EE] bg-[#E8F8EE] px-3 py-1 text-sm rounded-3xl">
+                        Simple
+                      </button>
+                      <button className="border border-[#FDF3D9] bg-[#FDF3D9] px-3 py-1 white-space-nowrap text-sm rounded-3xl">
+                        Full in Box set
+                      </button>
+                    </div>
+                  </div>
 
-                {/* Title */}
-                <h2 className="text-xl sm:text-2xl text-start w-full font-semibold text-black mt-16 font-comic">
-                  {book.title}
-                </h2>
-
-                {/* Description */}
-                <p className="text-black text-sm sm:text-md mt-3 mb-6 font-comic leading-relaxed">
-                  {book.text}
-                </p>
-
-                {/* Divider */}
-                <div className="border-t border-white w-full mb-4" />
-
-                {/* Values & Age */}
-                <div className="text-black text-sm sm:text-md space-y-1 w-full mt-2 px-1 sm:px-2 text-start">
-                  <p className="font-comic">
-                    <span className="font-semibold">Values:</span> {book.values}
-                  </p>
-                  <p className="font-comic">
-                    <span className="font-semibold">Age:</span> {book.age}
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mt-3 ">
-                  <button className="border px-3 py-1 text-sm rounded-3xl ">
-                    Sidq
-                  </button>
-                  <button className="border px-3 py-1 text-sm rounded-3xl">
-                    5-9
-                  </button>
-                  <button className="border border-[#E8F8EE] bg-[#E8F8EE] px-3 py-1 text-sm rounded-3xl">
-                    Simple
-                  </button>
-                  <button className="border border-[#FDF3D9] bg-[#FDF3D9] px-3 py-1 text-sm rounded-3xl">
-                    Full in Box set
-                  </button>
-                </div>
-
-                {/* Arrow Button */}
-                <div className="absolute -bottom-6 sm:-bottom-6 bg-white w-10 sm:w-16 h-10 sm:h-16 rounded-full flex items-center justify-center shadow-md">
-                  <ArrowRight
-                    className="text-[#8dc0ff]"
-                    size={40}
-                    strokeWidth={3}
-                  />
+                  {/* Bottom button */}
+                  <div className="flex justify-center mt-4">
+                    <button className="bg-[#0084d1] w-full py-3 rounded-full text-white font-grobold">
+                      View Book
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="absolute left-1/2 pt-2 -translate-x-1/2">
+      <div className="flex justify-center">
         <button className="bg-[#FF625C] text-white px-6 py-2.5 rounded-full transition font-comic">
-          Browse Books
+          See all Books
         </button>
-      </div>
-
-      <div className="w-full">
-        <img src="/assets/bottom-purple.svg" className="w-full" />
       </div>
     </>
   );

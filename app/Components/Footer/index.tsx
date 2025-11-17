@@ -5,7 +5,7 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
     <>
       <div
         className={`relative ${
-          bgWhite ? "bg-transparent" : "bg-[#ff6d3a]"
+          bgWhite ? "bg-transparent" : "bg-[#e8f7fc]"
         } w-full pt-12 flex justify-center`}
       >
         {/* Main background image */}

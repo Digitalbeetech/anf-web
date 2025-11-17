@@ -93,7 +93,7 @@ export default function Home() {
             </div>
           </div>
           {/* <div className="relative w-full h-full"> */}
-          <div className="relative w-full h-full mb-[250px] md:mb-[400px] lg:mb-[150px]">
+          <div className="relative w-full h-full mb-80 sm:mb-[400px] md:mb-[450px] lg:mb-[200px]">
             {/* Background Image */}
             <div className="absolute bottom-0 left-0 w-full">
               <img
@@ -152,13 +152,22 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="bg-[#e8f7fc] pt-20 md:pt-18 lg:pt-20">
-          <SectionValuePromise />
+        <div className="flex justify-center mx-2 -mt-14 sm:-mt-5 md:-mt-10 lg:-mt-20">
+          <img src="/assets/online-order.png" alt="" className="" />
         </div>
-        <div className="-mb-1 mt-38">
+
+        <div className="bg-[#e8f7fc] pt-32 sm:pt-36 md:pt-28 lg:pt-20 relative">
+          <div className="hidden md:flex absolute left-6 top-4">
+            <img src="/assets/plane.png" alt="" width={310} />
+          </div>
+          <div className="mt-12">
+            <SectionValuePromise />
+          </div>
+        </div>
+        <div className="mt-38">
           <SectionHeartMinds />
         </div>
-        <div className="bg-[#c7e560] pt-8">
+        <div className="mt-24 mb-8">
           <SectionWeTeach />
           <FeaturedBooks />
         </div>

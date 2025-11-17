@@ -52,7 +52,7 @@ const SectionWeTeach = () => {
   ];
   return (
     <>
-      <div className="bg-[#c7e560] flex flex-col items-center justify-center text-center px-4">
+      <div className="flex flex-col items-center justify-center text-center px-4">
         <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold inline-block text-center">
           <span
             className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
@@ -74,15 +74,15 @@ const SectionWeTeach = () => {
           </span>
         </h1>
       </div>
-      <div className="bg-[#c7e560] pt-14 mb-12 py-12">
+      <div className="pt-14 mb-12 py-12">
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={24}
           slidesPerView={1}
-          pagination={{
-            clickable: true,
-            el: ".custom-pagination", // We'll target this
-          }}
+          // pagination={{
+          //   clickable: true,
+          //   el: ".custom-pagination", // We'll target this
+          // }}
           loop={true}
           className="w-full px-4 md:px-8 lg:px-12 pb-20"
           breakpoints={{
@@ -128,7 +128,7 @@ const SectionWeTeach = () => {
               </div>
             </SwiperSlide>
           ))}
-          <div className="custom-pagination mx-auto! w-fit! mt-8" />
+          {/* <div className="custom-pagination mx-auto! w-fit! mt-8" /> */}
         </Swiper>
       </div>
     </>

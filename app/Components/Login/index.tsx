@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
 import { getUser, signIn } from "@/redux/apiSlice";
+import Link from "next/link";
 
 const Login = ({ modalType, setModalType, setOpenModal }: any) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -11,9 +12,19 @@ const Login = ({ modalType, setModalType, setOpenModal }: any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loader, setLoader] = useState(false);
+  const [error, setError] = useState({ email: "", password: "" });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!email) {
+      return setError((prev) => ({ ...prev, email: "Email is required" }));
+    }
+    if (!password) {
+      return setError((prev) => ({
+        ...prev,
+        password: "Password is required",
+      }));
+    }
     try {
       setLoader(true);
       const payload = {
@@ -42,14 +53,22 @@ const Login = ({ modalType, setModalType, setOpenModal }: any) => {
             label="Email"
             bottomSpace={4}
             value={email}
-            onChange={(e: any) => setEmail(e.target.value)}
+            onChange={(e: any) => {
+              setEmail(e.target.value);
+              setError((prev) => ({ ...prev, email: "" }));
+            }}
+            errorMessage={error.email}
           />
           <Input
             type="password"
             placeholder="Password"
             label="Password"
             value={password}
-            onChange={(e: any) => setPassword(e.target.value)}
+            onChange={(e: any) => {
+              setPassword(e.target.value);
+              setError((prev) => ({ ...prev, password: "" }));
+            }}
+            errorMessage={error.password}
           />
         </div>
         <div className="flex justify-center mt-4">
@@ -61,12 +80,9 @@ const Login = ({ modalType, setModalType, setOpenModal }: any) => {
 
       <p className="text-center mt-4 font-comic font-semibold text-md">
         New on our platform?{" "}
-        <span
-          className="text-[#9acb4e] cursor-pointer"
-          onClick={() => setModalType("signup")}
-        >
+        <Link href="membership" className="text-[#9acb4e] cursor-pointer">
           Create an account
-        </span>
+        </Link>
       </p>
     </>
   );
