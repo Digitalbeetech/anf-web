@@ -60,8 +60,11 @@ const SectionValuePromise = () => {
         <span className="mt-2 block text-2xl font-semibold font-comic">
           Why families love it:
         </span>
-        <div className="mt-3 w-full bg-[url('/assets/clouds.svg')] bg-size-[1400px_auto] bg-repeat-x bg-position-[50%_30%]">
-          <div className="max-w-[1600px] mx-auto">
+        <div className="mt-3 w-full">
+          <div className="max-w-[1600px] mx-auto relative">
+            <div className="md:flex hidden absolute -left-28 top-1/2 -translate-y-1/2">
+              <img src="assets/cloud-1.png" className="w-20 object-cover" />
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 lg:gap-8 mt-30 px-4">
               {valuePromises.map((item, index) => (
                 <div

@@ -50,7 +50,7 @@ export default function SuccessPage() {
 
     if (data?.success) {
       setMessage("🎉 Your password has been set successfully!");
-      router.push("/membership");
+      router.push("/");
     } else {
       setMessage("❌ Failed to update password.");
     }

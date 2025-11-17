@@ -92,6 +92,13 @@ export default function Header() {
               >
                 Membership
               </Link>
+              <Link
+                target="blank"
+                href="https://shop.sidr.productions/collections/abdullah-and-fatima"
+                className="text-[#365a77] text-lg lg:text-xl"
+              >
+                Shop
+              </Link>
             </nav>
 
             {/* Mobile Menu Icon */}

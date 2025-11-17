@@ -60,7 +60,10 @@ const SectionHeartMinds = () => {
           From read-alouds to hands-on practice, every format nurtures Islamic
           values. Choose what fits your moment—at home, in class, or on the go.
         </p>
-        <div className="max-w-[1600px] mx-auto mt-9">
+        <div className="max-w-[1600px] mx-auto mt-9 relative">
+          <div className="md:flex hidden absolute -right-28 -top-38">
+            <img src="assets/cloud-2.png" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16 lg:gap-4 mt-12">
             {heartMinds.map((item, index) => (
               <div

@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const WatchLearn = () => {
   const [playingIndex, setPlayingIndex] = useState<any>(null);
+  const router = useRouter();
 
   const watchLearn = [
     {
@@ -49,7 +51,13 @@ const WatchLearn = () => {
       <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
         Short, safe videos that inspire questions, reflection, and family chats.
       </p>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-4 relative">
+        <div className="md:flex hidden absolute -right-28 -top-38">
+          <img src="assets/cloud-2.png" />
+        </div>
+        <div className="md:flex hidden absolute -left-44 bottom-0">
+          <img src="assets/cloud-2.png" />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
           {watchLearn.map((item, index) => (
             <div
@@ -77,7 +85,7 @@ const WatchLearn = () => {
                 ) : (
                   <div
                     className="relative w-full aspect-video cursor-pointer rounded-2xl overflow-hidden"
-                    onClick={() => setPlayingIndex(index)}
+                    // onClick={() => setPlayingIndex(index)}
                   >
                     <Image
                       src={item.image}
@@ -119,7 +127,10 @@ const WatchLearn = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button className="bg-[#8ed7b2] text-white px-6 py-2.5 rounded-full transition font-comic">
+        <button
+          className="bg-[#8ed7b2] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer"
+          onClick={() => router.push("/videos")}
+        >
           Browse Videos
         </button>
       </div>
