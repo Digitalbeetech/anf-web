@@ -201,7 +201,7 @@ const MembershipPage: React.FC = () => {
                       ) : (
                         <button
                           type="button"
-                          className={`inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm ${
+                          className={`inline-flex w-full items-center cursor-pointer justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm ${
                             plan.ctaVariant === "primary"
                               ? "bg-sky-600 text-white hover:bg-sky-700"
                               : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"

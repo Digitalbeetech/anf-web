@@ -10,15 +10,17 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
-import { getUser } from "@/redux/apiSlice";
+import { getUser, signUp } from "@/redux/apiSlice";
 
 export default function SuccessPage() {
   const dispatch = useDispatch<AppDispatch>();
 
   const router = useRouter();
+  const [submitLoad, setSubmitLoad] = useState(false);
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>(null);
   const [error, setError] = useState("");
+
   console.log(session);
 
   const [emailState, setEmailState] = useState<String>("");
@@ -27,7 +29,8 @@ export default function SuccessPage() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = async () => {
-    setLoading(true);
+    if (!password) return setError("Password is required");
+    setSubmitLoad(true);
     setMessage("");
 
     const res = await fetch(
@@ -51,7 +54,7 @@ export default function SuccessPage() {
       setMessage("❌ Failed to update password.");
     }
 
-    setLoading(false);
+    setSubmitLoad(false);
   };
 
   useEffect(() => {
@@ -76,32 +79,16 @@ export default function SuccessPage() {
 
           const email = data?.customer_details?.email;
           setEmailState(email ? email : "");
-          // console.log("Stripe session email:", email);
 
           if (email) {
-            // ---------------------------------
-            // 1. REGISTER USER
-            // ---------------------------------
-            const registerRes = await fetch(
-              `${process.env.NEXT_PUBLIC_API_URL}auth/register`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  username: email.split("@")[0],
-                  password: "",
-                  email: email,
-                }),
-              }
-            );
-            const registerData = await registerRes.json();
-            console.log("Register API Response:", registerData?.accessToken);
-            Cookies.set("token", registerData?.accessToken, {
-              expires: 7,
-            });
-
+            const response = await dispatch(
+              signUp({
+                username: email.split("@")[0],
+                password: "",
+                email: email,
+              })
+            ).unwrap();
+            Cookies.set("token", response.accessToken, { expires: 7 });
             // ---------------------------------
             // 2. SEND RESET PASSWORD EMAIL
             // ---------------------------------
@@ -175,16 +162,21 @@ export default function SuccessPage() {
                 <strong className="font-comic">Email:</strong> {emailState}
               </p>
               <Input
+                type="password"
                 label="New Password"
                 placeholder="Enter new password"
                 className="text-start"
                 value={password}
-                onChange={(e: any) => setPassword(e.target.value)}
+                onChange={(e: any) => {
+                  setPassword(e.target.value);
+                  setError("");
+                }}
+                errorMessage={error}
               />
               <div className="flex justify-center">
                 <Button
                   onClick={handleSubmit}
-                  loader={loading}
+                  loader={submitLoad}
                   className="text-center mt-5 bg-green-500 hover:bg-green-400 text-white font-medium py-3 rounded-lg"
                 >
                   Submit

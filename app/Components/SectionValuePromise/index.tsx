@@ -22,6 +22,11 @@ const SectionValuePromise = () => {
       text: "Teacher-ready. Discussion prompts and lesson ideas included.",
       bgColor: "bg-[#ff6d3a]",
     },
+    {
+      image: "/assets/value-promise-3.png",
+      text: "Screen-smart. Play, read or watch on iOS, Android, or the web — with privacy-respecting defaults.",
+      bgColor: "bg-[#90D8B2]",
+    },
   ];
 
   return (
@@ -55,9 +60,9 @@ const SectionValuePromise = () => {
         <span className="mt-2 block text-2xl font-semibold font-comic">
           Why families love it:
         </span>
-        <div className="mt-3 w-full h-[1550px] sm:h-[500px] md:h-[1070px] lg:h-[600px] bg-[url('/assets/clouds.svg')] bg-size-[1400px_auto] bg-repeat-x bg-position-[50%_30%]">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mt-30 px-4">
+        <div className="mt-3 w-full bg-[url('/assets/clouds.svg')] bg-size-[1400px_auto] bg-repeat-x bg-position-[50%_30%]">
+          <div className="max-w-[1600px] mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 lg:gap-8 mt-30 px-4">
               {valuePromises.map((item, index) => (
                 <div
                   key={index}
@@ -74,8 +79,7 @@ const SectionValuePromise = () => {
                       className="w-auto h-56 sm:h-36 md:h-80 object-contain drop-shadow-xl"
                     />
                   </div>
-
-                  <div className="bg-white p-5 pt-10 text-center flex-1 rounded-b-2xl">
+                  <div className="bg-white p-5 pt-2 text-center flex-1 rounded-b-2xl">
                     <p className="text-gray-800 text-lg sm:text-xl leading-relaxed font-comic font-bold">
                       {item.text}
                     </p>

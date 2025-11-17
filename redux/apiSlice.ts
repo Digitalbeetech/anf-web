@@ -3,17 +3,64 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { extraReducersBuilder } from "./apiReducer";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_APPAPIURL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 axios.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("token");
+    const token = Cookies.get("token"); // read token from cookies
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => {
+  (error) => Promise.reject(error)
+);
+
+// -------------------- RESPONSE INTERCEPTOR --------------------
+let isRefreshing = false;
+let refreshQueue: any[] = [];
+
+function processQueue(token: string) {
+  refreshQueue.forEach((cb) => cb(token));
+  refreshQueue = [];
+}
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
+
+    // If unauthorized (401) and not retried yet
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      if (!isRefreshing) {
+        isRefreshing = true;
+
+        try {
+          const res = await axios.post("/auth/refresh"); // refresh API
+          const newToken = res.data?.accessToken;
+
+          // Save new token in cookies for 7 days
+          Cookies.set("token", newToken, { expires: 7 });
+
+          isRefreshing = false;
+          processQueue(newToken);
+        } catch (err) {
+          isRefreshing = false;
+          return Promise.reject(err);
+        }
+      }
+
+      // Queue the requests until the token is refreshed
+      return new Promise((resolve) => {
+        refreshQueue.push((newToken: string) => {
+          originalRequest.headers.Authorization = "Bearer " + newToken;
+          resolve(axios(originalRequest));
+        });
+      });
+    }
+
     return Promise.reject(error);
   }
 );
@@ -96,6 +143,18 @@ export const logout = createAsyncThunk(
   async (bodyData: any, { rejectWithValue }) => {
     try {
       const response = await axios.post(`auth/logout`);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const refreshToken = createAsyncThunk(
+  "/auth/refreshToken",
+  async (bodyData: any, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`auth/refresh`);
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response.data);

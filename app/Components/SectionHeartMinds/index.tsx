@@ -5,31 +5,37 @@ const SectionHeartMinds = () => {
     {
       image: "/assets/books.png",
       title: "Books",
-      text: "Values-first stories with gentle Qur’an and Hadith links for read-alouds everywhere. Includes age cues and discussion prompts to build daily habits together.",
+      text: "Fact-bases stories with Qur'an/Hadith/Seerah references waven in.",
       bgColor: "bg-[#9acb4e]",
     },
     {
       image: "/assets/game.png",
       title: "Games",
-      text: "Quick web, iOS, and Android mini-games that practice patience and focus. Nickname-only leaderboards and parental gates keep play safe while learning skills.",
+      text: "Web-payable,with App Store / Play links; each title lists learning outcomes and values.",
       bgColor: "bg-[#8dc0ff]",
     },
     {
       image: "/assets/video.png",
       title: "Videos",
-      text: "Short, kid-safe episodes with captions and reflection prompts for families everywhere. Designed to spark conversation and reinforce values in screen-smart doses daily.",
+      text: "Short, safe and purposeful; autoplay off by default .",
       bgColor: "bg-[#ff6d3a]",
     },
     {
       image: "/assets/activity.png",
       title: "Activities",
-      text: "Printable packs—coloring, mazes, worksheets—that turn lessons into action at home and. Low-ink designs with step-by-step tips for classroom or home use daily.",
+      text: "Printable packs—coloring, mazes, badges, worksheets.",
       bgColor: "bg-[#f9be49]",
+    },
+    {
+      image: "/assets/membership.png",
+      title: "Membership",
+      text: "Printable packs—coloring, mazes, badges, worksheets.",
+      bgColor: "bg-[#90D8B2]",
     },
   ];
   return (
     <>
-      <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center px-4">
+      <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center px-4 mb-4">
         <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
           <span
             className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
@@ -54,8 +60,8 @@ const SectionHeartMinds = () => {
           From read-alouds to hands-on practice, every format nurtures Islamic
           values. Choose what fits your moment—at home, in class, or on the go.
         </p>
-        <div className="max-w-7xl mx-auto mt-9">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-4 mt-12">
+        <div className="max-w-[1600px] mx-auto mt-9">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16 lg:gap-4 mt-12">
             {heartMinds.map((item, index) => (
               <div
                 key={index}
@@ -68,7 +74,7 @@ const SectionHeartMinds = () => {
                     alt={item.title}
                     width={300}
                     height={200}
-                    className="w-28 h-28 md:w-48 md:h-32 object-cover drop-shadow-lg"
+                    className="w-28 h-28 md:w-48 md:h-32 object-contain drop-shadow-lg"
                   />
                 </div>
 
@@ -86,13 +92,13 @@ const SectionHeartMinds = () => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-transparent">
+      {/* <div className="w-full bg-transparent">
         <img
           src="/assets/heart-mind-bg.png"
           className="w-full h-auto object-cover"
           alt="Cloud"
         />
-      </div>
+      </div> */}
     </>
   );
 };

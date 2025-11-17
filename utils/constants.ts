@@ -15,6 +15,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-1.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Book1_Fatima_sFirstFast-BookCover_1__page-0001.jpg?v=1762836751&width=330",
     pages: [],
@@ -35,6 +36,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-2.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheDayWeAlmostMissedSalah.png?v=1762849172&width=330",
     pages: [],
@@ -55,6 +57,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-3.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheIftarDeliveryMission.png?v=1762850477&width=330",
     pages: [],
@@ -75,6 +78,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sFurryFriend.png?v=1762840568&width=330",
     pages: [],
@@ -94,6 +98,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheKindnessJar.png?v=1762850504&width=330",
     pages: [],
@@ -113,6 +118,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheForgottenIslamFrontCover.png?v=1762839642&width=330",
     pages: [],
@@ -132,6 +138,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Abdullah_sAngryDay.png?v=1762849075&width=330",
     pages: [],
@@ -152,6 +159,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sShinyShoes.png?v=1762856781&width=330",
     pages: [],
@@ -172,6 +180,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheEidSurprise.png?v=1762850359&width=330",
     pages: [],
@@ -191,6 +200,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMidnightFright.png?v=1762848957&width=330",
     pages: [],
@@ -211,6 +221,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheLostQuranPage_ab077a3a-75fb-41ec-9610-2bcb34b1b76c.png?v=1762850299&width=330",
     pages: [],
@@ -231,6 +242,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
+    featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMasjidRace.png?v=1762849899&width=330",
     pages: [],

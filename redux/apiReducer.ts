@@ -12,7 +12,7 @@ export const extraReducersBuilder = (builder: any) => {
     .addCase(signUp.fulfilled, (state: any, action: any) => {
       state.status = "succeeded";
       state.error = null;
-      Cookies.set("token", action?.payload?.accessToken, { expires: 365 });
+      Cookies.set("token", action?.payload?.accessToken, { expires: 7 });
       toast.success(action?.payload?.message);
     })
     .addCase(signUp.rejected, (state: any, action: any) => {
@@ -29,13 +29,14 @@ export const extraReducersBuilder = (builder: any) => {
       state.status = "succeeded";
       state.error = null;
       toast.success(action?.payload?.message);
-      Cookies.set("token", action?.payload?.accessToken, { expires: 365 });
+      Cookies.set("token", action?.payload?.accessToken, { expires: 7 });
       state.user = action?.payload?.user;
     })
     .addCase(signIn.rejected, (state: any, action: any) => {
       state.status = "failed";
       state.error = action?.payload?.meta?.message;
-      toast.error(action?.payload?.meta?.message);
+      console.log('check error', action)
+      toast.error(action?.payload?.error?.message);
     })
 
     // Get User
