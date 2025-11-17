@@ -51,14 +51,12 @@ export default function BookDetailPage({ params }: any) {
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <div
-                    // href={`/shop/${bookDetail?.title
-                    //   .toLowerCase()
-                    //   .replaceAll(" ", "-")}`}
-                    className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  <Link
+                    href={`${bookDetail?.product_url}`}
+                    className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
                   >
                     Buy print edition
-                  </div>
+                  </Link>
                   <a
                     href="#sample"
                     className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white/80 px-5 py-2.5 text-sm font-grobold text-sky-700 shadow-sm hover:bg-sky-50"

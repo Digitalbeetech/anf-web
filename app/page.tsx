@@ -152,9 +152,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center mx-2 -mt-14 sm:-mt-5 md:-mt-10 lg:-mt-20">
+        <Link
+          target="blank"
+          href={
+            "https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
+          }
+          className="flex justify-center mx-2 -mt-14 sm:-mt-5 md:-mt-10 lg:-mt-20 cursor-pointer"
+        >
           <img src="/assets/online-order.png" alt="" className="" />
-        </div>
+        </Link>
 
         <div className="bg-[#e8f7fc] pt-32 sm:pt-36 md:pt-28 lg:pt-20 relative">
           <div className="hidden md:flex absolute left-6 top-4">

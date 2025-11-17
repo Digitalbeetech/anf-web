@@ -36,7 +36,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
-    featuredImage: "/assets/feature-book-2.png",
+    featuredImage: "/assets/feature-book-5.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheDayWeAlmostMissedSalah.png?v=1762849172&width=330",
     pages: [],
@@ -57,7 +57,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
-    featuredImage: "/assets/feature-book-3.png",
+    featuredImage: "/assets/feature-book-7.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheIftarDeliveryMission.png?v=1762850477&width=330",
     pages: [],
@@ -78,7 +78,7 @@ export const booksData = [
     learning_notes: "",
     islamic_references: "",
     for_parents_teachers: "",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-6.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sFurryFriend.png?v=1762840568&width=330",
     pages: [],

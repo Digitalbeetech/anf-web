@@ -1,7 +1,11 @@
+"use client";
 import { Gamepad2 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const FeaturedGames = () => {
+  const router = useRouter();
+
   const featuredGames = [
     {
       image: "/assets/game-1.png",
@@ -11,15 +15,15 @@ const FeaturedGames = () => {
     },
     {
       image: "/assets/game-2.png",
-      title: "Abdullah & Fatima Adventures",
+      title: "The Run",
       description:
-        "Explore, help and learn across connected quests inspired by everyday Muslim life.",
+        "Dash, dodge and make quick choices while keeping adab and safety in mind.",
     },
     {
       image: "/assets/game-3.png",
-      title: "Abdullah & Fatima Adventures",
+      title: "The Escape",
       description:
-        "Explore, help and learn across connected quests inspired by everyday Muslim life.",
+        "Practice safe crossing, patience and awareness at a busy junction.",
     },
   ];
   return (
@@ -48,7 +52,10 @@ const FeaturedGames = () => {
         <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
           Learn by playing — reflexes, problem‑solving, empathy, and Adab.
         </p>
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-20 relative">
+          <div className="md:flex hidden absolute -right-28 -top-38">
+            <img src="assets/cloud-2.png" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
             {featuredGames?.map((item, index) => (
               <div
@@ -100,7 +107,10 @@ const FeaturedGames = () => {
                   <div className="pt-2">
                     <div className="flex flex-col sm:flex-row gap-2 items-center justify-between">
                       {/* Play On Web Button - always full width */}
-                      <button className="w-full bg-[#0084d1] hover:bg-[#006bb3] text-white font-grobold px-8 py-3 rounded-full transition-colors duration-300">
+                      <button
+                        className="w-full bg-[#0084d1] hover:bg-[#006bb3] text-white font-grobold px-8 py-3 rounded-full transition-colors duration-300 cursor-pointer"
+                        onClick={() => router.push("/games")}
+                      >
                         Play On Web
                       </button>
 
@@ -144,7 +154,10 @@ const FeaturedGames = () => {
           </p>
         </div>
         <div className="flex justify-center">
-          <button className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic">
+          <button
+            className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer"
+            onClick={() => router.push("/games")}
+          >
             See all Games
           </button>
         </div>

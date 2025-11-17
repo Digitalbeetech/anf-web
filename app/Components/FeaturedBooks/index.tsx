@@ -1,6 +1,9 @@
+"use client";
 import { booksData } from "@/utils/constants";
+import { useRouter } from "next/navigation";
 
 const FeaturedBooks = () => {
+  const router = useRouter();
   return (
     <>
       <div className="flex flex-col px-4 py-8 relative">
@@ -28,7 +31,13 @@ const FeaturedBooks = () => {
           Start with a story. Explore faith‑rooted adventures that spark
           questions and kindness.
         </p>
-        <div className="max-w-[1600px] mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto mt-8 px-4 sm:px-6 lg:px-8 relative">
+          <div className="md:flex hidden absolute -left-28 bottom-0">
+            <img src="assets/cloud-1.png" className="w-20" />
+          </div>
+          <div className="md:flex hidden absolute -right-28 -top-18">
+            <img src="assets/ballon.png" className="w-40" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-28 lg:gap-8 mt-16">
             {booksData?.slice(0, 4)?.map((book, index) => (
               <div key={index} className="relative w-full flex flex-col">
@@ -54,7 +63,7 @@ const FeaturedBooks = () => {
                         Sidq
                       </button>
                       <button className="border px-3 text-sm rounded-3xl">
-                        5-9
+                        {book.age_group}
                       </button>
                     </div>
                     <div className="flex flex-wrap gap-2 font-comic font-semibold">
@@ -69,7 +78,10 @@ const FeaturedBooks = () => {
 
                   {/* Bottom button */}
                   <div className="flex justify-center mt-4">
-                    <button className="bg-[#0084d1] w-full py-3 rounded-full text-white font-grobold">
+                    <button
+                      className="bg-[#0084d1] w-full py-3 rounded-full text-white font-grobold cursor-pointer"
+                      onClick={() => router.push(`books/${book?.slug}`)}
+                    >
                       View Book
                     </button>
                   </div>
@@ -80,7 +92,10 @@ const FeaturedBooks = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <button className="bg-[#FF625C] text-white px-6 py-2.5 rounded-full transition font-comic">
+        <button
+          className="bg-[#FF625C] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer"
+          onClick={() => router.push("/books")}
+        >
           See all Books
         </button>
       </div>

@@ -35,8 +35,7 @@ export const extraReducersBuilder = (builder: any) => {
     .addCase(signIn.rejected, (state: any, action: any) => {
       state.status = "failed";
       state.error = action?.payload?.meta?.message;
-      console.log('check error', action)
-      toast.error(action?.payload?.error?.message);
+      toast.error(action?.payload?.message);
     })
 
     // Get User

@@ -22,7 +22,7 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
           }`}
         >
           {hideNewLetter && (
-            <div className="relative bg-[#9f69b4] rounded-3xl p-6 sm:p-8 md:p-12 flex flex-col items-center text-center max-w-3xl mx-auto z-10">
+            <div className="relative bg-[#9f69b4] rounded-b-[144px] rounded-t-[194px] p-6 sm:p-8 md:p-12 flex flex-col items-center text-center max-w-3xl mx-auto z-10">
               <h1
                 className="text-4xl sm:text-5xl md:text-6xl font-grobold tracking-tight mb-3 md:mb-4"
                 style={{
