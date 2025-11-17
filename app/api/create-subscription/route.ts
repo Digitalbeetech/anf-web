@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       line_items: [{ price: priceId, quantity: 1 }],
       ...(customerId && { customer: customerId }),
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/membership`,
     });
 
     console.log("🎉 CHECKOUT SUCCESS!");
