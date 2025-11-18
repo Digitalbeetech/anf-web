@@ -13,7 +13,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="bg-[#e8f7fc]">
+      <div className="bg-[#e8f7fc] relative">
         <div className="bg-[#e8f7fc]">
           <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[800px] bg-[url('/assets/hero-section-bg.svg')] bg-cover bg-center bg-no-repeat">
             <Header />

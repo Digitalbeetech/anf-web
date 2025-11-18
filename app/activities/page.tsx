@@ -130,10 +130,10 @@ function ActivityCard({ activity }: any) {
         <div className="mt-auto pt-2">
           <Link
             target="blank"
-            href={`${activity.File}`}
+            href={`/activities/${activity.slug}`}
             className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white px-4 py-2 text-xs font-grobold text-sky-700 shadow-sm hover:bg-sky-50"
           >
-            View & download
+            View
           </Link>
         </div>
       </div>

@@ -68,6 +68,10 @@ export default function BookDetailPage() {
                     Read sample pages
                   </a>
                   {user?.premiumSubscription ? (
+                    <button className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                      Join to Read Book
+                    </button>
+                  ) : (
                     <div className="relative">
                       <select
                         className="appearance-none bg-sky-600 text-white px-5 py-2.5 rounded-2xl text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
@@ -127,10 +131,6 @@ export default function BookDetailPage() {
                         ▼
                       </span>
                     </div>
-                  ) : (
-                    <button className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
-                      Join to Read Book
-                    </button>
                   )}
                 </div>
               </div>

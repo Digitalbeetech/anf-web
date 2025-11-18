@@ -33,6 +33,7 @@ type Game = {
   thumbUrl?: string;
   url?: string;
   premiumUrl?: string;
+  free?: boolean;
 };
 
 const GAMES: Game[] = [
@@ -50,6 +51,7 @@ const GAMES: Game[] = [
     platforms: ["Web", "iOS", "Android"],
     url: "https://tourmaline-treacle-839185.netlify.app/",
     premiumUrl: "",
+    free: true,
   },
   {
     id: "g2",
@@ -161,35 +163,87 @@ function GameCard({ game }: { game: Game }) {
 
           <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-xs font-comic text-slate-600">
             <span>{game.mode}</span>
-            <span>{game.platforms.join(" · ")}</span>
           </div>
 
-          <div className="mt-3 flex flex-wrap items-center gap-3">
-            {game.platforms.includes("Web") && (
-              <div
-                onClick={(e) => {
-                  e.preventDefault();
-                  setSelectedGame(game);
-                }}
-                className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
-              >
-                Play on Web
+          {user?.premiumSubscription || game?.free ? (
+            <button
+              className="inline-flex cursor-pointer mt-4 items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedGame(game);
+              }}
+            >
+              Play Now
+            </button>
+          ) : (
+            <div className="mt-3 flex flex-row flex-wrap items-center gap-3">
+              {game.platforms.includes("Web") && (
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedGame(game);
+                  }}
+                  className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                >
+                  Play Demo
+                </div>
+              )}
+              <div className="relative" onClick={(e) => e.preventDefault()}>
+                <select
+                  className="appearance-none bg-sky-600 text-white px-5 py-1.5 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                  defaultValue=""
+                  onChange={async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const selected = e.target.value;
+                    if (!selected) return;
+
+                    try {
+                      const priceId =
+                        selected === "monthly"
+                          ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                          : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+
+                      const res = await fetch("/api/create-subscription", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ priceId }),
+                      });
+
+                      const data = await res.json();
+
+                      if (data.url) {
+                        window.location.href = data.url; // Redirect to Stripe checkout
+                      } else {
+                        alert("Error: " + data.error);
+                      }
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                >
+                  <option value="" disabled className="text-black bg-white">
+                    Join to Play Full Game
+                  </option>
+
+                  <option value="monthly" className="text-black bg-white">
+                    Monthly – £3.99
+                  </option>
+
+                  <option value="annual" className="text-black bg-white">
+                    Annual – £39.99
+                  </option>
+                </select>
+
+                {/* Custom Arrow */}
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                  ▼
+                </span>
               </div>
-            )}
-            {(["iOS", "Android"] as Platform[]).map((p) => (
-              <button
-                key={p}
-                type="button"
-                className={`inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-xs font-grobold ${
-                  game.platforms.includes(p)
-                    ? "border-sky-500 text-sky-700 bg-white hover:bg-sky-50"
-                    : "border-slate-200 text-slate-400 bg-slate-50 cursor-not-allowed"
-                }`}
-              >
-                {p}
-              </button>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </Link>
       {selectedGame && (
@@ -205,7 +259,11 @@ function GameCard({ game }: { game: Game }) {
 
           {/* Game Iframe */}
           <iframe
-            src={user ? selectedGame?.premiumUrl : selectedGame.url}
+            src={
+              user && user?.premiumSubscription
+                ? selectedGame?.premiumUrl
+                : selectedGame.url
+            }
             title={selectedGame.title}
             className="w-full h-full border-none"
             allow="autoplay; fullscreen"

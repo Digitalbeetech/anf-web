@@ -75,12 +75,12 @@ const Activities = () => {
                       Free
                     </span>
                   </div>
-                  <Link target="blank" href={`${item?.File}`}>
+                  <Link href={`/activities/${item?.slug}`}>
                     <button
                       className="mt-auto w-full bg-[#8ed7b2] text-white font-grobold text-lg py-3 rounded-full shadow-lg 
                          flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      View & download
+                      View
                     </button>
                   </Link>
                 </div>

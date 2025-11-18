@@ -26,6 +26,7 @@ const FeaturedGames = () => {
       image: "/assets/game-1.png",
       url: "https://tourmaline-treacle-839185.netlify.app/",
       premiumUrl: "",
+      free: true,
     },
     {
       id: "g2",
@@ -140,40 +141,104 @@ const FeaturedGames = () => {
                   </div>
 
                   {/* Play Button */}
-                  <div className="pt-2">
-                    <div className="flex flex-col sm:flex-row gap-2 items-center justify-between">
-                      {/* Play On Web Button - always full width */}
-                      <Link href={"/games"} className="w-full">
-                        <button
-                          className="w-full bg-[#0084d1] hover:bg-[#006bb3] text-white font-grobold px-8 py-3 rounded-full transition-colors duration-300 cursor-pointer"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setSelectedGame(item);
-                          }}
+                  <div className="pt-2 w-full">
+                    {user?.premiumSubscription || item?.free ? (
+                      <button
+                        className="inline-flex w-full cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedGame(item);
+                        }}
+                      >
+                        Play Now
+                      </button>
+                    ) : (
+                      <div className="mt-3 flex flex-row flex-wrap items-center gap-3">
+                        <div className="flex-1">
+                          {item.platforms.includes("Web") && (
+                            <div
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedGame(item);
+                              }}
+                              className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                            >
+                              Play Demo
+                            </div>
+                          )}
+                        </div>
+                        <div
+                          className="relative"
+                          onClick={(e) => e.preventDefault()}
                         >
-                          Play On Web
-                        </button>
-                      </Link>
+                          <select
+                            className="appearance-none bg-sky-600 w-full text-white px-5 py-3 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                            defaultValue=""
+                            onChange={async (e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              const selected = e.target.value;
+                              if (!selected) return;
 
-                      {/* Apple + Android Icons */}
-                      {/* <div className="flex flex-row gap-2 mt-3 sm:mt-0">
-                        <button className="bg-gray-400 rounded-full px-2 flex items-center justify-center transition-all duration-300">
-                          <img
-                            src="/assets/apple-icon.png"
-                            alt="Download on App Store"
-                            className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
-                          />
-                        </button>
+                              try {
+                                const priceId =
+                                  selected === "monthly"
+                                    ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                    : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
-                        <button className="bg-[#a4c639] rounded-full px-2 flex items-center justify-center transition-all duration-300">
-                          <img
-                            src="/assets/android-icon.png"
-                            alt="Get it on Google Play"
-                            className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
-                          />
-                        </button>
-                      </div> */}
-                    </div>
+                                const res = await fetch(
+                                  "/api/create-subscription",
+                                  {
+                                    method: "POST",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({ priceId }),
+                                  }
+                                );
+
+                                const data = await res.json();
+
+                                if (data.url) {
+                                  window.location.href = data.url; // Redirect to Stripe checkout
+                                } else {
+                                  alert("Error: " + data.error);
+                                }
+                              } catch (err) {
+                                console.error(err);
+                              }
+                            }}
+                          >
+                            <option
+                              value=""
+                              disabled
+                              className="text-black bg-white"
+                            >
+                              Join to Play Full Game
+                            </option>
+
+                            <option
+                              value="monthly"
+                              className="text-black bg-white"
+                            >
+                              Monthly – £3.99
+                            </option>
+
+                            <option
+                              value="annual"
+                              className="text-black bg-white"
+                            >
+                              Annual – £39.99
+                            </option>
+                          </select>
+
+                          {/* Custom Arrow */}
+                          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                            ▼
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -192,7 +257,11 @@ const FeaturedGames = () => {
 
               {/* Game Iframe */}
               <iframe
-                src={user ? selectedGame?.premiumUrl : selectedGame.url}
+                src={
+                  user && user?.premiumSubscription
+                    ? selectedGame?.premiumUrl
+                    : selectedGame.url
+                }
                 title={selectedGame.title}
                 className="w-full h-full border-none"
                 allow="autoplay; fullscreen"
