@@ -9,15 +9,19 @@ import WatchLearn from "./Components/WatchLearn";
 import Activities from "./Components/Activities";
 import Footer from "./Components/Footer";
 import Link from "next/link";
+import StickyHeader from "./Components/StickyHeader/page";
 
 export default function Home() {
   return (
     <>
       <div className="bg-[#e8f7fc] relative">
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full">
+          <StickyHeader />
+        </div>
         <div className="bg-[#e8f7fc]">
           <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[800px] bg-[url('/assets/hero-section-bg.svg')] bg-cover bg-center bg-no-repeat">
-            <Header />
-            <div className="container mx-auto h-full relative">
+            {/* <Header /> */}
+            <div className="container mx-auto h-full pt-64">
               {/* Hero Section Images */}
               <div className="relative w-full h-full">
                 {/* Image 1 */}

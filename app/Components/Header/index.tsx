@@ -12,7 +12,7 @@ import { logout, setUser } from "@/redux/apiSlice";
 import Cookies from "js-cookie";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+export default function Header({ shadow }: any) {
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -64,10 +64,12 @@ export default function Header() {
 
   return (
     <>
-      <header className="py-6">
+      <header className="py-6 sticky z-10 top-0">
         <div className="flex items-center max-w-7xl mx-auto relative flex-wrap md:flex-nowrap">
           {/* White header content */}
-          <div className="bg-white flex items-center w-full md:grow relative py-10 md:py-3.5 mx-2 rounded-xl shadow-sm px-6 md:mx-2">
+          <div
+            className={`bg-white flex items-center w-full md:grow relative py-10 md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
+          >
             {/* Absolute logo on the left */}
             <Link
               href={"/"}

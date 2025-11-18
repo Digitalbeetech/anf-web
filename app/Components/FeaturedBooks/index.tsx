@@ -38,7 +38,11 @@ const FeaturedBooks = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-28 lg:gap-8 mt-16">
             {booksData?.slice(0, 4)?.map((book, index) => (
-              <div key={index} className="relative w-full flex flex-col">
+              <Link
+                href={`books/${book?.slug}`}
+                key={index}
+                className="relative w-full flex flex-col"
+              >
                 {/* Book Image */}
                 <div className="absolute left-1/2 -translate-x-1/2 -top-6 sm:-top-8 md:-top-12 z-10">
                   <img
@@ -84,7 +88,7 @@ const FeaturedBooks = () => {
                     </button>
                   </Link>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

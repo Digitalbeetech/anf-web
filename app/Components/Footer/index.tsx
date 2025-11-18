@@ -76,19 +76,19 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
         <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row items-center justify-between">
           <div className="flex space-x-6 mb-4 sm:mb-0">
             <a
-              href="#"
+              href="/books"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Books
             </a>
             <a
-              href="#"
+              href="/games"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Games
             </a>
             <a
-              href="#"
+              href="/membership"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Membership
@@ -105,13 +105,13 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
 
           <div className="flex space-x-6">
             <a
-              href="#"
+              href="/videos"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Videos
             </a>
             <a
-              href="#"
+              href="/activities"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Activities
