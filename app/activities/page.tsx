@@ -30,41 +30,41 @@ type Activity = {
   File?: string;
 };
 
-const ACTIVITIES: Activity[] = [
-  {
-    id: "a1",
-    slug: "salah-checklist",
-    title: "Salah Time Checklist",
-    blurb:
-      "A simple, visual checklist to help children prepare calmly for salah.",
-    type: "Worksheet",
-    values: ["Sabr", "Amanah"],
-    age: ["5–7", "8–12"],
-    free: true,
-  },
-  {
-    id: "a2",
-    slug: "abdullah-coloring-football",
-    title: "Abdullah Playing Football – Coloring Page",
-    blurb:
-      "A fun, confidence-building coloring page that ties into teamwork and adab.",
-    type: "Coloring",
-    values: ["Adab"],
-    age: ["5–7"],
-    free: true,
-  },
-  {
-    id: "a3",
-    slug: "fatima-maze-kindness",
-    title: "Fatima’s Kindness Maze",
-    blurb:
-      "Help Fatima find her way to the right choice—kindness wins every time.",
-    type: "Maze",
-    values: ["Rahmah"],
-    age: ["5–7", "8–12"],
-    free: false,
-  },
-];
+// const ACTIVITIES: Activity[] = [
+//   {
+//     id: "a1",
+//     slug: "salah-checklist",
+//     title: "Salah Time Checklist",
+//     blurb:
+//       "A simple, visual checklist to help children prepare calmly for salah.",
+//     type: "Worksheet",
+//     values: ["Sabr", "Amanah"],
+//     age: ["5–7", "8–12"],
+//     free: true,
+//   },
+//   {
+//     id: "a2",
+//     slug: "abdullah-coloring-football",
+//     title: "Abdullah Playing Football – Coloring Page",
+//     blurb:
+//       "A fun, confidence-building coloring page that ties into teamwork and adab.",
+//     type: "Coloring",
+//     values: ["Adab"],
+//     age: ["5–7"],
+//     free: true,
+//   },
+//   {
+//     id: "a3",
+//     slug: "fatima-maze-kindness",
+//     title: "Fatima’s Kindness Maze",
+//     blurb:
+//       "Help Fatima find her way to the right choice—kindness wins every time.",
+//     type: "Maze",
+//     values: ["Rahmah"],
+//     age: ["5–7", "8–12"],
+//     free: false,
+//   },
+// ];
 
 const TYPE_OPTIONS = ["All Types", "Coloring", "Maze", "Worksheet"] as const;
 const VALUE_OPTIONS = [
@@ -95,7 +95,7 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ActivityCard({ activity }: { activity: Activity }) {
+function ActivityCard({ activity }: any) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
       <div className="relative aspect-4/3 w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500">
@@ -147,18 +147,18 @@ export default function ActivitiesPage() {
     useState<(typeof VALUE_OPTIONS)[number]>("All Values");
   const [age, setAge] = useState<(typeof AGE_OPTIONS)[number]>("All Ages");
 
-  const filtered = useMemo(() => {
-    return ACTIVITIES.filter((a) => {
-      const matchesType =
-        type === "All Types" ? true : a.type === (type as ActivityType);
-      const matchesValue =
-        value === "All Values" ? true : a.values.includes(value as ValueTag);
-      const matchesAge =
-        age === "All Ages" ? true : a.age.includes(age as AgeBand);
+  // const filtered = useMemo(() => {
+  //   return ACTIVITIES.filter((a) => {
+  //     const matchesType =
+  //       type === "All Types" ? true : a.type === (type as ActivityType);
+  //     const matchesValue =
+  //       value === "All Values" ? true : a.values.includes(value as ValueTag);
+  //     const matchesAge =
+  //       age === "All Ages" ? true : a.age.includes(age as AgeBand);
 
-      return matchesType && matchesValue && matchesAge;
-    });
-  }, [type, value, age]);
+  //     return matchesType && matchesValue && matchesAge;
+  //   });
+  // }, [type, value, age]);
 
   return (
     <>
@@ -250,12 +250,12 @@ export default function ActivitiesPage() {
               {activityData.map((activity, index) => (
                 <ActivityCard key={index} activity={activity} />
               ))}
-              {filtered.length === 0 && (
+              {/* {filtered.length === 0 && (
                 <div className="col-span-full rounded-3xl border border-white/60 bg-white/90 p-8 text-center font-comic text-slate-600 shadow-md">
                   No activities match your filters. Try changing the type or
                   value.
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </section>
