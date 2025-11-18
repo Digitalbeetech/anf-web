@@ -1,78 +1,87 @@
+import * as yup from "yup";
+import { jwtDecode } from "jwt-decode";
+import Link from "next/link";
 import Input from "../Input";
 import Button from "../Button";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
-import { getUser, signIn } from "@/redux/apiSlice";
-import Link from "next/link";
+import { getUser, setUser, signIn } from "@/redux/apiSlice";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-const Login = ({ modalType, setModalType, setOpenModal }: any) => {
+interface LoginProps {
+  modalType: string;
+  setModalType: any;
+  setOpenModal: any;
+}
+
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
+});
+
+const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loader, setLoader] = useState(false);
-  const [error, setError] = useState({ email: "", password: "" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email) {
-      return setError((prev) => ({ ...prev, email: "Email is required" }));
-    }
-    if (!password) {
-      return setError((prev) => ({
-        ...prev,
-        password: "Password is required",
-      }));
-    }
+  const onSubmit = async (data: any) => {
     try {
-      setLoader(true);
       const payload = {
-        email,
-        password,
+        email: data.email,
+        password: data.password,
       };
       const response = await dispatch(signIn(payload)).unwrap();
-      await dispatch(getUser("")).unwrap();
-      setLoader(false);
+      console.log("check>>>", response);
       setOpenModal(false);
-      setEmail("");
-      setPassword("");
-    } catch (error) {
-      console.log(error);
-      setLoader(false);
+      reset();
+      if (response?.accessToken) {
+        const decodedUser: any = jwtDecode(response?.accessToken);
+        console.log("check decode>>>>>", decodedUser?.user);
+        dispatch(setUser(decodedUser?.user));
+        localStorage.setItem("user", JSON.stringify(decodedUser?.user));
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Input
             type="email"
             placeholder="Email"
             label="Email"
             bottomSpace={4}
-            value={email}
-            onChange={(e: any) => {
-              setEmail(e.target.value);
-              setError((prev) => ({ ...prev, email: "" }));
-            }}
-            errorMessage={error.email}
+            {...register("email")}
+            errorMessage={errors.email?.message}
           />
           <Input
             type="password"
             placeholder="Password"
             label="Password"
-            value={password}
-            onChange={(e: any) => {
-              setPassword(e.target.value);
-              setError((prev) => ({ ...prev, password: "" }));
-            }}
-            errorMessage={error.password}
+            {...register("password")}
+            errorMessage={errors.password?.message}
           />
         </div>
+
         <div className="flex justify-center mt-4">
-          <Button type="submit" loader={loader}>
+          <Button type="submit" loader={isSubmitting}>
             Login
           </Button>
         </div>

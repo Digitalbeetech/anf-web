@@ -1,23 +1,8 @@
+import { activityData } from "@/utils/activity";
 import Image from "next/image";
+import Link from "next/link";
 
 const Activities = () => {
-  const watchLearn = [
-    {
-      image: "/assets/activity-1.jpg",
-      text: "Downloadable packs by Age and Value (Sabr, Shukr, Adab, Amanah, Rahmah…)",
-      bgColor: "bg-[#8dc0ff]",
-    },
-    {
-      image: "/assets/activity-2.jpg",
-      text: "Teacher notes and “Try this at home” prompts",
-      bgColor: "bg-[#f9be49]",
-    },
-    {
-      image: "/assets/activity-2.jpg",
-      text: "Teacher notes and “Try this at home” prompts",
-      bgColor: "bg-[#f9be49]",
-    },
-  ];
   return (
     <>
       <div className="flex flex-col px-4 py-8 h-full relative">
@@ -49,29 +34,33 @@ const Activities = () => {
           <div className="absolute left-10 top-1 hidden lg:flex">
             <img src="/assets/plane-2.png" width={270} />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-            {watchLearn.map((item, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+            {activityData.slice(0, 3).map((item, index) => (
               <div
                 key={index}
                 className="bg-white rounded-3xl shadow-xl overflow-hidden 
                flex flex-col h-full "
               >
                 {/* Image on Top */}
-                <div className="w-full h-64 sm:h-72 lg:h-72">
+                <div className="w-full h-64 sm:h-72 lg:h-60">
                   <Image
-                    src={item.image}
-                    alt={item.text || "Watch & Learn"}
+                    src={item.cover_photo_box}
+                    alt={item.title || "Watch & Learn"}
                     width={800}
-                    height={400}
-                    className="w-full h-full object-cover"
+                    height={800}
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
                 {/* White Card Below - All Content Aligned */}
-                <div className="p-6 sm:p-8 flex flex-col flex-1 bg-white space-y-5">
+                <div className="p-6 sm:p-6 flex flex-col flex-1 bg-white space-y-5">
                   {/* Title */}
-                  <p className="text-gray-800 text-xl sm:text-2xl font-bold font-comic text-start leading-tight">
-                    {item.text}
+                  <p className="text-gray-800 text-xl font-grobold text-start leading-tight">
+                    {item.title}
+                  </p>
+
+                  <p className="text-gray-800 text-lg font-bold font-comic text-start leading-tight">
+                    {item.tagline}
                   </p>
 
                   {/* Colorful Tags - Left Aligned (Not Centered) */}
@@ -86,24 +75,24 @@ const Activities = () => {
                       Free
                     </span>
                   </div>
-
-                  {/* Watch Now Button - Full Width, Perfect Bottom Alignment */}
-                  <button
-                    className="mt-auto w-full bg-[#8ed7b2] text-white font-grobold text-lg py-4 rounded-full shadow-lg 
-                         flex items-center justify-center gap-2"
-                  >
-                    View & download
-                  </button>
+                  <Link target="blank" href={`${item?.File}`}>
+                    <button
+                      className="mt-auto w-full bg-[#8ed7b2] text-white font-grobold text-lg py-3 rounded-full shadow-lg 
+                         flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      View & download
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
-          <button className="bg-[#5ecaff] text-white px-6 py-2.5 rounded-full transition font-comic">
+        <Link href={"activities"} className="flex justify-center">
+          <button className="bg-[#5ecaff] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
             Get Printables
           </button>
-        </div>
+        </Link>
       </div>
     </>
   );

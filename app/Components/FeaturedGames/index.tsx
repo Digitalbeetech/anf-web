@@ -1,29 +1,76 @@
 "use client";
-import { Gamepad2 } from "lucide-react";
+import { RootState } from "@/redux/rootReducer";
+import { X } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const FeaturedGames = () => {
-  const router = useRouter();
+  const user = useSelector((state: RootState) => state.api.user);
+  const [selectedGame, setSelectedGame] = useState<any>(null);
 
-  const featuredGames = [
+  const games = [
     {
-      image: "/assets/game-1.png",
+      id: "g1",
+      slug: "abdullah-fatima-adventures",
       title: "Abdullah & Fatima Adventures",
-      description:
+      blurb:
         "Explore, help and learn across connected quests inspired by everyday Muslim life.",
+      type: "Story",
+      values: ["Sabr", "Adab", "Rahmah"],
+      age: "5–12",
+      mode: "Story & Mini-quests",
+      thumbUrl: "/assets/game-img.png",
+      platforms: ["Web", "iOS", "Android"],
+      image: "/assets/game-1.png",
+      url: "https://tourmaline-treacle-839185.netlify.app/",
+      premiumUrl: "",
     },
     {
-      image: "/assets/game-2.png",
+      id: "g2",
+      slug: "the-run",
       title: "The Run",
-      description:
+      blurb:
         "Dash, dodge and make quick choices while keeping adab and safety in mind.",
+      type: "Runner",
+      values: ["Adab", "Amanah"],
+      age: "8–12",
+      mode: "Endless runner · Levels",
+      image: "/assets/game-2.png",
+      platforms: ["Web"],
+      url: "https://starlit-dodol-9596c0.netlify.app/",
+      premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
     },
     {
-      image: "/assets/game-3.png",
+      id: "g3",
+      slug: "road-cross",
       title: "The Escape",
-      description:
+      blurb:
         "Practice safe crossing, patience and awareness at a busy junction.",
+      type: "Puzzle",
+      values: ["Sabr", "Amanah"],
+      age: "5–7",
+      mode: "Level-based safety puzzles",
+      image: "/assets/game-3.png",
+      platforms: ["Web", "Android"],
+      url: "https://fantastic-biscuit-f72cfd.netlify.app/",
+      premiumUrl: "https://storied-pika-64151a.netlify.app/",
+    },
+    {
+      id: "g3",
+      slug: "road-cross",
+      title: "Road Cross",
+      blurb:
+        "Practice safe crossing, patience and awareness at a busy junction.",
+      type: "Puzzle",
+      values: ["Sabr", "Amanah"],
+      age: "5–7",
+      image: "/assets/gamde-3.png",
+      mode: "Level-based safety puzzles",
+      platforms: ["Web", "Android"],
+      url: "https://wonderful-rugelach-0d3354.netlify.app/",
+      premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
     },
   ];
   return (
@@ -57,8 +104,9 @@ const FeaturedGames = () => {
             <img src="assets/cloud-2.png" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-            {featuredGames?.map((item, index) => (
-              <div
+            {games?.slice(0, 3).map((item, index) => (
+              <Link
+                href={`/games/${item?.slug}`}
                 key={index}
                 className="relative group w-full bg-white rounded-2xl rounded-br-[44px] overflow-hidden"
               >
@@ -70,18 +118,6 @@ const FeaturedGames = () => {
                     height={400}
                     className="w-full h-48 sm:h-56 md:h-64 object-cover"
                   />
-
-                  {/* Gamepad Icon Overlay */}
-                  <div
-                    className="absolute inset-0 flex items-center justify-center bg-black/30 
-                      group-hover:bg-black/50 transition-all duration-300"
-                  >
-                    <Gamepad2
-                      size={64}
-                      className="text-white/70 group-hover:text-white 
-                     group-hover:scale-110 transition-all duration-300"
-                    />
-                  </div>
                 </div>
                 <div className="p-5 sm:p-6 md:p-8 space-y-4">
                   {/* Title */}
@@ -91,7 +127,7 @@ const FeaturedGames = () => {
 
                   {/* Description */}
                   <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-comic">
-                    {item?.description ||
+                    {item?.blurb ||
                       "An exciting and educational game for kids to learn Islamic values through play."}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-3 font-comic font-semibold">
@@ -107,16 +143,20 @@ const FeaturedGames = () => {
                   <div className="pt-2">
                     <div className="flex flex-col sm:flex-row gap-2 items-center justify-between">
                       {/* Play On Web Button - always full width */}
-                      <button
-                        className="w-full bg-[#0084d1] hover:bg-[#006bb3] text-white font-grobold px-8 py-3 rounded-full transition-colors duration-300 cursor-pointer"
-                        onClick={() => router.push("/games")}
-                      >
-                        Play On Web
-                      </button>
+                      <Link href={"/games"} className="w-full">
+                        <button
+                          className="w-full bg-[#0084d1] hover:bg-[#006bb3] text-white font-grobold px-8 py-3 rounded-full transition-colors duration-300 cursor-pointer"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedGame(item);
+                          }}
+                        >
+                          Play On Web
+                        </button>
+                      </Link>
 
                       {/* Apple + Android Icons */}
-                      <div className="flex flex-row gap-2 mt-3 sm:mt-0">
-                        {/* Apple */}
+                      {/* <div className="flex flex-row gap-2 mt-3 sm:mt-0">
                         <button className="bg-gray-400 rounded-full px-2 flex items-center justify-center transition-all duration-300">
                           <img
                             src="/assets/apple-icon.png"
@@ -125,7 +165,6 @@ const FeaturedGames = () => {
                           />
                         </button>
 
-                        {/* Android */}
                         <button className="bg-[#a4c639] rounded-full px-2 flex items-center justify-center transition-all duration-300">
                           <img
                             src="/assets/android-icon.png"
@@ -133,13 +172,33 @@ const FeaturedGames = () => {
                             className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
                           />
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+          {selectedGame && (
+            <div className="fixed inset-0 z-50 bg-black flex flex-col">
+              {/* Close Button - Top Right */}
+              <button
+                onClick={() => setSelectedGame(null)}
+                className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
+                aria-label="Close Game"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Game Iframe */}
+              <iframe
+                src={user ? selectedGame?.premiumUrl : selectedGame.url}
+                title={selectedGame.title}
+                className="w-full h-full border-none"
+                allow="autoplay; fullscreen"
+              />
+            </div>
+          )}
           <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
             Just released:{" "}
             <span className="font-semibold"> Escape & Road Cross </span>
@@ -153,14 +212,11 @@ const FeaturedGames = () => {
             2025)
           </p>
         </div>
-        <div className="flex justify-center">
-          <button
-            className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer"
-            onClick={() => router.push("/games")}
-          >
+        <Link href={"/games"} className="flex justify-center">
+          <button className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
             See all Games
           </button>
-        </div>
+        </Link>
       </div>
     </>
   );

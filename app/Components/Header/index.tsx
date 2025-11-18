@@ -10,8 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/rootReducer";
 import { logout, setUser } from "@/redux/apiSlice";
 import Cookies from "js-cookie";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -47,6 +49,19 @@ export default function Header() {
     }
   };
 
+  const navLinks = [
+    { name: "Books", link: "/books" },
+    { name: "Games", link: "/games" },
+    { name: "Videos", link: "/videos" },
+    { name: "Activities", link: "/activities" },
+    { name: "Membership", link: "/membership" },
+    {
+      name: "Shop",
+      link: "https://shop.sidr.productions/collections/abdullah-and-fatima",
+      external: true,
+    },
+  ];
+
   return (
     <>
       <header className="py-6">
@@ -70,37 +85,20 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[200px] lg:pl-[220px] mx-4 md:mx-12 font-grobold">
-              <Link href="/books" className="text-[#365a77] text-lg lg:text-xl">
-                Books
-              </Link>
-              <Link href="/games" className="text-[#365a77] text-lg lg:text-xl">
-                Games
-              </Link>
-              <Link
-                href="/videos"
-                className="text-[#365a77] text-lg lg:text-xl"
-              >
-                Videos
-              </Link>
-              <Link
-                href="/activities"
-                className="text-[#365a77] text-lg lg:text-xl"
-              >
-                Activities
-              </Link>
-              <Link
-                href="/membership"
-                className="text-[#365a77] text-lg lg:text-xl"
-              >
-                Membership
-              </Link>
-              <Link
-                target="blank"
-                href="https://shop.sidr.productions/collections/abdullah-and-fatima"
-                className="text-[#365a77] text-lg lg:text-xl"
-              >
-                Shop
-              </Link>
+              {navLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.link}
+                  target={item.external ? "_blank" : "_self"}
+                  className={`${
+                    pathname === item?.link
+                      ? "text-[#f9be49]"
+                      : "text-[#365a77]"
+                  } text-lg lg:text-xl`}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </nav>
 
             {/* Mobile Menu Icon */}

@@ -61,9 +61,24 @@ const GAMES: Game[] = [
     values: ["Adab", "Amanah"],
     age: "8–12",
     mode: "Endless runner · Levels",
+    thumbUrl: "/assets/game-2.png",
     platforms: ["Web"],
     url: "https://starlit-dodol-9596c0.netlify.app/",
     premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
+  },
+  {
+    id: "g3",
+    slug: "road-cross",
+    title: "The Escape",
+    blurb: "Practice safe crossing, patience and awareness at a busy junction.",
+    type: "Puzzle",
+    values: ["Sabr", "Amanah"],
+    thumbUrl: "/assets/game-3.png",
+    age: "5–7",
+    mode: "Level-based safety puzzles",
+    platforms: ["Web", "Android"],
+    url: "https://fantastic-biscuit-f72cfd.netlify.app/",
+    premiumUrl: "https://storied-pika-64151a.netlify.app/",
   },
   {
     id: "g3",
@@ -77,19 +92,6 @@ const GAMES: Game[] = [
     platforms: ["Web", "Android"],
     url: "https://wonderful-rugelach-0d3354.netlify.app/",
     premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
-  },
-  {
-    id: "g3",
-    slug: "road-cross",
-    title: "The Escape",
-    blurb: "Practice safe crossing, patience and awareness at a busy junction.",
-    type: "Puzzle",
-    values: ["Sabr", "Amanah"],
-    age: "5–7",
-    mode: "Level-based safety puzzles",
-    platforms: ["Web", "Android"],
-    url: "https://fantastic-biscuit-f72cfd.netlify.app/",
-    premiumUrl: "https://storied-pika-64151a.netlify.app/",
   },
 ];
 
@@ -127,7 +129,10 @@ function GameCard({ game }: { game: Game }) {
 
   return (
     <>
-      <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
+      <Link
+        href={`/games/${game.slug}`}
+        className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition"
+      >
         <div className="aspect-video w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
           {game.thumbUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -162,7 +167,10 @@ function GameCard({ game }: { game: Game }) {
           <div className="mt-3 flex flex-wrap items-center gap-3">
             {game.platforms.includes("Web") && (
               <div
-                onClick={() => setSelectedGame(game)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedGame(game);
+                }}
                 className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
               >
                 Play on Web
@@ -182,14 +190,8 @@ function GameCard({ game }: { game: Game }) {
               </button>
             ))}
           </div>
-
-          <Link href={`/games/${game.slug}`} className="pt-1">
-            <p className="text-xs font-comic cursor-pointer text-sky-700 underline-offset-2 hover:text-sky-900 hover:underline">
-              View details
-            </p>
-          </Link>
         </div>
-      </article>
+      </Link>
       {selectedGame && (
         <div className="fixed inset-0 z-50 bg-black flex flex-col">
           {/* Close Button - Top Right */}

@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import { activityData } from "@/utils/activity";
 
 type ActivityType = "Coloring" | "Maze" | "Worksheet";
 type ValueTag =
@@ -20,12 +21,13 @@ type Activity = {
   id: string;
   slug: string;
   title: string;
-  blurb: string;
+  tagline: string;
   type: ActivityType;
   values: ValueTag[];
   age: AgeBand[];
   free?: boolean;
-  thumbUrl?: string;
+  cover_photo_box?: string;
+  File?: string;
 };
 
 const ACTIVITIES: Activity[] = [
@@ -97,9 +99,9 @@ function ActivityCard({ activity }: { activity: Activity }) {
   return (
     <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
       <div className="relative aspect-4/3 w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500">
-        {activity.thumbUrl ? (
+        {activity?.cover_photo_box ? (
           <img
-            src={activity.thumbUrl}
+            src={activity?.cover_photo_box}
             alt={activity.title}
             className="h-full w-full object-cover"
           />
@@ -114,18 +116,21 @@ function ActivityCard({ activity }: { activity: Activity }) {
         <h2 className="text-base font-grobold text-slate-900 leading-snug drop-shadow-sm">
           {activity.title}
         </h2>
-        <p className="text-sm font-comic text-slate-700/90">{activity.blurb}</p>
+        <p className="text-sm font-comic text-slate-700/90">
+          {activity.tagline}
+        </p>
 
-        <div className="mt-1 flex flex-wrap items-center gap-2">
+        {/* <div className="mt-1 flex flex-wrap items-center gap-2">
           {activity.values.map((v) => (
             <Tag key={v}>{v}</Tag>
           ))}
           {activity.free && <Pill>Free</Pill>}
-        </div>
+        </div> */}
 
         <div className="mt-auto pt-2">
           <Link
-            href={`/activities/${activity.slug}`}
+            target="blank"
+            href={`${activity.File}`}
             className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white px-4 py-2 text-xs font-grobold text-sky-700 shadow-sm hover:bg-sky-50"
           >
             View & download
@@ -242,8 +247,8 @@ export default function ActivitiesPage() {
         <section>
           <div className="mx-auto max-w-6xl px-4 py-10">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((activity) => (
-                <ActivityCard key={activity.id} activity={activity} />
+              {activityData.map((activity, index) => (
+                <ActivityCard key={index} activity={activity} />
               ))}
               {filtered.length === 0 && (
                 <div className="col-span-full rounded-3xl border border-white/60 bg-white/90 p-8 text-center font-comic text-slate-600 shadow-md">

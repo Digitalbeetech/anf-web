@@ -30,7 +30,6 @@ export const extraReducersBuilder = (builder: any) => {
       state.error = null;
       toast.success(action?.payload?.message);
       Cookies.set("token", action?.payload?.accessToken, { expires: 7 });
-      state.user = action?.payload?.user;
     })
     .addCase(signIn.rejected, (state: any, action: any) => {
       state.status = "failed";

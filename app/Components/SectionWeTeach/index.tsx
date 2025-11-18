@@ -8,46 +8,25 @@ import "swiper/css/pagination";
 const SectionWeTeach = () => {
   const teachCards = [
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-1.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-2.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-3.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-4.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-5.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-6.svg",
     },
     {
-      image: "/assets/slider-1.png",
-      title: "Sabr (Patience)",
-      text: "Wait well, try again, and finishstrong.",
-      bgColor: "bg-[#9acb4e]",
+      image: "/assets/teach-7.svg",
     },
   ];
   return (
@@ -77,53 +56,32 @@ const SectionWeTeach = () => {
       <div className="pt-14 mb-12 py-12">
         <Swiper
           modules={[Navigation, Pagination]}
-          spaceBetween={24}
-          slidesPerView={1}
+          spaceBetween={10}
+          slidesPerView={2}
           // pagination={{
           //   clickable: true,
           //   el: ".custom-pagination", // We'll target this
           // }}
           loop={true}
-          className="w-full px-4 md:px-8 lg:px-12 pb-20"
+          className="w-full pb-20"
           breakpoints={{
-            640: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
+            1280: { slidesPerView: 5 },
           }}
         >
           {teachCards.map((card, index) => (
-            <SwiperSlide key={index} className="px-2">
-              <div
-                className={`${card.bgColor} rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-6 p-6 md:p-8 transition-all duration-300 hover:shadow-2xl`}
-              >
-                {/* Left: Text */}
-                <div className="flex-1 text-left space-y-4 order-2 md:order-1">
-                  <h3 className="text-white font-grobold text-2xl sm:text-3xl md:text-3xl lg:text-4xl leading-tight">
-                    {card.title}
-                  </h3>
-                  <p className="text-white font-medium text-sm sm:text-base md:text-lg leading-relaxed opacity-90">
-                    {card.text}
-                  </p>
-                </div>
-
-                {/* Right: Image Container */}
-                <div className="relative w-full max-w-[180px] sm:max-w-[220px] md:max-w-[180px] lg:max-w-[200px] aspect-square order-1 md:order-2">
-                  {/* Circular Image */}
-                  <div className="relative w-full h-full rounded-full overflow-hidden p-3">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      className="object-contain drop-shadow-md"
-                      sizes="(max-width: 768px) 180px, 200px"
-                    />
-                  </div>
-
-                  {/* Number Badge - Bottom Right */}
-                  <div className="absolute -bottom-3 -right-3 bg-white text-[#ff6d3a] font-grobold text-xl sm:text-2xl md:text-2xl lg:text-3xl w-12 h-12 sm:w-14 sm:h-14 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-xl border-4 border-white">
-                    {index + 1}
-                  </div>
+            <SwiperSlide key={index} className="">
+              <div className="flex justify-center">
+                <div className="w-48 h-48 sm:w-48 sm:h-48 md:w-96 md:h-96">
+                  <Image
+                    src={card.image}
+                    alt={`Teach ${index + 1}`}
+                    width={500}
+                    height={400}
+                    className="object-contain drop-shadow-md"
+                  />
                 </div>
               </div>
             </SwiperSlide>

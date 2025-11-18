@@ -7,6 +7,8 @@ import Header from "../Components/Header";
 
 // lib/stripeClient.ts
 import { loadStripe, Stripe } from "@stripe/stripe-js";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -27,6 +29,7 @@ interface Plan {
   ctaLabel: string;
   ctaVariant: "primary" | "ghost";
   href?: string;
+  alreadySubcribed?: string;
 }
 
 const PLANS: Plan[] = [
@@ -36,6 +39,7 @@ const PLANS: Plan[] = [
     price: "£3.99 / month",
     features: ["All premium content", "Cancel anytime"],
     ctaLabel: "Start monthly",
+    alreadySubcribed: "Already Subscribed",
     ctaVariant: "primary",
   },
   {
@@ -45,6 +49,7 @@ const PLANS: Plan[] = [
     tagline: "Best value",
     features: ["All premium content", "2 months free vs monthly"],
     ctaLabel: "Start annual",
+    alreadySubcribed: "Already Subscribed",
     ctaVariant: "primary",
   },
   {
@@ -59,6 +64,9 @@ const PLANS: Plan[] = [
 ];
 
 const MembershipPage: React.FC = () => {
+  const user = useSelector((state: RootState) => state.api.user);
+  console.log("check user>>>", user);
+
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
@@ -201,11 +209,18 @@ const MembershipPage: React.FC = () => {
                       ) : (
                         <button
                           type="button"
-                          className={`inline-flex w-full items-center cursor-pointer justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm ${
-                            plan.ctaVariant === "primary"
-                              ? "bg-sky-600 text-white hover:bg-sky-700"
-                              : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
-                          }`}
+                          disabled={user?.premiumSubscription}
+                          className={`inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm
+                            ${
+                              plan.ctaVariant === "primary"
+                                ? user?.premiumSubscription
+                                  ? "bg-gray-400 text-gray-100 cursor-not-allowed"
+                                  : "bg-sky-600 text-white hover:bg-sky-700"
+                                : user?.premiumSubscription
+                                ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
+                                : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
+                            }
+                          `}
                           onClick={async () => {
                             try {
                               const res = await fetch(
@@ -236,7 +251,9 @@ const MembershipPage: React.FC = () => {
                             }
                           }}
                         >
-                          {plan.ctaLabel}
+                          {user?.premiumSubscription && plan.alreadySubcribed
+                            ? plan.alreadySubcribed
+                            : plan.ctaLabel}
                         </button>
                       )}
                     </div>

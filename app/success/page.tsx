@@ -87,6 +87,7 @@ export default function SuccessPage() {
                 username: email.split("@")[0],
                 password: "",
                 email: email,
+                premiumSubscription: true,
               })
             ).unwrap();
             Cookies.set("token", response.accessToken, { expires: 7 });

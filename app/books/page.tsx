@@ -151,7 +151,7 @@ export default function BooksPage() {
       //   value === "All Values" ? true : b?.values?.includes(value as any);
       const matchesSeries =
         series === "All Series" ? true : b.series === series;
-      return matchesQuery && matchesAge  && matchesSeries;
+      return matchesQuery && matchesAge && matchesSeries;
     });
   }, [query, age, value, series]);
 
@@ -293,7 +293,7 @@ export default function BooksPage() {
               </ul>
               <div className="mt-6">
                 <Link
-                  href="/shop/abdullah-fatima-series-1-box"
+                  href="https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
                   className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
                 >
                   Pre-order the full box

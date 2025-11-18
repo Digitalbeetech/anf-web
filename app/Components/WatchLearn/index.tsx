@@ -2,11 +2,10 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const WatchLearn = () => {
   const [playingIndex, setPlayingIndex] = useState<any>(null);
-  const router = useRouter();
 
   const watchLearn = [
     {
@@ -126,14 +125,11 @@ const WatchLearn = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center">
-        <button
-          className="bg-[#8ed7b2] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer"
-          onClick={() => router.push("/videos")}
-        >
+      <Link href={"/videos"} className="flex justify-center">
+        <button className="bg-[#8ed7b2] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
           Browse Videos
         </button>
-      </div>
+      </Link>
     </div>
   );
 };

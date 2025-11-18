@@ -6,8 +6,12 @@ import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
 import { useParams } from "next/navigation";
 import { booksData } from "@/utils/constants";
+import { RootState } from "@/redux/rootReducer";
+import { useSelector } from "react-redux";
 
-export default function BookDetailPage({ params }: any) {
+export default function BookDetailPage() {
+  const user = useSelector((state: RootState) => state.api.user);
+
   const [activeTab, setActiveTab] = useState<
     | "Overview"
     | "Learning Notes"
@@ -63,6 +67,71 @@ export default function BookDetailPage({ params }: any) {
                   >
                     Read sample pages
                   </a>
+                  {user?.premiumSubscription ? (
+                    <div className="relative">
+                      <select
+                        className="appearance-none bg-sky-600 text-white px-5 py-2.5 rounded-2xl text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                        defaultValue=""
+                        onChange={async (e) => {
+                          const selected = e.target.value;
+                          if (!selected) return;
+
+                          try {
+                            const priceId =
+                              selected === "monthly"
+                                ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+
+                            const res = await fetch(
+                              "/api/create-subscription",
+                              {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({ priceId }),
+                              }
+                            );
+
+                            const data = await res.json();
+
+                            if (data.url) {
+                              window.location.href = data.url; // Redirect to Stripe checkout
+                            } else {
+                              alert("Error: " + data.error);
+                            }
+                          } catch (err) {
+                            console.error(err);
+                          }
+                        }}
+                      >
+                        <option
+                          value=""
+                          disabled
+                          className="text-black bg-white"
+                        >
+                          Join to Read Book
+                        </option>
+
+                        <option value="monthly" className="text-black bg-white">
+                          Monthly – £3.99
+                        </option>
+
+                        <option value="annual" className="text-black bg-white">
+                          Annual – £39.99
+                        </option>
+                      </select>
+
+                      {/* Custom Arrow */}
+                      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                        ▼
+                      </span>
+                    </div>
+                  ) : (
+                    <button className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                      Join to Read Book
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -135,16 +204,14 @@ export default function BookDetailPage({ params }: any) {
                 </div>
               )}
 
-              {/* {activeTab === "Learning Notes" && (
+              {activeTab === "Learning Notes" && (
                 <div>
                   <h2 className="text-xl font-grobold text-slate-900">
                     Learning notes
                   </h2>
-                  <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                    {bookDetail?.learningNotes.map((note, i) => (
-                      <li key={i}>{note}</li>
-                    ))}
-                  </ul>
+                  <p className="mt-2 font-comic text-slate-700/90">
+                    {bookDetail?.learning_notes}
+                  </p>
                 </div>
               )}
 
@@ -153,11 +220,9 @@ export default function BookDetailPage({ params }: any) {
                   <h2 className="text-xl font-grobold text-slate-900">
                     For parents &amp; teachers
                   </h2>
-                  <ul className="mt-2 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                    {bookDetail?.parentTips.map((tip, i) => (
-                      <li key={i}>{tip}</li>
-                    ))}
-                  </ul>
+                  <p className="mt-2 font-comic text-slate-700/90">
+                    {bookDetail?.for_parents_teachers}
+                  </p>
                 </div>
               )}
 
@@ -167,11 +232,10 @@ export default function BookDetailPage({ params }: any) {
                     Islamic references
                   </h2>
                   <p className="mt-2 font-comic text-slate-700/90">
-                    Add key ayat and ahadith here that inspired this story, with
-                    simple child-friendly wording.
+                    {bookDetail?.islamic_references}
                   </p>
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         </section>

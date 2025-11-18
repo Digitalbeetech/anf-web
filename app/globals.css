@@ -119,3 +119,23 @@ body {
     transform: scale(1);
   }
 }
+
+.hover-img1:hover img {
+  content: url('/assets/hero-sec-1-outline.svg');
+}
+
+.hover-img2:hover img {
+  content: url('/assets/hero-sec-2-outline.svg');
+}
+
+.hover-img3:hover img {
+  content: url('/assets/hero-sec-3-outline.svg');
+}
+
+.hover-img4:hover img {
+  content: url('/assets/hero-sec-4-outline.svg');
+}
+
+.hover-img5:hover img {
+  content: url('/assets/hero-sec-5-outline.svg');
+}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const SectionHeartMinds = () => {
   const heartMinds = [
@@ -7,30 +8,35 @@ const SectionHeartMinds = () => {
       title: "Books",
       text: "Fact-bases stories with Qur'an/Hadith/Seerah references waven in.",
       bgColor: "bg-[#9acb4e]",
+      path: "/books",
     },
     {
       image: "/assets/game.png",
       title: "Games",
       text: "Web-payable,with App Store / Play links; each title lists learning outcomes and values.",
       bgColor: "bg-[#8dc0ff]",
+      path: "/games",
     },
     {
       image: "/assets/video.png",
       title: "Videos",
       text: "Short, safe and purposeful; autoplay off by default .",
       bgColor: "bg-[#ff6d3a]",
+      path: "/videos",
     },
     {
       image: "/assets/activity.png",
       title: "Activities",
       text: "Printable packs—coloring, mazes, badges, worksheets.",
       bgColor: "bg-[#f9be49]",
+      path: "/activities",
     },
     {
       image: "/assets/membership.png",
       title: "Membership",
       text: "Printable packs—coloring, mazes, badges, worksheets.",
       bgColor: "bg-[#90D8B2]",
+      path: "/membership",
     },
   ];
   return (
@@ -66,7 +72,8 @@ const SectionHeartMinds = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-16 lg:gap-4 mt-12">
             {heartMinds.map((item, index) => (
-              <div
+              <Link
+                href={item?.path}
                 key={index}
                 className={`${item.bgColor} rounded-2xl p-6 shadow-lg flex flex-col items-center text-center overflow-visible relative`}
               >
@@ -90,18 +97,11 @@ const SectionHeartMinds = () => {
                     {item.text}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </div>
-      {/* <div className="w-full bg-transparent">
-        <img
-          src="/assets/heart-mind-bg.png"
-          className="w-full h-auto object-cover"
-          alt="Cloud"
-        />
-      </div> */}
     </>
   );
 };

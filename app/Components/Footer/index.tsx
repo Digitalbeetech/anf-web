@@ -117,6 +117,13 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
               Activities
             </a>
             <a
+              href="https://shop.sidr.productions/collections/abdullah-and-fatima"
+              className="hover:underline font-comic text-2xl font-semibold"
+              target="blank"
+            >
+              Shop
+            </a>
+            <a
               href="#"
               className="bg-[#ff6d3a] px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
             >
@@ -126,8 +133,14 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
         </div>
 
         <div className="border-t border-white/30 text-center py-4 text-xl font-semibold pb-8 font-comic">
-          © 2025 Abdullah & Fatima | All Rights Reserved | Powered by Sidr
-          Productions.
+          © 2025 Abdullah & Fatima | All Rights Reserved | Powered by{" "}
+          <Link
+            target="blank"
+            href={"https://sidr.productions/"}
+            className="text-[#f9be49]"
+          >
+            Sidr Productions
+          </Link>
         </div>
       </footer>
     </>

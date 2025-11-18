@@ -23,7 +23,7 @@ export default function Home() {
                 {/* Image 1 */}
                 <Link
                   href={"/videos"}
-                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-8 md:left-1 lg:left-20 xl:left-48 horizontal-bounce"
+                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-8 md:left-1 lg:left-20 xl:left-48 horizontal-bounce hover-img1"
                 >
                   <Image
                     src="/assets/hero-sec-1.svg"
@@ -37,7 +37,7 @@ export default function Home() {
                 {/* Image 2 */}
                 <Link
                   href={"/activities"}
-                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[30%] horizontal-bounce"
+                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[30%] horizontal-bounce hover-img2"
                 >
                   <Image
                     src="/assets/hero-sec-2.svg"
@@ -51,7 +51,7 @@ export default function Home() {
                 {/* Image 3 */}
                 <Link
                   href={"/videos"}
-                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[34%] horizontal-bounce"
+                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[34%] horizontal-bounce hover-img3"
                 >
                   <Image
                     src="/assets/hero-sec-3.svg"
@@ -65,7 +65,7 @@ export default function Home() {
                 {/* Image 4 */}
                 <Link
                   href={"/books"}
-                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-10 xl:right-[10%] horizontal-bounce"
+                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-10 xl:right-[10%] horizontal-bounce hover-img4"
                 >
                   <Image
                     src="/assets/hero-sec-4.svg"
@@ -79,7 +79,7 @@ export default function Home() {
                 {/* Image 5 */}
                 <Link
                   href={"/games"}
-                  className="absolute bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce"
+                  className="absolute bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce hover-img5"
                 >
                   <Image
                     src="/assets/hero-sec-5.svg"
@@ -117,7 +117,10 @@ export default function Home() {
               </div>
 
               {/* Small Circles */}
-              <div className="bg-[#1dbeff] rounded-full w-28 sm:w-44 md:w-44 md:h-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center border-16 border-[#e8f7fc] overflow-hidden">
+              <Link
+                href={"/books"}
+                className="bg-[#1dbeff] rounded-full w-28 sm:w-44 md:w-44 md:h-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center border-16 border-[#e8f7fc] overflow-hidden"
+              >
                 <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
                   Read
                 </h2>
@@ -126,9 +129,12 @@ export default function Home() {
                   alt="Read"
                   className="object-contain w-10 sm:w-30 h-10 sm:h-20"
                 />
-              </div>
+              </Link>
 
-              <div className="bg-[#ffe649] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]">
+              <Link
+                href={"/games"}
+                className="bg-[#ffe649] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]"
+              >
                 <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
                   Play
                 </h2>
@@ -137,9 +143,12 @@ export default function Home() {
                   alt="Play"
                   className="object-contain w-10 sm:w-30 h-10 sm:h-20"
                 />
-              </div>
+              </Link>
 
-              <div className="bg-[#9acb4e] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]">
+              <Link
+                href={"/videos"}
+                className="bg-[#9acb4e] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]"
+              >
                 <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
                   Watch
                 </h2>
@@ -148,7 +157,7 @@ export default function Home() {
                   alt="Watch"
                   className="object-contain w-10 sm:w-30 h-10 sm:h-20"
                 />
-              </div>
+              </Link>
             </div>
           </div>
         </div>

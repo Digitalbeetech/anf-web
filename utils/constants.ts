@@ -12,9 +12,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/fatima-s-first-fast",
     overview:
       "Fatima is trying her first ever fast during Ramadan — and she’s beyond excited. But as the hours pass and her tummy rumbles, will she be able to keep going? A touching introduction to the spirit of Ramadan, patience, and the joy of growing up with faith.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This story gently introduces children to the beauty of observing a first fast, helping them understand patience, gratitude, and the joy of trying their best. Young readers learn about family support, self-control, and the emotional accomplishment of participating in Ramadan in a small, meaningful way.",
+    islamic_references:
+      "This book softly highlights the importance of Ramadan, the value of family encouragement, and the concept of doing acts of worship according to one’s ability. Themes of sincerity, kindness, and learning gradually are woven throughout the story.",
+    for_parents_teachers:
+      "Use this book to open conversations about Ramadan, age-appropriate fasting, and celebrating small achievements. It encourages emotional awareness and builds a child’s confidence while helping them feel connected to their faith through gentle, nurturing storytelling.",
     featuredImage: "/assets/feature-book-1.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Book1_Fatima_sFirstFast-BookCover_1__page-0001.jpg?v=1762836751&width=330",
@@ -33,9 +36,12 @@ export const booksData = [
       "https://shop.sidr.productions/products/the-day-we-almost-missed-salah",
     overview:
       "Abdullah and Fatima are having the best day — until they suddenly realize… it’s prayer time! What follows is a lesson in urgency, prioritization, and the beauty of Salah at its proper time. This relatable story gently reminds kids that no matter how busy or distracted we get, prayer is always worth stopping for.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "A relatable story that teaches children about time management, responsibility, and the importance of salah in daily life.",
+    islamic_references:
+      "The story highlights the value of prayer, the joy of praying on time, and the teamwork needed within families to support each other’s worship.",
+    for_parents_teachers:
+      "Use this book to build positive routines around salah. It helps children understand obligations with a gentle, encouraging tone.",
     featuredImage: "/assets/feature-book-5.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheDayWeAlmostMissedSalah.png?v=1762849172&width=330",
@@ -54,9 +60,12 @@ export const booksData = [
       "https://shop.sidr.productions/products/the-iftar-delivery-mission",
     overview:
       "Abdullah and Fatima team up with Baba for a special iftar delivery — but unexpected surprises are waiting along the way! Join them on this heartwarming mission that celebrates community, charity, and the blessings of Ramadan.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This story highlights teamwork, generosity, and the excitement of helping others during Ramadan. Children learn that acts of service—even small ones—have a big impact.",
+    islamic_references:
+      "The book emphasises the virtues of giving, sharing food for iftar, and supporting one another as part of community spirit during Ramadan.",
+    for_parents_teachers:
+      "A wonderful tool for teaching children about charity and cooperation. It encourages families to involve children in small acts of goodness, nurturing a love for giving.",
     featuredImage: "/assets/feature-book-7.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheIftarDeliveryMission.png?v=1762850477&width=330",
@@ -75,9 +84,12 @@ export const booksData = [
       "https://shop.sidr.productions/products/fatima-and-the-furry-friend",
     overview:
       "Fatima finds a scared, shivering kitten near the masjid. She wants to help — but what should they do next? Through this gentle tale, children learn about mercy towards animals and why kindness is always the right choice, even when it’s not easy.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "A gentle introduction to empathy and responsibility, this story helps children understand how to care for animals with compassion and thoughtfulness. It nurtures emotional intelligence and soft-heartedness.",
+    islamic_references:
+      "Inspired by Islamic teachings about kindness toward animals, the story echoes the values of mercy, gratitude, and gentle behaviour taught by the Prophet ﷺ.",
+    for_parents_teachers:
+      "Use this book to encourage conversations about responsibility, empathy, and kindness. It helps children appreciate the importance of treating all creatures with respect and care.",
     featuredImage: "/assets/feature-book-6.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sFurryFriend.png?v=1762840568&width=330",
@@ -95,9 +107,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-kindness-jar",
     overview:
       "When Mama brings out an empty jar and says it’s time to fill it with kindness, Abdullah and Fatima begin to see their world differently. Small good deeds, loving words, and selfless actions — every act goes into the jar! But what will happen when the jar is full?",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "Children learn the beauty of kindness, small good deeds, and the joy of spreading positivity through thoughtful actions.",
+    islamic_references:
+      "The story reflects the Islamic principle that even small acts of kindness are rewarded by Allah. It encourages children to build habits of goodness.",
+    for_parents_teachers:
+      "A wonderful way to introduce ongoing kindness challenges at home or in school. It helps families nurture compassionate character in a joyful way.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheKindnessJar.png?v=1762850504&width=330",
@@ -115,9 +130,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-forgotten-salam",
     overview:
       "Abdullah rushes into class without saying “Salam” — and suddenly everything feels… off. This charming story explores the significance of Islamic greetings and how the simple word “Salam” can change our day and connect hearts in a beautiful way.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This book teaches children the power of good manners, especially the warm and welcoming greeting of “Assalamu Alaikum.” Through a simple moment, little readers understand how a small act can brighten someone’s day and strengthen relationships.",
+    islamic_references:
+      "The story reflects the Prophetic sunnah of spreading salam and reminds children that kindness often begins with simple words. It encourages building love and unity within families, classrooms, and communities.",
+    for_parents_teachers:
+      "This book is perfect for guiding children to recognise the importance of greeting others with respect and warmth. Use it to model positive social behaviour and to remind children how small Islamic practices carry meaningful rewards.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheForgottenIslamFrontCover.png?v=1762839642&width=330",
@@ -135,9 +153,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/abdullah-s-angry-day",
     overview:
       "Abdullah’s having one of those days — from spilled juice to a broken toy, everything feels frustrating. Will he let his anger control him, or will he remember what the Prophet(P.B.U.H) taught us about patience and emotional strength?",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This story gently helps children recognise emotions, understand anger, and learn calming techniques. It validates feelings while guiding young readers toward emotional balance and reflection.",
+    islamic_references:
+      "It introduces Islamic teachings about managing anger, patience, and self-control, reflecting the Prophetic manners of responding calmly.",
+    for_parents_teachers:
+      "A supportive resource for helping children navigate big emotions. Use it to introduce healthy ways to handle frustration and to reinforce Islamic character development.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Abdullah_sAngryDay.png?v=1762849075&width=330",
@@ -156,9 +177,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/fatima-s-shiny-shoes",
     overview:
       "Fatima loves her new shoes — until she sees someone with none. A powerful story about gratitude, humility, and the joy of giving something precious for the sake of Allah.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This sweet story teaches children about gratitude, taking care of belongings, and showing appreciation for what they have.",
+    islamic_references:
+      "The book subtly reflects Islamic values of cleanliness, humility, and thanking Allah for His blessings.",
+    for_parents_teachers:
+      "Perfect for guiding children toward responsibility and mindful behaviour. Encourage children to recognise blessings in everyday moments.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sShinyShoes.png?v=1762856781&width=330",
@@ -177,9 +201,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-eid-surprise",
     overview:
       "The Eid Surprise” is a heartwarming children’s story that celebrates the joy, anticipation, and togetherness of Eid. Through engaging storytelling and delightful illustrations, young readers join the characters as they prepare for the big day — from decorating and giving gifts to sharing special moments with family. The book beautifully captures the true spirit of Eid, teaching children about kindness, gratitude, and the happiness that comes from sharing and caring for others. Perfect for early readers, this book helps families introduce Islamic values in a fun and memorable way.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "A heart-warming celebration of Eid that teaches children about joy, togetherness, and appreciating thoughtful surprises.",
+    islamic_references:
+      "The story highlights the spirit of Eid—gratitude, family bonding, gift-giving, and celebrating Allah’s blessings.",
+    for_parents_teachers:
+      "Use this book to build excitement around Eid traditions and to help children understand the meaning behind celebration.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheEidSurprise.png?v=1762850359&width=330",
@@ -197,9 +224,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-midnight-visitor",
     overview:
       "The Midnight Fright is a comforting bedtime story from the beloved Abdullah & Fatima series that helps children overcome their fears through faith. When a loud thunderstorm wakes the siblings in the middle of the night, their father gently reminds them of the Prophet Muhammad (P.B.U.H) and his unwavering trust in Allah during moments of fear. Through heartwarming dialogue and beautiful illustrations, this story teaches children the power of tawakkul (trust in Allah), dhikr (remembrance of Allah), and finding peace in prayer. A perfect read to soothe young hearts and strengthen faith before bedtime.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "This gentle story helps children understand fear, courage, and reassurance. It normalises nighttime worries and shows how to overcome them.",
+    islamic_references:
+      "The story subtly integrates Islamic comfort practices such as remembering Allah and seeking calm through faith.",
+    for_parents_teachers:
+      "Use this book to discuss nighttime routines and coping with fear. It offers a nurturing, comforting message for children.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMidnightFright.png?v=1762848957&width=330",
@@ -218,9 +248,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-lost-quran-page",
     overview:
       "The Lost Quran Page is a touching story from the Abdullah & Fatima series that teaches children the importance of honesty, respect for the Holy Quran, and seeking forgiveness from Allah. When Abdullah accidentally tears a page from his Quran, he feels scared and hides his mistake. But through his parents’ gentle guidance, he learns that admitting mistakes and asking for forgiveness makes us stronger in faith. Beautifully illustrated and written with warmth, this story helps young readers understand the value of truth, repentance, and love for the Quran — inspiring them to protect and cherish Allah’s words in their everyday lives.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "A story that nurtures responsibility, focus, and respect for the Quran. Children learn about problem-solving and staying calm during challenges.",
+    islamic_references:
+      "The book highlights the honour of the Quran, the care it deserves, and the blessings of seeking guidance through sincere effort.",
+    for_parents_teachers:
+      "This book is ideal for encouraging children to build a relationship with the Quran. Use it to reinforce gentle reminders about respect and mindfulness",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheLostQuranPage_ab077a3a-75fb-41ec-9610-2bcb34b1b76c.png?v=1762850299&width=330",
@@ -239,9 +272,12 @@ export const booksData = [
     product_url: "https://shop.sidr.productions/products/the-masjid-race",
     overview:
       "In The Masjid Race, Abdullah and Fatima set off on an exciting challenge with their Baba — to see who can reach the masjid first! Along the way, they learn that true victory isn’t just about winning the race, but about the joy of going to the masjid and the blessings that come with it. Filled with cheerful illustrations and heartfelt lessons, this story inspires children to love visiting the masjid, value family time, and understand the beauty of doing good deeds for Allah. Written by Dr. Nousheen Zakaria and illustrated by Sidr Productions, The Masjid Race is a delightful reminder that faith, fun, and family make the best team.",
-    learning_notes: "",
-    islamic_references: "",
-    for_parents_teachers: "",
+    learning_notes:
+      "The Masjid Race beautifully highlights the importance of beginning the day with remembrance of Allah and approaching worship with sincerity, kindness, and good character. Through Abdullah and Fatima’s early-morning excitement, children learn about preparing for salah, getting ready with cleanliness, helping others, racing toward good deeds, and appreciating the blessings that come with praying on time. The story encourages young readers to value responsibility, compassion, and the joy found in following Allah’s guidance.",
+    islamic_references:
+      "This book gently introduces meaningful Islamic concepts in a child-friendly way — including the virtue of wudu, the beauty of starting actions with “Bismillah,” the reward of praying Fajr, the importance of kindness, and the remembrance (tasbih) taught by the Prophet ﷺ. It reinforces that helping others is an act beloved to Allah, and that good deeds — even small ones — are recognised and rewarded. The story also touches on names of Allah, such as Al-Jameel, helping children connect faith with daily life in a soft and relatable manner.",
+    for_parents_teachers:
+      "This story is an excellent tool for encouraging healthy routines around salah, morning habits, and positive character. Parents and teachers can use it to spark gentle conversations about responsibility, teamwork, kindness, and acting with ihsan (excellence). It provides opportunities to discuss family bonding, the value of helping others, and celebrating children’s efforts in worship without pressure. The book also supports emotional development, allowing children to reflect on their choices, feelings, and the joy of doing good deeds together as a family.",
     featuredImage: "/assets/feature-book-4.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMasjidRace.png?v=1762849899&width=330",
