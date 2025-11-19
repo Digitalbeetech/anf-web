@@ -14,20 +14,20 @@ import StickyHeader from "./Components/StickyHeader/page";
 export default function Home() {
   return (
     <>
-      <div className="bg-[#e8f7fc] relative">
+      <div className="bg-[#e8f7fc] relative overflow-hidden">
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full">
           <StickyHeader />
         </div>
         <div className="bg-[#e8f7fc]">
           <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[800px] bg-[url('/assets/hero-section-bg.svg')] bg-cover bg-center bg-no-repeat">
             {/* <Header /> */}
-            <div className="container mx-auto h-full pt-64">
+            <div className="container mx-auto h-full pt-54 lg:pt-64">
               {/* Hero Section Images */}
               <div className="relative w-full h-full">
                 {/* Image 1 */}
                 <Link
                   href={"/videos"}
-                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-8 md:left-1 lg:left-20 xl:left-48 horizontal-bounce hover-img1"
+                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-0 md:left-1 lg:left-0 xl:left-22 2xl:left-48 horizontal-bounce hover-img1"
                 >
                   <Image
                     src="/assets/hero-sec-1.svg"
@@ -41,7 +41,7 @@ export default function Home() {
                 {/* Image 2 */}
                 <Link
                   href={"/activities"}
-                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[30%] horizontal-bounce hover-img2"
+                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[27%] 2xl:left-[30%] horizontal-bounce hover-img2"
                 >
                   <Image
                     src="/assets/hero-sec-2.svg"
@@ -55,7 +55,7 @@ export default function Home() {
                 {/* Image 3 */}
                 <Link
                   href={"/videos"}
-                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[34%] horizontal-bounce hover-img3"
+                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[28%] 2xl:right-[34%] horizontal-bounce hover-img3"
                 >
                   <Image
                     src="/assets/hero-sec-3.svg"
@@ -69,7 +69,7 @@ export default function Home() {
                 {/* Image 4 */}
                 <Link
                   href={"/books"}
-                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-10 xl:right-[10%] horizontal-bounce hover-img4"
+                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-0 xl:right-[4%] 2xl:right-[10%] horizontal-bounce hover-img4"
                 >
                   <Image
                     src="/assets/hero-sec-4.svg"

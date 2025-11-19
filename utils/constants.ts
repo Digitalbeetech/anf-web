@@ -428,7 +428,7 @@ export const booksData = [
       "The story reflects the Islamic principle that even small acts of kindness are rewarded by Allah. It encourages children to build habits of goodness.",
     for_parents_teachers:
       "A wonderful way to introduce ongoing kindness challenges at home or in school. It helps families nurture compassionate character in a joyful way.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-8.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheKindnessJar.png?v=1762850504&width=330",
     pages: [],
@@ -451,7 +451,7 @@ export const booksData = [
       "The story reflects the Prophetic sunnah of spreading salam and reminds children that kindness often begins with simple words. It encourages building love and unity within families, classrooms, and communities.",
     for_parents_teachers:
       "This book is perfect for guiding children to recognise the importance of greeting others with respect and warmth. Use it to model positive social behaviour and to remind children how small Islamic practices carry meaningful rewards.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-2.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheForgottenIslamFrontCover.png?v=1762839642&width=330",
     pages: [
@@ -583,7 +583,7 @@ export const booksData = [
       "It introduces Islamic teachings about managing anger, patience, and self-control, reflecting the Prophetic manners of responding calmly.",
     for_parents_teachers:
       "A supportive resource for helping children navigate big emotions. Use it to introduce healthy ways to handle frustration and to reinforce Islamic character development.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-9.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Abdullah_sAngryDay.png?v=1762849075&width=330",
     pages: [],
@@ -607,7 +607,7 @@ export const booksData = [
       "The book subtly reflects Islamic values of cleanliness, humility, and thanking Allah for His blessings.",
     for_parents_teachers:
       "Perfect for guiding children toward responsibility and mindful behaviour. Encourage children to recognise blessings in everyday moments.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-10.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sShinyShoes.png?v=1762856781&width=330",
     pages: [],
@@ -631,7 +631,7 @@ export const booksData = [
       "The story highlights the spirit of Eid—gratitude, family bonding, gift-giving, and celebrating Allah’s blessings.",
     for_parents_teachers:
       "Use this book to build excitement around Eid traditions and to help children understand the meaning behind celebration.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-11.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheEidSurprise.png?v=1762850359&width=330",
     pages: [],
@@ -654,7 +654,7 @@ export const booksData = [
       "The story subtly integrates Islamic comfort practices such as remembering Allah and seeking calm through faith.",
     for_parents_teachers:
       "Use this book to discuss nighttime routines and coping with fear. It offers a nurturing, comforting message for children.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-12.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMidnightFright.png?v=1762848957&width=330",
     pages: [],
@@ -678,7 +678,7 @@ export const booksData = [
       "The book highlights the honour of the Quran, the care it deserves, and the blessings of seeking guidance through sincere effort.",
     for_parents_teachers:
       "This book is ideal for encouraging children to build a relationship with the Quran. Use it to reinforce gentle reminders about respect and mindfulness",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-13.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheLostQuranPage_ab077a3a-75fb-41ec-9610-2bcb34b1b76c.png?v=1762850299&width=330",
     pages: [],
@@ -702,7 +702,7 @@ export const booksData = [
       "This book gently introduces meaningful Islamic concepts in a child-friendly way — including the virtue of wudu, the beauty of starting actions with “Bismillah,” the reward of praying Fajr, the importance of kindness, and the remembrance (tasbih) taught by the Prophet ﷺ. It reinforces that helping others is an act beloved to Allah, and that good deeds — even small ones — are recognised and rewarded. The story also touches on names of Allah, such as Al-Jameel, helping children connect faith with daily life in a soft and relatable manner.",
     for_parents_teachers:
       "This story is an excellent tool for encouraging healthy routines around salah, morning habits, and positive character. Parents and teachers can use it to spark gentle conversations about responsibility, teamwork, kindness, and acting with ihsan (excellence). It provides opportunities to discuss family bonding, the value of helping others, and celebrating children’s efforts in worship without pressure. The book also supports emotional development, allowing children to reflect on their choices, feelings, and the joy of doing good deeds together as a family.",
-    featuredImage: "/assets/feature-book-4.png",
+    featuredImage: "/assets/feature-book-14.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMasjidRace.png?v=1762849899&width=330",
     pages: [],

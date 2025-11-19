@@ -2,12 +2,12 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
+import Image from "next/image";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -48,7 +48,7 @@ const GAMES: Game[] = [
     values: ["Sabr", "Adab", "Rahmah"],
     age: "5–12",
     mode: "Story & Mini-quests",
-    thumbUrl: "/assets/game-img.png",
+    thumbUrl: "/assets/game-1.jpg",
     platforms: ["Web", "iOS", "Android"],
     url: "https://tourmaline-treacle-839185.netlify.app/",
     premiumUrl: "",
@@ -64,7 +64,7 @@ const GAMES: Game[] = [
     values: ["Adab", "Amanah"],
     age: "8–12",
     mode: "Endless runner · Levels",
-    thumbUrl: "/assets/game-2.png",
+    thumbUrl: "/assets/game-4.jpg",
     platforms: ["Web"],
     url: "https://starlit-dodol-9596c0.netlify.app/",
     premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
@@ -76,7 +76,7 @@ const GAMES: Game[] = [
     blurb: "Practice safe crossing, patience and awareness at a busy junction.",
     type: "Puzzle",
     values: ["Sabr", "Amanah"],
-    thumbUrl: "/assets/game-3.png",
+    thumbUrl: "/assets/game-3.jpg",
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
@@ -93,6 +93,7 @@ const GAMES: Game[] = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
+    thumbUrl: "/assets/game-2.jpg",
     url: "https://wonderful-rugelach-0d3354.netlify.app/",
     premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
   },
@@ -133,118 +134,118 @@ function GameCard({ game }: { game: Game }) {
   return (
     <>
       <Link
-        href={`/games/${game.slug}`}
-        className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition"
+        href={`/games/${game?.slug}`}
+        className="relative group w-full bg-white rounded-2xl rounded-br-[44px] overflow-hidden"
       >
-        <div className="aspect-video w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500 grid place-items-center text-sm font-comic text-white/90">
-          {game.thumbUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={game.thumbUrl}
-              alt={`${game.title} gameplay`}
-              className="h-full w-full object-contain"
-            />
-          ) : (
-            <span>Gameplay visual</span>
-          )}
+        <div className="relative overflow-hidden">
+          <Image
+            src={`${game?.thumbUrl}`}
+            alt={game?.title || "Game"}
+            width={900}
+            height={900}
+            className="w-full h-48 sm:h-56 md:h-64 object-fill"
+          />
         </div>
+        <div className="p-5 sm:p-6 md:p-8 space-y-4">
+          {/* Title */}
+          <h3 className="text-xl sm:text-2xl text-gray-900 font-grobold">
+            {game?.title}
+          </h3>
 
-        <div className="flex flex-1 flex-col gap-3 p-4">
-          <h2 className="text-base font-grobold text-slate-900 leading-snug drop-shadow-sm">
-            {game.title}
-          </h2>
-          <p className="text-sm font-comic text-slate-700/90">{game.blurb}</p>
-
-          <div className="mt-1 flex flex-wrap items-center gap-2">
-            {game.values.map((v) => (
-              <Tag key={v}>{v}</Tag>
-            ))}
-            <Tag>{game.age}</Tag>
+          {/* Description */}
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed font-comic">
+            {game?.blurb ||
+              "An exciting and educational game for kids to learn Islamic values through play."}
+          </p>
+          <div className="flex flex-wrap gap-2 mb-3 font-comic font-semibold">
+            <button className="border px-3 text-sm rounded-3xl">Sidq</button>
+            <button className="border px-3 text-sm rounded-3xl">5-9</button>
           </div>
 
-          <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-xs font-comic text-slate-600">
-            <span>{game.mode}</span>
-          </div>
-
-          {user?.premiumSubscription || game?.free ? (
-            <button
-              className="inline-flex cursor-pointer mt-4 items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
-              onClick={(e) => {
-                e.preventDefault();
-                setSelectedGame(game);
-              }}
-            >
-              Play Now
-            </button>
-          ) : (
-            <div className="mt-3 flex flex-row flex-wrap items-center gap-3">
-              {game.platforms.includes("Web") && (
-                <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedGame(game);
-                  }}
-                  className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-4 py-2 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
-                >
-                  Play Demo
+          {/* Play Button */}
+          <div className="pt-2 w-full">
+            {user?.premiumSubscription || game?.free ? (
+              <button
+                className="inline-flex w-full cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedGame(game);
+                }}
+              >
+                Play Now
+              </button>
+            ) : (
+              <div className="mt-3 flex flex-row flex-wrap items-center gap-3">
+                <div className="flex-1">
+                  {game.platforms.includes("Web") && (
+                    <div
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setSelectedGame(game);
+                      }}
+                      className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                    >
+                      Play Demo
+                    </div>
+                  )}
                 </div>
-              )}
-              <div className="relative" onClick={(e) => e.preventDefault()}>
-                <select
-                  className="appearance-none bg-sky-600 text-white px-5 py-1.5 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
-                  defaultValue=""
-                  onChange={async (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const selected = e.target.value;
-                    if (!selected) return;
+                <div className="relative" onClick={(e) => e.preventDefault()}>
+                  <select
+                    className="appearance-none bg-sky-600 w-full text-white px-5 py-3 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                    defaultValue=""
+                    onChange={async (e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      const selected = e.target.value;
+                      if (!selected) return;
 
-                    try {
-                      const priceId =
-                        selected === "monthly"
-                          ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
-                          : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+                      try {
+                        const priceId =
+                          selected === "monthly"
+                            ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                            : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
-                      const res = await fetch("/api/create-subscription", {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ priceId }),
-                      });
+                        const res = await fetch("/api/create-subscription", {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({ priceId }),
+                        });
 
-                      const data = await res.json();
+                        const data = await res.json();
 
-                      if (data.url) {
-                        window.location.href = data.url; // Redirect to Stripe checkout
-                      } else {
-                        alert("Error: " + data.error);
+                        if (data.url) {
+                          window.location.href = data.url; // Redirect to Stripe checkout
+                        } else {
+                          alert("Error: " + data.error);
+                        }
+                      } catch (err) {
+                        console.error(err);
                       }
-                    } catch (err) {
-                      console.error(err);
-                    }
-                  }}
-                >
-                  <option value="" disabled className="text-black bg-white">
-                    Join to Play Full Game
-                  </option>
+                    }}
+                  >
+                    <option value="" disabled className="text-black bg-white">
+                      Join to Play Full Game
+                    </option>
 
-                  <option value="monthly" className="text-black bg-white">
-                    Monthly – £3.99
-                  </option>
+                    <option value="monthly" className="text-black bg-white">
+                      Monthly – £3.99
+                    </option>
 
-                  <option value="annual" className="text-black bg-white">
-                    Annual – £39.99
-                  </option>
-                </select>
+                    <option value="annual" className="text-black bg-white">
+                      Annual – £39.99
+                    </option>
+                  </select>
 
-                {/* Custom Arrow */}
-                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
-                  ▼
-                </span>
+                  {/* Custom Arrow */}
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                    ▼
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </Link>
       {selectedGame && (
@@ -318,52 +319,51 @@ export default function GamesPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        {/* Hero */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
-          <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-            <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
-              <span
-                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                style={{
-                  WebkitTextStroke: "2px white",
-                  paintOrder: "stroke fill",
-                }}
-              >
-                Games
-              </span>
-            </h1>
-            <p className="mt-3 font-comic text-xl">
-              Short, joyful web and mobile games that practice real-life skills
-              and Islamic values in a safe, ad-free space.
-            </p>
-            <div className="mt-4 flex justify-center flex-wrap gap-2 text-xs font-comic text-slate-800">
-              <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm ring-1 ring-white/60">
-                No personal data from kids
-              </span>
-              <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm ring-1 ring-white/60">
-                Parental-gated app downloads
-              </span>
-              <span className="rounded-full bg-white/90 px-3 py-1 shadow-sm ring-1 ring-white/60">
-                Nickname-only leaderboards
-              </span>
-            </div>
-          </div>
-        </section>
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-games.jpg')] bg-cover bg-center bg-no-repeat">
+          <section className="relative pt-24">
+            <div className="mx-auto max-w-6xl px-4 py-12 text-center">
+              <h1 className="text-5xl sm:text-4xl md:text-6xl inline-block text-center">
+                <span
+                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                  style={{
+                    WebkitTextStroke: "2px white",
+                    paintOrder: "stroke fill",
+                  }}
+                >
+                  Play & Learn:
+                </span>{" "}
+                <span
+                  className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                  style={{
+                    WebkitTextStroke: "2px white",
+                    paintOrder: "stroke fill",
+                  }}
+                >
+                  Games
+                </span>
+              </h1>
 
+              <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+                Short, joyful web and mobile games that practice real-life
+                skills and Islamic values in a safe, ad-free space.
+              </p>
+            </div>
+          </section>
+        </div>
         {/* Filters */}
-        <section className="sticky top-0 z-10 border-white/60 bg-[#EAF7FF]">
-          <div className="mx-auto max-w-6xl px-4 py-4">
+        <section className="sticky top-0 z-10 border-white/60 bg-[#EAF7FF] -mt-2 pt-8">
+          <div className="mx-auto max-w-[1350px] px-4 py-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              <label className="relative block lg:col-span-2">
+              <label className="relative block lg:col-span-1">
                 <span className="sr-only">Search games</span>
                 <input
                   type="search"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search games"
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full rounded-full font-comic border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
                 />
-                <span className="pointer-events-none absolute right-3 top-2.5 text-slate-400">
+                <span className="pointer-events-none absolute right-3 top-1.5 text-slate-400">
                   ⌕
                 </span>
               </label>
@@ -373,7 +373,7 @@ export default function GamesPage() {
                 onChange={(e) =>
                   setType(e.target.value as (typeof TYPE_OPTIONS)[number])
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full rounded-full font-comic border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {TYPE_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>
@@ -387,7 +387,7 @@ export default function GamesPage() {
                 onChange={(e) =>
                   setValue(e.target.value as (typeof VALUE_OPTIONS)[number])
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full rounded-full font-comic border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {VALUE_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>
@@ -401,7 +401,7 @@ export default function GamesPage() {
                 onChange={(e) =>
                   setAge(e.target.value as (typeof AGE_OPTIONS)[number])
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full rounded-full font-comic border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {AGE_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>
@@ -417,7 +417,7 @@ export default function GamesPage() {
                     e.target.value as (typeof PLATFORM_OPTIONS)[number]
                   )
                 }
-                className="w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full rounded-full font-comic border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
               >
                 {PLATFORM_OPTIONS.map((opt) => (
                   <option key={opt} value={opt}>
@@ -430,8 +430,23 @@ export default function GamesPage() {
         </section>
 
         {/* Games Grid */}
-        <section>
-          <div className="mx-auto max-w-6xl px-4 py-10">
+        <section className="overflow-hidden">
+          <div className="mx-auto max-w-[1350px] px-4 py-10 relative">
+            <div className="md:flex hidden absolute -left-40 top-0 z-10">
+              <img src="assets/cloud-1.png" className="w-20" />
+            </div>
+            <div className="md:flex hidden absolute -right-48 top-44">
+              <img src="assets/cloud-2.png" className="w-40" />
+            </div>
+            <div className="md:flex hidden absolute -left-48 top-1/2 ">
+              <img src="assets/cloud-2.png" className="w-40" />
+            </div>
+            <div className="md:flex hidden absolute -left-40 top-26">
+              <img src="assets/ballon.png" className="w-40" />
+            </div>
+            <div className="md:flex hidden absolute -right-52 top-2/3">
+              <img src="assets/plane.png" className="w-46" />
+            </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((game) => (
                 <GameCard key={game.id} game={game} />
@@ -444,10 +459,46 @@ export default function GamesPage() {
               )}
             </div>
           </div>
+          <section className="w-full bg-[#e8f7ff] py-6 px-4">
+            <div className="max-w-[1310px] mx-auto bg-white px-4 py-4 md:py-0 flex flex-col md:flex-row items-center justify-between gap-4 rounded-2xl">
+              <div className="text-left font-comic text-slate-700">
+                <p className="text-lg leading-tight font-grobold">
+                  <span>Stories plant the idea.</span>
+                  <br />
+                  Games let kids practice.
+                </p>
+
+                <button className="mt-3 px-4 py-2 bg-white border-2 border-[#f4c16e] rounded-full text-[#f4a623] text-sm font-semibold shadow-sm">
+                  Reflection prompts
+                </button>
+              </div>
+
+              <div className="flex items-center justify-center">
+                <div className="w-32 h-32 bg-[#f77a2f] rounded-full flex items-center justify-center text-white text-center px-3 leading-tight font-grobold">
+                  for <br /> parents <br /> & teachers
+                </div>
+              </div>
+
+              <div className="text-left font-comic text-[#9f69b4] text-lg leading-tight">
+                <p className="font-grobold">
+                  help turn play <br />
+                  into real-life <br />
+                  habits.
+                </p>
+              </div>
+
+              <div>
+                <button className="bg-[#1eb8ff] text-white px-5 py-3 rounded-xl shadow font-grobold">
+                  Learn how to use our games <br />
+                  in class & at home
+                </button>
+              </div>
+            </div>
+          </section>
         </section>
 
         {/* Teaching strip */}
-        <section className="border-t border-white/60 bg-linear-to-b from-[#FFEAA0] to-[#FFB580]">
+        {/* <section className="border-t border-white/60 bg-linear-to-b from-[#FFEAA0] to-[#FFB580]">
           <div className="mx-auto max-w-6xl px-4 py-8">
             <p className="text-sm font-comic text-slate-900">
               Stories plant the idea. Games let kids practice. Reflection
@@ -461,7 +512,7 @@ export default function GamesPage() {
               </Link>
             </p>
           </div>
-        </section>
+        </section> */}
       </main>
       <div className="bg-[#EAF7FF]">
         <Footer bgWhite={true} />

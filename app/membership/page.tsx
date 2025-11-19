@@ -10,6 +10,7 @@ import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
+import { Minus, Plus } from "lucide-react";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -33,10 +34,11 @@ interface Plan {
   alreadySubcribed?: string;
 }
 
-const PLANS: Plan[] = [
+const PLANS = [
   {
     id: "monthly",
     name: "Monthly",
+    image: "/assets/monthly.svg",
     price: "£3.99 / month",
     features: ["All premium content", "Cancel anytime"],
     ctaLabel: "Start monthly",
@@ -46,21 +48,13 @@ const PLANS: Plan[] = [
   {
     id: "annual",
     name: "Annual",
+    image: "/assets/annual.svg",
     price: "£39.99 / year",
     tagline: "Best value",
     features: ["All premium content", "2 months free vs monthly"],
     ctaLabel: "Start annual",
     alreadySubcribed: "Already Subscribed",
     ctaVariant: "primary",
-  },
-  {
-    id: "box",
-    name: "Box Set Offer",
-    price: "Free 1-year",
-    features: ["Included with 12-book box set", "Activate with your code"],
-    ctaLabel: "Get the box",
-    ctaVariant: "ghost",
-    href: "/shop/abdullah-fatima-series-1-box",
   },
 ];
 
@@ -69,249 +63,289 @@ const MembershipPage: React.FC = () => {
 
   return (
     <>
-      <main className="min-h-dvh bg-[#EAF7FF]">
+      <main className="min-h-dvh bg-[#EAF7FF] overflow-hidden">
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        {/* Hero */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
-          <div className="mx-auto max-w-6xl px-4 py-12">
-            <div className="space-y-4 text-center">
-              <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
-                <span
-                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
-                  Join the Abdullah &
-                </span>{" "}
-                <span
-                  className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
-                  Fatima Family
-                </span>
-              </h1>
-              <p className="font-comic text-xl">
-                Unlock premium stories, videos, games and activities that keep
-                children growing in faith and character.
-              </p>
+
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-membership.jpg')] bg-cover bg-center bg-no-repeat">
+          <section className="relative pt-24">
+            <div className="mx-auto max-w-6xl px-4 py-12">
+              <div className="space-y-4 text-center">
+                <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
+                  <span
+                    className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                    style={{
+                      WebkitTextStroke: "2px white",
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    Join the Abdullah &
+                  </span>{" "}
+                  <span
+                    className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                    style={{
+                      WebkitTextStroke: "2px white",
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    Fatima Family
+                  </span>
+                </h1>
+                <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+                  Unlock premium stories, videos, games and activities that keep
+                  children growing in faith and character.
+                </p>
+              </div>
             </div>
+          </section>
+        </div>
+        <section className="mx-auto max-w-6xl py-6 relative">
+          <div className="md:flex hidden absolute -left-20 top-60 z-10">
+            <img src="assets/cloud-1.png" className="w-20" />
           </div>
-        </section>
-
-        {/* Benefits */}
-        <section className="bg-white/90">
-          <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="rounded-3xl bg-[#EAF7FF] p-6 shadow-sm ring-1 ring-sky-100">
-                <h3 className="text-lg font-grobold text-slate-900">
-                  Premium content library
-                </h3>
-                <p className="mt-2 font-comic text-slate-700/90">
-                  Access member-only stories, videos and activity packs.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-[#FFF3C4] p-6 shadow-sm ring-1 ring-amber-100">
-                <h3 className="text-lg font-grobold text-slate-900">
-                  Enhanced games
-                </h3>
-                <p className="mt-2 font-comic text-slate-700/90">
-                  Extra levels and printable missions for selected titles.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-[#E5F6D9] p-6 shadow-sm ring-1 ring-lime-100">
-                <h3 className="text-lg font-grobold text-slate-900">
-                  Family &amp; classroom tools
-                </h3>
-                <p className="mt-2 font-comic text-slate-700/90">
-                  Guides, schedules and reflection prompts ready to use.
-                </p>
-              </div>
-              <div className="rounded-3xl bg-[#FBE3FF] p-6 shadow-sm ring-1 ring-fuchsia-100">
-                <h3 className="text-lg font-grobold text-slate-900">
-                  Early access
-                </h3>
-                <p className="mt-2 font-comic text-slate-700/90">
-                  Be first to try new books, episodes and games.
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
+            <img
+              src="/assets/membership-1.svg"
+              className="w-16 sm:w-20 md:w-66"
+            />
+            <img
+              src="/assets/membership-2.svg"
+              className="w-16 sm:w-20 md:w-66"
+            />
+            <img
+              src="/assets/membership-3.svg"
+              className="w-16 sm:w-20 md:w-66"
+            />
+            <img
+              src="/assets/membership-4.svg"
+              className="w-16 sm:w-20 md:w-66"
+            />
           </div>
-        </section>
 
-        {/* Pricing */}
-        <section className="border-t border-white/60 bg-linear-to-b from-white to-[#EAF7FF]">
-          <div className="mx-auto max-w-6xl px-4 py-12">
-            <div className="mb-6 text-center">
-              <h2 className="text-2xl font-grobold text-slate-900">
-                Choose your membership
-              </h2>
-              <p className="mt-2 font-comic text-slate-700/90">
-                Simple, flexible options for families, schools and Qur&apos;an
-                clubs.
-              </p>
+          <section className="relative">
+            <div className="md:flex hidden absolute -right-48 top-10">
+              <img src="assets/cloud-2.png" className="w-50" />
             </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {PLANS.map((plan) => {
-                const isFeatured = plan.id === "annual";
-                const Wrapper: React.ElementType = plan.href ? Link : "button";
-
-                return (
+            <div className="md:flex hidden absolute -left-40 top-26 -rotate-40">
+              <img src="assets/ballon.png" className="w-40" />
+            </div>
+            <div className="px-4 py-12">
+              <div className="mb-6 text-center">
+                <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center">
+                  <span
+                    className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                    style={{
+                      WebkitTextStroke: "2px white",
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    Choose your
+                  </span>{" "}
+                  <span
+                    className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                    style={{
+                      WebkitTextStroke: "2px white",
+                      paintOrder: "stroke fill",
+                    }}
+                  >
+                    membership
+                  </span>
+                </h1>
+                <p className="mt-2 font-comic text-slate-700/90">
+                  Simple, flexible options for families, schools and Qur&apos;an
+                  clubs.
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6 mt-20">
+                {PLANS.map((plan) => (
                   <article
                     key={plan.id}
-                    className={`relative flex flex-col rounded-3xl border bg-white/95 p-6 shadow-sm backdrop-blur ${
-                      isFeatured
-                        ? "border-sky-400 shadow-sky-100 md:-mt-2 md:pb-8"
-                        : "border-white/70 shadow-slate-100"
-                    }`}
+                    className="relative flex flex-col items-center rounded-3xl bg-white p-6 shadow-sm w-72 sm:w-80 md:w-96"
                   >
-                    {isFeatured && (
-                      <div className="absolute -top-3 right-4 rounded-full bg-sky-600 px-3 py-1 text-xs font-grobold text-white shadow-sm">
-                        Best value
-                      </div>
-                    )}
+                    <div className="w-52 h-52 -mt-24 rounded-full">
+                      <img
+                        src={plan.image}
+                        alt={plan.name}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
 
-                    <h3 className="text-lg font-grobold text-slate-900">
+                    <h3 className="mt-6 text-xl font-grobold text-slate-900 text-center">
                       {plan.name}
                     </h3>
-                    <p className="mt-2 text-xl font-grobold text-slate-900">
+                    <p className="mt-2 text-lg font-comic text-slate-900 text-center font-semibold">
                       {plan.price}
                     </p>
-                    {plan.tagline && (
-                      <p className="mt-1 text-xs font-comic text-slate-600">
-                        {plan.tagline}
-                      </p>
-                    )}
 
-                    <ul className="mt-4 space-y-1 font-comic text-slate-700/90 text-sm">
-                      {plan.features.map((f) => (
-                        <li key={f}>• {f}</li>
+                    <ul className="mt-4 space-y-1 font-comic text-slate-700/90 text-sm text-center">
+                      {plan.features.map((f, idx) => (
+                        <li key={idx}>• {f}</li>
                       ))}
                     </ul>
 
-                    <div className="mt-auto pt-5">
-                      {plan.href ? (
-                        <Link
-                          href={plan.href}
-                          className={`inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm ${
-                            plan.ctaVariant === "primary"
-                              ? "bg-sky-600 text-white hover:bg-sky-700"
-                              : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
-                          }`}
-                        >
-                          {plan.ctaLabel}
-                        </Link>
-                      ) : (
-                        <button
-                          type="button"
-                          disabled={user?.premiumSubscription}
-                          className={`inline-flex w-full items-center justify-center rounded-2xl px-4 py-2.5 text-sm font-grobold shadow-sm
-                            ${
-                              plan.ctaVariant === "primary"
-                                ? user?.premiumSubscription
-                                  ? "bg-gray-400 text-gray-100 cursor-not-allowed"
-                                  : "bg-sky-600 text-white hover:bg-sky-700"
-                                : user?.premiumSubscription
-                                ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
-                                : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
-                            }
-                          `}
-                          onClick={async () => {
-                            try {
-                              const res = await fetch(
-                                "/api/create-subscription",
-                                {
-                                  method: "POST",
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                  },
-                                  body: JSON.stringify({
-                                    priceId:
-                                      plan.id === "monthly"
-                                        ? process.env
-                                            .NEXT_PUBLIC_MONTHLY_PRICEID
-                                        : process.env
-                                            .NEXT_PUBLIC_YEARLY_PRICEID,
-                                  }),
-                                }
-                              );
-                              const data = await res.json();
-                              if (data.url) {
-                                window.location.href = data.url;
-                              } else {
-                                alert("Error: " + data.error);
-                              }
-                            } catch (err) {
-                              console.error(err);
-                            }
-                          }}
-                        >
-                          {user?.premiumSubscription && plan.alreadySubcribed
-                            ? plan.alreadySubcribed
-                            : plan.ctaLabel}
-                        </button>
-                      )}
-                    </div>
+                    <button
+                      type="button"
+                      className={`mt-6 w-full rounded-2xl px-4 py-2.5 text-white cursor-pointer font-grobold ${
+                        plan.ctaVariant === "primary"
+                          ? "bg-red-400 hover:bg-red-500"
+                          : "bg-gray-100 text-gray-700"
+                      }  ${
+                        plan.ctaVariant === "primary"
+                          ? user?.premiumSubscription
+                            ? "bg-gray-400 text-gray-100 cursor-not-allowed"
+                            : "bg-red-400 hover:bg-red-500"
+                          : user?.premiumSubscription
+                          ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
+                          : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
+                      }`}
+                      onClick={async () => {
+                        try {
+                          const res = await fetch("/api/create-subscription", {
+                            method: "POST",
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                              priceId:
+                                plan.id === "monthly"
+                                  ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                  : process.env.NEXT_PUBLIC_YEARLY_PRICEID,
+                            }),
+                          });
+                          const data = await res.json();
+                          if (data.url) {
+                            window.location.href = data.url;
+                          } else {
+                            alert("Error: " + data.error);
+                          }
+                        } catch (err) {
+                          console.error(err);
+                        }
+                      }}
+                    >
+                      {user?.premiumSubscription && plan.alreadySubcribed
+                        ? plan.alreadySubcribed
+                        : plan.ctaLabel}
+                    </button>
                   </article>
-                );
-              })}
+                ))}
+              </div>
             </div>
+          </section>
+          <Link
+            target="blank"
+            href={
+              "https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
+            }
+            className="flex justify-center cursor-pointer relative"
+          >
+            <img src="/assets/online-order.png" alt="" className="" />
+          </Link>
+          <div className="md:flex hidden absolute -left-48 bottom-10">
+            <img src="assets/cloud-2.png" className="w-40" />
           </div>
         </section>
 
         {/* How it works */}
-        <section className="border-t border-white/60 bg-white/95">
-          <div className="mx-auto max-w-6xl px-4 py-10">
-            <div className="max-w-2xl">
-              <h2 className="text-2xl font-grobold text-slate-900">
-                How it works
-              </h2>
-              <ol className="mt-4 space-y-3 font-comic text-slate-700/90">
-                <li className="flex gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-600 text-xs font-grobold text-white">
+        <section className="w-full bg-[#e8f7ff] py-20 px-4">
+          <div className="max-w-6xl mx-auto text-center bg-white rounded-2xl h-50 relative">
+            {/* TITLE */}
+            <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center pt-4">
+              {" "}
+              <span
+                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                style={{
+                  WebkitTextStroke: "2px white",
+                  paintOrder: "stroke fill",
+                }}
+              >
+                How it{" "}
+              </span>
+              <span
+                className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                style={{
+                  WebkitTextStroke: "2px white",
+                  paintOrder: "stroke fill",
+                }}
+              >
+                works{" "}
+              </span>
+            </h1>
+
+            {/* WRAPPER FOR FLOATING CARDS */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-full mt-[-60px] w-full max-w-4xl px-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* CARD 1 */}
+                <div className="bg-[#6ea7ff] text-white rounded-2xl px-6 py-8 relative text-center shadow-md">
+                  <p className="text-lg leading-snug font-grobold">
+                    Create your <br /> parent account.
+                  </p>
+                  <div className="absolute left-1/2 font-grobold -bottom-4 -translate-x-1/2 bg-[#6ea7ff] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow">
                     1
-                  </span>
-                  <span>Create your parent account.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-600 text-xs font-grobold text-white">
+                  </div>
+                </div>
+
+                {/* CARD 2 */}
+                <div className="bg-[#ffb347] text-white rounded-2xl px-6 py-8 relative text-center shadow-md">
+                  <p className="text-lg leading-snug font-grobold">
+                    Choose a plan or <br /> redeem your box set code.
+                  </p>
+                  <div className="absolute left-1/2 font-grobold -bottom-4 -translate-x-1/2 bg-[#ffb347] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow">
                     2
-                  </span>
-                  <span>Choose a plan or redeem your box set code.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-sky-600 text-xs font-grobold text-white">
+                  </div>
+                </div>
+
+                {/* CARD 3 */}
+                <div className="bg-[#8ccf4d] text-white rounded-2xl px-6 py-8 relative text-center shadow-md">
+                  <p className="text-lg leading-snug font-grobold">
+                    Enjoy safe, ad-free <br /> access to our premium <br />{" "}
+                    content.
+                  </p>
+                  <div className="absolute left-1/2 font-grobold -bottom-4 -translate-x-1/2 bg-[#8ccf4d] text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow ">
                     3
-                  </span>
-                  <span>
-                    Enjoy safe, ad-free access to our premium content.
-                  </span>
-                </li>
-              </ol>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="relative border-t border-white/60 bg-linear-to-b from-[#EAF7FF] to-white">
+        <section className="relative pt-8 mx-auto text-center">
+          <div className="md:flex hidden absolute right-40 top-0">
+            <img src="assets/plane.png" className="w-46" />
+          </div>
+          <div className="md:flex hidden absolute right-40 top-60">
+            <img src="assets/cloud-1.png" className="w-20" />
+          </div>
           <div className="mx-auto max-w-6xl px-4 py-12">
-            <h2 className="text-2xl font-grobold text-slate-900">FAQs</h2>
+            <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center pt-4">
+              {" "}
+              <span
+                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                style={{
+                  WebkitTextStroke: "2px white",
+                  paintOrder: "stroke fill",
+                }}
+              >
+                FAQs
+              </span>
+            </h1>
             <div className="mt-4 space-y-3">
               <details className="group rounded-2xl bg-white/95 p-4 shadow-sm ring-1 ring-slate-100">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-grobold text-slate-900 list-none">
-                  <span>Is my child&apos;s data collected?</span>
-                  <span className="ml-3 text-slate-500 group-open:rotate-90 transition-transform">
-                    ▸
+                  <span>Is my child's data collected?</span>
+                  <span className="ml-3 text-slate-500 transition-transform">
+                    <span className="block group-open:hidden">
+                      <Plus />
+                    </span>
+                    <span className="hidden group-open:block">
+                      <Minus />
+                    </span>
                   </span>
                 </summary>
-                <p className="mt-2 text-sm font-comic text-slate-700/90">
+                <p className="mt-2 text-sm font-comic text-slate-700/90 text-start">
                   No. Accounts are for adults; we do not collect personal data
                   from children.
                 </p>
@@ -320,11 +354,16 @@ const MembershipPage: React.FC = () => {
               <details className="group rounded-2xl bg-white/95 p-4 shadow-sm ring-1 ring-slate-100">
                 <summary className="flex cursor-pointer items-center justify-between text-sm font-grobold text-slate-900 list-none">
                   <span>Can I cancel anytime?</span>
-                  <span className="ml-3 text-slate-500 group-open:rotate-90 transition-transform">
-                    ▸
+                  <span className="ml-3 text-slate-500 transition-transform">
+                    <span className="block group-open:hidden">
+                      <Plus />
+                    </span>
+                    <span className="hidden group-open:block">
+                      <Minus />
+                    </span>
                   </span>
                 </summary>
-                <p className="mt-2 text-sm font-comic text-slate-700/90">
+                <p className="mt-2 text-sm font-comic text-slate-700/90 text-start">
                   Yes, you can manage or cancel your membership from your
                   account page.
                 </p>
@@ -333,6 +372,7 @@ const MembershipPage: React.FC = () => {
           </div>
         </section>
       </main>
+
       <div className="bg-[#EAF7FF]">
         <Footer bgWhite={true} />
       </div>

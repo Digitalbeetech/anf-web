@@ -23,7 +23,7 @@ const FeaturedGames = () => {
       mode: "Story & Mini-quests",
       thumbUrl: "/assets/game-img.png",
       platforms: ["Web", "iOS", "Android"],
-      image: "/assets/game-1.png",
+      image: "/assets/game-1.jpg",
       url: "https://tourmaline-treacle-839185.netlify.app/",
       premiumUrl: "",
       free: true,
@@ -38,7 +38,7 @@ const FeaturedGames = () => {
       values: ["Adab", "Amanah"],
       age: "8–12",
       mode: "Endless runner · Levels",
-      image: "/assets/game-2.png",
+      image: "/assets/game-4.jpg",
       platforms: ["Web"],
       url: "https://starlit-dodol-9596c0.netlify.app/",
       premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
@@ -53,7 +53,7 @@ const FeaturedGames = () => {
       values: ["Sabr", "Amanah"],
       age: "5–7",
       mode: "Level-based safety puzzles",
-      image: "/assets/game-3.png",
+      image: "/assets/game-3.jpg",
       platforms: ["Web", "Android"],
       url: "https://fantastic-biscuit-f72cfd.netlify.app/",
       premiumUrl: "https://storied-pika-64151a.netlify.app/",
@@ -115,9 +115,9 @@ const FeaturedGames = () => {
                   <Image
                     src={item?.image}
                     alt={item?.title || "Game"}
-                    width={600}
-                    height={400}
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover"
+                    width={900}
+                    height={900}
+                    className="w-full h-48 sm:h-56 md:h-64 object-fill"
                   />
                 </div>
                 <div className="p-5 sm:p-6 md:p-8 space-y-4">
