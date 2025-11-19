@@ -41,8 +41,8 @@ export const GAMES = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
-    url: "https://fantastic-biscuit-f72cfd.netlify.app/",
-    premiumUrl: "https://storied-pika-64151a.netlify.app/",
+    url: "https://startling-treacle-fb8a93.netlify.app/",
+    premiumUrl: "https://effortless-selkie-b4945c.netlify.app/",
   },
   {
     id: "g3",

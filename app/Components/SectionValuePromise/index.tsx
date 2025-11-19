@@ -52,6 +52,30 @@ const SectionValuePromise = () => {
             Promise
           </span>
         </h1>
+        {/* <h1 className="text-center text-7xl font-black leading-tight font-grobold">
+        <span className="inline-block">
+          <span 
+            className="inline-block text-[#f9be49]"
+            style={{
+              textShadow: '3px 3px 0 #ff9933, 6px 6px 0 rgba(0,0,0,0.1)',
+              WebkitTextStroke: '2px #ff9933',
+            }}
+          >
+            Value
+          </span>
+        </span>
+        {' '}
+        {' '}
+        <span 
+          className="inline-block text-[#9acb4e]"
+          style={{
+            textShadow: '3px 3px 0 #88cc33, 6px 6px 0 rgba(0,0,0,0.1)',
+            WebkitTextStroke: '1.5px #88cc33',
+          }}
+        >
+          Promise
+        </span>
+      </h1> */}
 
         <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
           A joyful universe where children learn through Islamic values and
