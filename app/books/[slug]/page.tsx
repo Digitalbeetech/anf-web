@@ -9,6 +9,7 @@ import { booksData } from "@/utils/constants";
 import { RootState } from "@/redux/rootReducer";
 import { useSelector } from "react-redux";
 import HTMLFlipBook from "react-pageflip";
+import StickyHeader from "@/app/Components/StickyHeader/page";
 
 export default function BookDetailPage() {
   const user = useSelector((state: RootState) => state.api.user);
@@ -66,9 +67,11 @@ export default function BookDetailPage() {
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
-        <Header />
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
+          <StickyHeader />
+        </div>
         {/* Hero with card */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
           <div className="mx-auto max-w-6xl px-4 pt-10 pb-16">
             <div className="grid gap-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-center">
               <div>
@@ -106,7 +109,7 @@ export default function BookDetailPage() {
                       className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
                       onClick={() => setModalOpen(true)}
                     >
-                      Join to Read Book
+                      Read Book
                     </button>
                   ) : (
                     <div className="relative">

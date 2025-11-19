@@ -5,6 +5,9 @@ import Link from "next/link";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import { activityData } from "@/utils/activity";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
+import StickyHeader from "../Components/StickyHeader/page";
 
 type ActivityType = "Coloring" | "Maze" | "Worksheet";
 type ValueTag =
@@ -96,8 +99,35 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 function ActivityCard({ activity }: any) {
+  const user = useSelector((state: RootState) => state.api.user);
+
+  const handleDownload = async (fileurl: any) => {
+    try {
+      const fileUrl = fileurl;
+
+      // Fetch the file
+      const response = await fetch(fileUrl);
+      const blob = await response.blob();
+
+      // Create a temporary link and trigger download
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Abdullah_Fatima_Part1.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Download failed:", err);
+    }
+  };
+
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition">
+    <Link
+      href={`/activities/${activity.slug}`}
+      className="group flex flex-col overflow-hidden rounded-3xl border border-white/60 bg-white/90 backdrop-blur shadow-lg shadow-sky-100 hover:shadow-sky-200 transition"
+    >
       <div className="relative aspect-4/3 w-full bg-linear-to-br from-sky-200 via-sky-400 to-purple-500">
         {activity?.cover_photo_box ? (
           <img
@@ -127,17 +157,74 @@ function ActivityCard({ activity }: any) {
           {activity.free && <Pill>Free</Pill>}
         </div> */}
 
-        <div className="mt-auto pt-2">
-          <Link
-            target="blank"
-            href={`/activities/${activity.slug}`}
-            className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white px-4 py-2 text-xs font-grobold text-sky-700 shadow-sm hover:bg-sky-50"
-          >
-            View
-          </Link>
-        </div>
+        {user?.premiumSubscription ? (
+          <div className="mt-auto pt-2">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleDownload(activity?.File);
+              }}
+              className="inline-flex w-full items-center justify-center rounded-2xl border border-sky-500 bg-white px-4 py-2 text-xs font-grobold text-sky-700 shadow-sm hover:bg-sky-50"
+            >
+              Download
+            </button>
+          </div>
+        ) : (
+          <div className="relative w-full" onClick={(e) => e.preventDefault()}>
+            <select
+              className="appearance-none w-full mt-4 bg-sky-600 text-white px-5 py-2.5 rounded-2xl text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+              defaultValue=""
+              onChange={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const selected = e.target.value;
+                if (!selected) return;
+
+                try {
+                  const priceId =
+                    selected === "monthly"
+                      ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                      : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+
+                  const res = await fetch("/api/create-subscription", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ priceId }),
+                  });
+
+                  const data = await res.json();
+
+                  if (data.url) {
+                    window.location.href = data.url; // Redirect to Stripe checkout
+                  } else {
+                    alert("Error: " + data.error);
+                  }
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+            >
+              <option value="" disabled className="text-black bg-white">
+                Join to Download PDF
+              </option>
+
+              <option value="monthly" className="text-black bg-white">
+                Monthly – £3.99
+              </option>
+
+              <option value="annual" className="text-black bg-white">
+                Annual – £39.99
+              </option>
+            </select>
+            <span className="pointer-events-none absolute right-3 top-10 -translate-y-1/2 text-white">
+              ▼
+            </span>
+          </div>
+        )}
       </div>
-    </article>
+    </Link>
   );
 }
 
@@ -163,9 +250,11 @@ export default function ActivitiesPage() {
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
-        <Header />
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
+          <StickyHeader />
+        </div>
         {/* Hero */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
           <div className="mx-auto max-w-6xl text-center px-4 py-12">
             <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
               <span

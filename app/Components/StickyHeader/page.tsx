@@ -24,7 +24,10 @@ export default function StickyHeader() {
         scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <Header shadow={scrolled ? "shadow-none" : "shadow-sm"} />
+      <Header
+        shadow={scrolled ? "shadow-none" : "shadow-sm"}
+        padding={scrolled ? "py-4" : "py-9"}
+      />
     </div>
   );
 }

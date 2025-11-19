@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
+import StickyHeader from "../Components/StickyHeader/page";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -314,9 +315,11 @@ export default function GamesPage() {
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
-        <Header />
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
+          <StickyHeader />
+        </div>
         {/* Hero */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
           <div className="mx-auto max-w-6xl px-4 py-12 text-center">
             <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
               <span

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Footer from "@/app/Components/Footer";
 import Header from "@/app/Components/Header";
+import StickyHeader from "@/app/Components/StickyHeader/page";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -15,9 +16,11 @@ const VideoDetailPage: React.FC = () => {
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
-        <Header />
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
+          <StickyHeader />
+        </div>
         {/* HERO */}
-        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60">
+        <section className="relative border-b border-white/60 bg-linear-to-b from-[#EAF7FF] to-white/60 pt-24">
           <div className="mx-auto max-w-6xl px-4 pt-10 pb-16">
             <div className="grid gap-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start">
               <div>

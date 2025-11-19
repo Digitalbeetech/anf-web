@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { booksData } from "@/utils/constants";
+import StickyHeader from "../Components/StickyHeader/page";
 
 type Book = {
   id: string;
@@ -158,9 +159,10 @@ export default function BooksPage() {
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
-        <Header />
-        {/* Hero */}
-        <section className="relative">
+        <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
+          <StickyHeader />
+        </div>
+        <section className="relative pt-24">
           <div className="mx-auto max-w-6xl px-4 py-12 text-center">
             <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
               <span

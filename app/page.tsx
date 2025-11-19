@@ -114,7 +114,7 @@ export default function Home() {
                 <h2 className="text-white px-3.5 text-sm md:text-3xl font-grobold leading-tight text-center mx-auto">
                   the <br /> Abdullah & Fatima way
                 </h2>
-                <p className="text-white text-md mt-2 overflow-hidden line-clamp-3 text-center px-2">
+                <p className="text-white text-md mt-2 overflow-hidden font-comic line-clamp-3 text-center px-2">
                   Faith‑rooted stories, games, and activities that build
                   character, curiosity, and joy.
                 </p>

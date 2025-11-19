@@ -12,7 +12,7 @@ import { logout, setUser } from "@/redux/apiSlice";
 import Cookies from "js-cookie";
 import { usePathname } from "next/navigation";
 
-export default function Header({ shadow }: any) {
+export default function Header({ shadow, padding }: any) {
   const pathname = usePathname();
   const dispatch = useDispatch<AppDispatch>();
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -68,7 +68,7 @@ export default function Header({ shadow }: any) {
         <div className="flex items-center max-w-7xl mx-auto relative flex-wrap md:flex-nowrap">
           {/* White header content */}
           <div
-            className={`bg-white flex items-center w-full md:grow relative py-9 md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
+            className={`bg-white flex items-center w-full md:grow relative ${padding} md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
           >
             {/* Absolute logo on the left */}
             <Link
@@ -158,7 +158,7 @@ export default function Header({ shadow }: any) {
                 {/* Profile Circle */}
                 <button
                   onClick={() => setDropdownOpen((prev) => !prev)}
-                  className="flex items-center justify-center cursor-pointer w-10 h-10 rounded-full bg-[#ff625a] text-white hover:bg-red-600 transition"
+                  className="hidden md:flex items-center justify-center cursor-pointer w-10 h-10 rounded-full bg-[#ff625a] text-white hover:bg-red-600 transition"
                 >
                   <User size={24} />
                 </button>
