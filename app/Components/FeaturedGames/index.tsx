@@ -212,23 +212,23 @@ const FeaturedGames = () => {
                             <option
                               value=""
                               disabled
-                              className="text-black bg-white"
+                              className="text-black bg-white font-comic"
                             >
                               Join to Play Full Game
                             </option>
 
                             <option
                               value="monthly"
-                              className="text-black bg-white"
+                              className="text-black bg-white font-comic font-semibold"
                             >
                               Monthly – £3.99
                             </option>
 
                             <option
                               value="annual"
-                              className="text-black bg-white"
+                              className="text-black bg-white font-comic font-semibold"
                             >
-                              Annual – £39.99
+                              Annual – £39
                             </option>
                           </select>
 

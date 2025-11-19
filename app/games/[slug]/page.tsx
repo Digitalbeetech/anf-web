@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Footer from "@/app/Components/Footer";
-import Header from "@/app/Components/Header";
 import StickyHeader from "@/app/Components/StickyHeader/page";
+import { GAMES } from "@/utils/data";
+import { useParams } from "next/navigation";
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -13,6 +14,14 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 );
 
 const GameDetailPage: React.FC = () => {
+  const { slug } = useParams();
+  const [gameDetail, setGameDetail] = useState<any>("");
+  useEffect(() => {
+    if (GAMES && slug) {
+      const findBook = GAMES.find((item: any) => item.slug === slug);
+      setGameDetail(findBook);
+    }
+  }, [GAMES, slug]);
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
@@ -29,7 +38,7 @@ const GameDetailPage: React.FC = () => {
                 </span>
 
                 <h1 className="mt-4 text-3xl md:text-4xl font-grobold text-slate-900 drop-shadow-sm">
-                  Abdullah &amp; Fatima Adventures
+                  {gameDetail?.title}
                 </h1>
 
                 <p className="mt-2 text-sm font-grobold uppercase tracking-wide text-sky-700">
@@ -37,8 +46,7 @@ const GameDetailPage: React.FC = () => {
                 </p>
 
                 <p className="mt-3 font-comic text-slate-700/90">
-                  Explore, help and learn across connected quests inspired by
-                  everyday Muslim life.
+                  {gameDetail?.blurb}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -82,30 +90,13 @@ const GameDetailPage: React.FC = () => {
 
               {/* Gameplay mock card */}
               <div className="flex justify-center">
-                <div className="relative h-64 w-full max-w-md rounded-[1.75rem] border border-white/80 bg-slate-900 shadow-xl shadow-sky-200">
-                  <div className="absolute left-1/2 top-3 h-1.5 w-16 -translate-x-1/2 rounded-full bg-slate-700" />
-                  <div className="relative m-4 rounded-2xl bg-gradient-to-br from-sky-300 via-sky-500 to-purple-500">
-                    <div className="absolute inset-0 flex flex-col justify-between p-4 text-xs font-comic text-white/95">
-                      <div className="flex items-center justify-between gap-3">
-                        <span>Level 1 · Morning Run</span>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-black/30 px-2 py-0.5">
-                          ★ 3
-                        </span>
-                      </div>
-                      <div className="flex items-end justify-between gap-3">
-                        <div className="flex gap-2">
-                          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-sky-600">
-                            ←
-                          </span>
-                          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-sky-600">
-                            →
-                          </span>
-                        </div>
-                        <span className="rounded-full bg-black/30 px-2 py-0.5 text-[10px]">
-                          Think: What&apos;s the safest choice?
-                        </span>
-                      </div>
-                    </div>
+                <div className="relative w-full max-w-md rounded-[1.75rem] border border-white/80 bg-slate-900 shadow-xl shadow-sky-200">
+                  <div className="relative rounded-2xl overflow-hidden bg-linear-to-br from-sky-300 via-sky-500 to-purple-500 h-70">
+                    <img
+                      src={gameDetail?.thumbUrl}
+                      alt="Game Thumbnail"
+                      className="w-full h-full object-fill"
+                    />
                   </div>
                 </div>
               </div>

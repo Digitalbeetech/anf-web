@@ -3,9 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
-import Header from "../Components/Header";
 
-// lib/stripeClient.ts
 import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
@@ -20,19 +18,6 @@ export const getStripe = () => {
   }
   return stripePromise;
 };
-type PlanId = "monthly" | "annual" | "box";
-
-interface Plan {
-  id: PlanId;
-  name: string;
-  price: string;
-  tagline?: string;
-  features: string[];
-  ctaLabel: string;
-  ctaVariant: "primary" | "ghost";
-  href?: string;
-  alreadySubcribed?: string;
-}
 
 const PLANS = [
   {
@@ -49,7 +34,7 @@ const PLANS = [
     id: "annual",
     name: "Annual",
     image: "/assets/annual.svg",
-    price: "£39.99 / year",
+    price: "£39 / year",
     tagline: "Best value",
     features: ["All premium content", "2 months free vs monthly"],
     ctaLabel: "Start annual",
@@ -100,94 +85,95 @@ const MembershipPage: React.FC = () => {
             </div>
           </section>
         </div>
-        <section className="mx-auto max-w-6xl py-6 relative">
-          <div className="md:flex hidden absolute -left-20 top-60 z-10">
-            <img src="assets/cloud-1.png" className="w-20" />
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
-            <img
-              src="/assets/membership-1.svg"
-              className="w-16 sm:w-20 md:w-66"
-            />
-            <img
-              src="/assets/membership-2.svg"
-              className="w-16 sm:w-20 md:w-66"
-            />
-            <img
-              src="/assets/membership-3.svg"
-              className="w-16 sm:w-20 md:w-66"
-            />
-            <img
-              src="/assets/membership-4.svg"
-              className="w-16 sm:w-20 md:w-66"
-            />
-          </div>
+        <div className="relative bg-[#EAF7FF] -mt-4">
+          <section className="mx-auto max-w-6xl py-6 relative -pt-18">
+            <div className="md:flex hidden absolute -left-20 top-60 z-10">
+              <img src="assets/cloud-1.png" className="w-20" />
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
+              <img
+                src="/assets/membership-1.svg"
+                className="w-16 sm:w-20 md:w-66"
+              />
+              <img
+                src="/assets/membership-2.svg"
+                className="w-16 sm:w-20 md:w-66"
+              />
+              <img
+                src="/assets/membership-3.svg"
+                className="w-16 sm:w-20 md:w-66"
+              />
+              <img
+                src="/assets/membership-4.svg"
+                className="w-16 sm:w-20 md:w-66"
+              />
+            </div>
 
-          <section className="relative">
-            <div className="md:flex hidden absolute -right-48 top-10">
-              <img src="assets/cloud-2.png" className="w-50" />
-            </div>
-            <div className="md:flex hidden absolute -left-40 top-26 -rotate-40">
-              <img src="assets/ballon.png" className="w-40" />
-            </div>
-            <div className="px-4 py-12">
-              <div className="mb-6 text-center">
-                <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center">
-                  <span
-                    className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                    style={{
-                      WebkitTextStroke: "2px white",
-                      paintOrder: "stroke fill",
-                    }}
-                  >
-                    Choose your
-                  </span>{" "}
-                  <span
-                    className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                    style={{
-                      WebkitTextStroke: "2px white",
-                      paintOrder: "stroke fill",
-                    }}
-                  >
-                    membership
-                  </span>
-                </h1>
-                <p className="mt-2 font-comic text-slate-700/90">
-                  Simple, flexible options for families, schools and Qur&apos;an
-                  clubs.
-                </p>
+            <section className="relative">
+              <div className="md:flex hidden absolute -right-48 top-10">
+                <img src="assets/cloud-2.png" className="w-50" />
               </div>
-              <div className="flex flex-wrap justify-center gap-6 mt-20">
-                {PLANS.map((plan) => (
-                  <article
-                    key={plan.id}
-                    className="relative flex flex-col items-center rounded-3xl bg-white p-6 shadow-sm w-72 sm:w-80 md:w-96"
-                  >
-                    <div className="w-52 h-52 -mt-24 rounded-full">
-                      <img
-                        src={plan.image}
-                        alt={plan.name}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
+              <div className="md:flex hidden absolute -left-40 top-26 -rotate-40">
+                <img src="assets/ballon.png" className="w-40" />
+              </div>
+              <div className="px-4 py-12">
+                <div className="mb-6 text-center">
+                  <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center">
+                    <span
+                      className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                      style={{
+                        WebkitTextStroke: "2px white",
+                        paintOrder: "stroke fill",
+                      }}
+                    >
+                      Choose your
+                    </span>{" "}
+                    <span
+                      className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
+                      style={{
+                        WebkitTextStroke: "2px white",
+                        paintOrder: "stroke fill",
+                      }}
+                    >
+                      membership
+                    </span>
+                  </h1>
+                  <p className="mt-2 font-comic text-slate-700/90">
+                    Simple, flexible options for families, schools and
+                    Qur&apos;an clubs.
+                  </p>
+                </div>
+                <div className="flex flex-wrap justify-center gap-6 mt-20">
+                  {PLANS.map((plan) => (
+                    <article
+                      key={plan.id}
+                      className="relative flex flex-col items-center rounded-3xl bg-white p-6 shadow-sm w-72 sm:w-80 md:w-96"
+                    >
+                      <div className="w-52 h-52 -mt-24 rounded-full">
+                        <img
+                          src={plan.image}
+                          alt={plan.name}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
 
-                    <h3 className="mt-6 text-xl font-grobold text-slate-900 text-center">
-                      {plan.name}
-                    </h3>
-                    <p className="mt-2 text-lg font-comic text-slate-900 text-center font-semibold">
-                      {plan.price}
-                    </p>
+                      <h3 className="mt-6 text-xl font-grobold text-slate-900 text-center">
+                        {plan.name}
+                      </h3>
+                      <p className="mt-2 text-lg font-comic text-slate-900 text-center font-semibold">
+                        {plan.price}
+                      </p>
 
-                    <ul className="mt-4 space-y-1 font-comic text-slate-700/90 text-sm text-center">
-                      {plan.features.map((f, idx) => (
-                        <li key={idx}>• {f}</li>
-                      ))}
-                    </ul>
+                      <ul className="mt-4 space-y-1 font-comic text-slate-700/90 text-sm text-center">
+                        {plan.features.map((f, idx) => (
+                          <li key={idx}>• {f}</li>
+                        ))}
+                      </ul>
 
-                    <button
-                      type="button"
-                      disabled={user?.premiumSubscription}
-                      className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
+                      <button
+                        type="button"
+                        disabled={user?.premiumSubscription}
+                        className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
 
   ${
     user?.premiumSubscription
@@ -195,53 +181,57 @@ const MembershipPage: React.FC = () => {
       : "bg-red-400 text-white hover:bg-red-500"
   }
 `}
-                      onClick={async () => {
-                        try {
-                          const res = await fetch("/api/create-subscription", {
-                            method: "POST",
-                            headers: {
-                              "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify({
-                              priceId:
-                                plan.id === "monthly"
-                                  ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
-                                  : process.env.NEXT_PUBLIC_YEARLY_PRICEID,
-                            }),
-                          });
-                          const data = await res.json();
-                          if (data.url) {
-                            window.location.href = data.url;
-                          } else {
-                            alert("Error: " + data.error);
+                        onClick={async () => {
+                          try {
+                            const res = await fetch(
+                              "/api/create-subscription",
+                              {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                  priceId:
+                                    plan.id === "monthly"
+                                      ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                      : process.env.NEXT_PUBLIC_YEARLY_PRICEID,
+                                }),
+                              }
+                            );
+                            const data = await res.json();
+                            if (data.url) {
+                              window.location.href = data.url;
+                            } else {
+                              alert("Error: " + data.error);
+                            }
+                          } catch (err) {
+                            console.error(err);
                           }
-                        } catch (err) {
-                          console.error(err);
-                        }
-                      }}
-                    >
-                      {user?.premiumSubscription && plan.alreadySubcribed
-                        ? plan.alreadySubcribed
-                        : plan.ctaLabel}
-                    </button>
-                  </article>
-                ))}
+                        }}
+                      >
+                        {user?.premiumSubscription && plan.alreadySubcribed
+                          ? plan.alreadySubcribed
+                          : plan.ctaLabel}
+                      </button>
+                    </article>
+                  ))}
+                </div>
               </div>
+            </section>
+            <Link
+              target="blank"
+              href={
+                "https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
+              }
+              className="flex justify-center cursor-pointer relative"
+            >
+              <img src="/assets/online-order.png" alt="" className="" />
+            </Link>
+            <div className="md:flex hidden absolute -left-48 bottom-10">
+              <img src="assets/cloud-2.png" className="w-40" />
             </div>
           </section>
-          <Link
-            target="blank"
-            href={
-              "https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
-            }
-            className="flex justify-center cursor-pointer relative"
-          >
-            <img src="/assets/online-order.png" alt="" className="" />
-          </Link>
-          <div className="md:flex hidden absolute -left-48 bottom-10">
-            <img src="assets/cloud-2.png" className="w-40" />
-          </div>
-        </section>
+        </div>
 
         {/* How it works */}
         <section className="w-full bg-[#e8f7ff] py-20 px-4">
@@ -310,7 +300,7 @@ const MembershipPage: React.FC = () => {
         {/* FAQ */}
         <section className="relative pt-8 mx-auto text-center">
           <div className="md:flex hidden absolute right-40 top-0">
-            <img src="assets/plane.png" className="w-46" />
+            <img src="assets/plane-3.png" className="w-46" />
           </div>
           <div className="md:flex hidden absolute right-40 top-60">
             <img src="assets/cloud-1.png" className="w-20" />

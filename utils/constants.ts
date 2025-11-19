@@ -21,110 +21,108 @@ export const booksData = [
     featuredImage: "/assets/feature-book-1.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Book1_Fatima_sFirstFast-BookCover_1__page-0001.jpg?v=1762836751&width=330",
-    pages: [
-      {
-        page: "fatimas-first-fast-page-1763454592104.1.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.2.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.3.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.4.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.5.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.6.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.7.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.8.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.9.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.10.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.11.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.12.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.13.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.14.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.15.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.16.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-first-fast-page-1763454592104.17.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-    ],
+    pages: [{
+      "page": "fatimas-first-fast-page-1763454592104.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-first-fast-page-1763454592104.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-day-we-almost-missed-salah",
@@ -148,7 +146,96 @@ export const booksData = [
     featuredImage: "/assets/feature-book-5.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheDayWeAlmostMissedSalah.png?v=1762849172&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-day-we-almost-missed-salah-page-1763465799410.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-iftar-delivery-mission",
@@ -172,110 +259,108 @@ export const booksData = [
     featuredImage: "/assets/feature-book-7.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheIftarDeliveryMission.png?v=1762850477&width=330",
-    pages: [
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.1.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.2.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.3.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.4.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.5.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.6.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.7.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.8.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.9.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.10.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.11.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.12.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.13.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.14.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.15.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.16.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-iftar-delivery-mission-page-1763456008029.17.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-    ],
+    pages: [{
+      "page": "the-iftar-delivery-mission-page-1763456008029.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-iftar-delivery-mission-page-1763456008029.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "fatima-and-the-furry-friend",
@@ -299,116 +384,114 @@ export const booksData = [
     featuredImage: "/assets/feature-book-6.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sFurryFriend.png?v=1762840568&width=330",
-    pages: [
-      {
-        page: "fatimas-furry-friend-page-1763455816848.1.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.2.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.3.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.4.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.5.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.6.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.7.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.8.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.9.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.10.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.11.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.12.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.13.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.14.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.15.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.16.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.17.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "fatimas-furry-friend-page-1763455816848.18.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-    ],
+    pages: [{
+      "page": "fatimas-furry-friend-page-1763455816848.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-furry-friend-page-1763455816848.18.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-kindness-jar",
@@ -431,7 +514,114 @@ export const booksData = [
     featuredImage: "/assets/feature-book-8.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheKindnessJar.png?v=1762850504&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-kindness-jar-page-1763467796054.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-kindness-jar-page-1763467796054.18.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-forgotten-salam",
@@ -454,116 +644,114 @@ export const booksData = [
     featuredImage: "/assets/feature-book-2.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheForgottenIslamFrontCover.png?v=1762839642&width=330",
-    pages: [
-      {
-        page: "the-forgotten-salam-page-1763454885103.1.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.2.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.3.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.4.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.5.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.6.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.7.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.8.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.9.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.10.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.11.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.12.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.13.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.14.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.15.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.16.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.17.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-      {
-        page: "the-forgotten-salam-page-1763454885103.18.png",
-        audio: null,
-        pageStatus: "pending",
-        audioStatus: "pending",
-      },
-    ],
+    pages: [{
+      "page": "the-forgotten-salam-page-1763454885103.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-forgotten-salam-page-1763454885103.18.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "abdullah-s-angry-day",
@@ -586,7 +774,114 @@ export const booksData = [
     featuredImage: "/assets/feature-book-9.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Abdullah_sAngryDay.png?v=1762849075&width=330",
-    pages: [],
+    pages: [{
+      "page": "abdullahs-angry-day-page-1763464206303.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "abdullahs-angry-day-page-1763464206303.18.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "fatima-s-shiny-shoes",
@@ -610,7 +905,108 @@ export const booksData = [
     featuredImage: "/assets/feature-book-10.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/Fatima_sShinyShoes.png?v=1762856781&width=330",
-    pages: [],
+    pages: [{
+      "page": "fatimas-shiny-shoes-page-1763465067267.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "fatimas-shiny-shoes-page-1763465067267.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-eid-surprise",
@@ -624,7 +1020,7 @@ export const booksData = [
     series: "Abdullah and Fatima",
     product_url: "https://shop.sidr.productions/products/the-eid-surprise",
     overview:
-      "The Eid Surprise” is a heartwarming children’s story that celebrates the joy, anticipation, and togetherness of Eid. Through engaging storytelling and delightful illustrations, young readers join the characters as they prepare for the big day — from decorating and giving gifts to sharing special moments with family. The book beautifully captures the true spirit of Eid, teaching children about kindness, gratitude, and the happiness that comes from sharing and caring for others. Perfect for early readers, this book helps families introduce Islamic values in a fun and memorable way.",
+      'The Eid Surprise” is a heartwarming children’s story that celebrates the joy, anticipation, and togetherness of Eid. Through engaging storytelling and delightful illustrations, young readers join the characters as they prepare for the big day — from decorating and giving gifts to sharing special moments with family. The book beautifully captures the true spirit of Eid, teaching children about kindness, gratitude, and the happiness that comes from sharing and caring for others. Perfect for early readers, this book helps families introduce Islamic values in a fun and memorable way.',
     learning_notes:
       "A heart-warming celebration of Eid that teaches children about joy, togetherness, and appreciating thoughtful surprises.",
     islamic_references:
@@ -634,7 +1030,108 @@ export const booksData = [
     featuredImage: "/assets/feature-book-11.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheEidSurprise.png?v=1762850359&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-eid-surprise-page-1763468730721.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-eid-surprise-page-1763468730721.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-midnight-visitor",
@@ -657,7 +1154,96 @@ export const booksData = [
     featuredImage: "/assets/feature-book-12.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMidnightFright.png?v=1762848957&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-midnight-fright-page-1763469155515.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-midnight-fright-page-1763469155515.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-lost-quran-page",
@@ -681,7 +1267,102 @@ export const booksData = [
     featuredImage: "/assets/feature-book-13.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheLostQuranPage_ab077a3a-75fb-41ec-9610-2bcb34b1b76c.png?v=1762850299&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-lost-quran-page-page-1763469389555.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-lost-quran-page-page-1763469389555.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
   {
     slug: "the-masjid-race",
@@ -705,6 +1386,119 @@ export const booksData = [
     featuredImage: "/assets/feature-book-14.png",
     cover_image:
       "https://shop.sidr.productions/cdn/shop/files/TheMasjidRace.png?v=1762849899&width=330",
-    pages: [],
+    pages: [{
+      "page": "the-masjid-race-page-1763469916503.1.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.2.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.3.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.4.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.5.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.6.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.7.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.8.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.9.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.10.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.11.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.12.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.13.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.14.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.15.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.16.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.17.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.18.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    },
+    {
+      "page": "the-masjid-race-page-1763469916503.19.png",
+      "audio": null,
+      "pageStatus": "pending",
+      "audioStatus": "pending"
+    }],
   },
 ];

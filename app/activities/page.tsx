@@ -1,74 +1,13 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
-import Header from "../Components/Header";
 import { activityData } from "@/utils/activity";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
-
-type ActivityType = "Coloring" | "Maze" | "Worksheet";
-type ValueTag =
-  | "Sabr"
-  | "Shukr"
-  | "Adab"
-  | "Amanah"
-  | "Rahmah"
-  | "Sidq"
-  | "Ihsan";
-type AgeBand = "5–7" | "8–12";
-
-type Activity = {
-  id: string;
-  slug: string;
-  title: string;
-  tagline: string;
-  type: ActivityType;
-  values: ValueTag[];
-  age: AgeBand[];
-  free?: boolean;
-  cover_photo_box?: string;
-  File?: string;
-};
-
-// const ACTIVITIES: Activity[] = [
-//   {
-//     id: "a1",
-//     slug: "salah-checklist",
-//     title: "Salah Time Checklist",
-//     blurb:
-//       "A simple, visual checklist to help children prepare calmly for salah.",
-//     type: "Worksheet",
-//     values: ["Sabr", "Amanah"],
-//     age: ["5–7", "8–12"],
-//     free: true,
-//   },
-//   {
-//     id: "a2",
-//     slug: "abdullah-coloring-football",
-//     title: "Abdullah Playing Football – Coloring Page",
-//     blurb:
-//       "A fun, confidence-building coloring page that ties into teamwork and adab.",
-//     type: "Coloring",
-//     values: ["Adab"],
-//     age: ["5–7"],
-//     free: true,
-//   },
-//   {
-//     id: "a3",
-//     slug: "fatima-maze-kindness",
-//     title: "Fatima’s Kindness Maze",
-//     blurb:
-//       "Help Fatima find her way to the right choice—kindness wins every time.",
-//     type: "Maze",
-//     values: ["Rahmah"],
-//     age: ["5–7", "8–12"],
-//     free: false,
-//   },
-// ];
 
 const TYPE_OPTIONS = ["All Types", "Coloring", "Maze", "Worksheet"] as const;
 const VALUE_OPTIONS = [
@@ -82,22 +21,6 @@ const VALUE_OPTIONS = [
   "Ihsan",
 ] as const;
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12"] as const;
-
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-md bg-white/80 px-2 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
-      {children}
-    </span>
-  );
-}
-
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-grobold text-emerald-700 ring-1 ring-emerald-200">
-      {children}
-    </span>
-  );
-}
 
 function ActivityCard({ activity }: any) {
   const user = useSelector((state: RootState) => state.api.user);
@@ -215,16 +138,26 @@ function ActivityCard({ activity }: any) {
                 }
               }}
             >
-              <option value="" disabled className="text-black bg-white">
+              <option
+                value=""
+                disabled
+                className="text-black bg-white font-comic"
+              >
                 Join to Download PDF
               </option>
 
-              <option value="monthly" className="text-black bg-white">
+              <option
+                value="monthly"
+                className="text-black bg-white font-comic font-semibold"
+              >
                 Monthly – £3.99
               </option>
 
-              <option value="annual" className="text-black bg-white">
-                Annual – £39.99
+              <option
+                value="annual"
+                className="text-black bg-white font-comic font-semibold"
+              >
+                Annual – £39
               </option>
             </select>
             <span className="pointer-events-none absolute right-3 top-10 -translate-y-1/2 text-white">
@@ -262,7 +195,7 @@ export default function ActivitiesPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-activities.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-activities.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl text-center px-4 py-12">
               <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
@@ -295,7 +228,7 @@ export default function ActivitiesPage() {
         {/* Hero */}
 
         {/* Filters */}
-        <section className="sticky top-0 z-10 bg-[#EAF7FF] backdrop-blur -mt-2 pt-8">
+        <section className="top-0 z-10 bg-[#EAF7FF] backdrop-blur -mt-2">
           <div className="mx-auto max-w-[1350px] px-4 py-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <select
@@ -359,7 +292,7 @@ export default function ActivitiesPage() {
               <img src="assets/ballon.png" className="w-40" />
             </div>
             <div className="md:flex hidden absolute -right-52 top-2/3">
-              <img src="assets/plane.png" className="w-46" />
+              <img src="assets/plane-3.png" className="w-46" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {activityData.map((activity, index) => (

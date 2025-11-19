@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
+import { GAMES } from "@/utils/data";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -37,68 +38,6 @@ type Game = {
   free?: boolean;
 };
 
-const GAMES: Game[] = [
-  {
-    id: "g1",
-    slug: "abdullah-fatima-adventures",
-    title: "Abdullah & Fatima Adventures",
-    blurb:
-      "Explore, help and learn across connected quests inspired by everyday Muslim life.",
-    type: "Story",
-    values: ["Sabr", "Adab", "Rahmah"],
-    age: "5–12",
-    mode: "Story & Mini-quests",
-    thumbUrl: "/assets/game-1.jpg",
-    platforms: ["Web", "iOS", "Android"],
-    url: "https://tourmaline-treacle-839185.netlify.app/",
-    premiumUrl: "",
-    free: true,
-  },
-  {
-    id: "g2",
-    slug: "the-run",
-    title: "The Run",
-    blurb:
-      "Dash, dodge and make quick choices while keeping adab and safety in mind.",
-    type: "Runner",
-    values: ["Adab", "Amanah"],
-    age: "8–12",
-    mode: "Endless runner · Levels",
-    thumbUrl: "/assets/game-4.jpg",
-    platforms: ["Web"],
-    url: "https://starlit-dodol-9596c0.netlify.app/",
-    premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
-  },
-  {
-    id: "g3",
-    slug: "road-cross",
-    title: "The Escape",
-    blurb: "Practice safe crossing, patience and awareness at a busy junction.",
-    type: "Puzzle",
-    values: ["Sabr", "Amanah"],
-    thumbUrl: "/assets/game-3.jpg",
-    age: "5–7",
-    mode: "Level-based safety puzzles",
-    platforms: ["Web", "Android"],
-    url: "https://fantastic-biscuit-f72cfd.netlify.app/",
-    premiumUrl: "https://storied-pika-64151a.netlify.app/",
-  },
-  {
-    id: "g3",
-    slug: "road-cross",
-    title: "Road Cross",
-    blurb: "Practice safe crossing, patience and awareness at a busy junction.",
-    type: "Puzzle",
-    values: ["Sabr", "Amanah"],
-    age: "5–7",
-    mode: "Level-based safety puzzles",
-    platforms: ["Web", "Android"],
-    thumbUrl: "/assets/game-2.jpg",
-    url: "https://wonderful-rugelach-0d3354.netlify.app/",
-    premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
-  },
-];
-
 const TYPE_OPTIONS = [
   "All Types",
   "Runner",
@@ -119,15 +58,7 @@ const VALUE_OPTIONS = [
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–12"] as const;
 const PLATFORM_OPTIONS = ["All Platforms", "Web", "iOS", "Android"] as const;
 
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-md bg-white/80 px-2 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
-      {children}
-    </span>
-  );
-}
-
-function GameCard({ game }: { game: Game }) {
+function GameCard({ game }: any) {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const user = useSelector((state: RootState) => state.api.user);
 
@@ -225,15 +156,15 @@ function GameCard({ game }: { game: Game }) {
                       }
                     }}
                   >
-                    <option value="" disabled className="text-black bg-white">
+                    <option value="" disabled className="text-black bg-white font-comic">
                       Join to Play Full Game
                     </option>
 
-                    <option value="monthly" className="text-black bg-white">
+                    <option value="monthly" className="text-black bg-white font-comic font-semibold">
                       Monthly – £3.99
                     </option>
 
-                    <option value="annual" className="text-black bg-white">
+                    <option value="annual" className="text-black bg-white font-comic font-semibold">
                       Annual – £39.99
                     </option>
                   </select>
@@ -319,7 +250,7 @@ export default function GamesPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-games.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-games.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
               <h1 className="text-5xl sm:text-4xl md:text-6xl inline-block text-center">
@@ -343,7 +274,7 @@ export default function GamesPage() {
                 </span>
               </h1>
 
-              <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+              <p className="mt-3 font-comic text-xl text-center w-full md:max-w-[50%] mx-auto">
                 Short, joyful web and mobile games that practice real-life
                 skills and Islamic values in a safe, ad-free space.
               </p>
@@ -351,7 +282,7 @@ export default function GamesPage() {
           </section>
         </div>
         {/* Filters */}
-        <section className="sticky top-0 z-10 border-white/60 bg-[#EAF7FF] -mt-2 pt-8">
+        <section className="bg-[#EAF7FF] -mt-2 relative">
           <div className="mx-auto max-w-[1350px] px-4 py-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
               <label className="relative block lg:col-span-1">
@@ -445,7 +376,7 @@ export default function GamesPage() {
               <img src="assets/ballon.png" className="w-40" />
             </div>
             <div className="md:flex hidden absolute -right-52 top-2/3">
-              <img src="assets/plane.png" className="w-46" />
+              <img src="assets/plane-3.png" className="w-46" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((game) => (

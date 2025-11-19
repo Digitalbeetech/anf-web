@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import Link from "next/link";
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
@@ -234,7 +232,7 @@ export default function VideosPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-videos.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-videos.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
               <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
@@ -257,7 +255,7 @@ export default function VideosPage() {
         </div>
 
         {/* Filters */}
-        <section className="sticky top-0 z-10 bg-[#EAF7FF] backdrop-blur -mt-2 pt-8">
+        <section className="top-0 z-10 bg-[#EAF7FF] backdrop-blur -mt-2">
           <div className="mx-auto max-w-[1350px] px-4 py-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <label className="relative block lg:col-span-1">

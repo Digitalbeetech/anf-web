@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
 import { useParams } from "next/navigation";
 import { booksData } from "@/utils/constants";
@@ -152,17 +151,17 @@ export default function BookDetailPage() {
                         <option
                           value=""
                           disabled
-                          className="text-black bg-white"
+                          className="text-black bg-white font-comic"
                         >
                           Join to Read Book
                         </option>
 
-                        <option value="monthly" className="text-black bg-white">
+                        <option value="monthly" className="text-black bg-white font-comic font-semibold">
                           Monthly – £3.99
                         </option>
 
-                        <option value="annual" className="text-black bg-white">
-                          Annual – £39.99
+                        <option value="annual" className="text-black bg-white font-comic font-semibold">
+                          Annual – £39
                         </option>
                       </select>
 

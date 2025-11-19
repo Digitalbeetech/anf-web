@@ -2,69 +2,9 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { booksData } from "@/utils/constants";
 import StickyHeader from "../Components/StickyHeader/page";
-
-type Book = {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  values: (
-    | "Sabr"
-    | "Shukr"
-    | "Adab"
-    | "Amanah"
-    | "Rahmah"
-    | "Sidq"
-    | "Ihsan"
-  )[];
-  age: "5–7" | "8–12" | "5–9";
-  sample?: boolean;
-  premium?: boolean;
-  coverUrl?: string;
-  series: "Illustrated Series 1" | "Other";
-};
-
-const BOOKS: Book[] = [
-  {
-    id: "b1",
-    slug: "the-day-we-almost-missed-salah",
-    title: "The Day We Almost Missed Salah",
-    description:
-      "A warm reminder about prayer, time and family responsibility.",
-    values: ["Sabr", "Amanah"],
-    age: "5–9",
-    sample: true,
-    premium: true,
-    series: "Illustrated Series 1",
-  },
-  {
-    id: "b2",
-    slug: "kindness-at-the-crosswalk",
-    title: "Kindness at the Crosswalk",
-    description: "A small act of help that turns a busy morning into barakah.",
-    values: ["Rahmah", "Ihsan"],
-    age: "5–7",
-    sample: true,
-    premium: false,
-    series: "Illustrated Series 1",
-  },
-  {
-    id: "b3",
-    slug: "the-truth-pebble",
-    title: "The Truth Pebble",
-    description:
-      "Telling the truth when it's hard—and why it feels light after.",
-    values: ["Sidq"],
-    age: "8–12",
-    sample: false,
-    premium: true,
-    series: "Illustrated Series 1",
-  },
-];
 
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–9"] as const;
 const VALUE_OPTIONS = [
@@ -79,34 +19,11 @@ const VALUE_OPTIONS = [
 ] as const;
 const SERIES_OPTIONS = ["All Series", "Illustrated Series 1"] as const;
 
-function Pill({
-  children = "",
-  kind = "neutral" as "neutral" | "free" | "premium",
-}) {
-  const base =
-    "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium";
-  const tone =
-    kind === "free"
-      ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200"
-      : kind === "premium"
-      ? "bg-amber-50 text-amber-700 ring-1 ring-amber-200"
-      : "bg-slate-100 text-slate-700 ring-1 ring-slate-200";
-  return <span className={`${base} ${tone}`}>{children}</span>;
-}
-
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-md bg-white/70 backdrop-blur px-2 py-0.5 text-xs font-medium text-slate-700 shadow-sm ring-1 ring-white/60">
-      {children}
-    </span>
-  );
-}
-
 function BookCard({ book }: any) {
   return (
     <Link
       href={`books/${book?.slug}`}
-      className="relative w-full flex flex-col mb-18"
+      className="relative w-full flex flex-col mb-28"
     >
       {/* Book Image */}
       <div className="absolute left-1/2 -translate-x-1/2 -top-6 sm:-top-8 md:-top-12 z-10">
@@ -168,8 +85,6 @@ export default function BooksPage() {
         : b.title.toLowerCase().includes(q) ||
           b.tagline.toLowerCase().includes(q);
       const matchesAge = age === "All Ages" ? true : b.age_group === age;
-      // const matchesValue =
-      //   value === "All Values" ? true : b?.values?.includes(value as any);
       const matchesSeries =
         series === "All Series" ? true : b.series === series;
       return matchesQuery && matchesAge && matchesSeries;
@@ -182,7 +97,7 @@ export default function BooksPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-books.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-books.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
               <h1 className="text-5xl sm:text-4xl md:text-6xl inline-block text-center">
@@ -206,7 +121,7 @@ export default function BooksPage() {
                 </span>
               </h1>
 
-              <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+              <p className="mt-3 font-comic text-xl text-center w-full md:max-w-[50%] mx-auto">
                 Gentle, story-led adventures that nurture Sabr, Shukr, Adab,
                 Amanah, Rahmah, Sidq and Ihsan for children ages 5–12.
               </p>
@@ -215,7 +130,7 @@ export default function BooksPage() {
         </div>
 
         {/* Filters */}
-        <section className="sticky top-0 z-10 bg-[#EAF7FF] -mt-2 pt-8 backdrop-blur supports-backdrop-filter:bg-[#EAF7FF]">
+        <section className="top-0 z-10 bg-[#EAF7FF] -mt-2 backdrop-blur supports-backdrop-filter:bg-[#EAF7FF] mb-8">
           <div className="mx-auto max-w-[1350px] px-4 py-4">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <label className="relative block">
@@ -281,7 +196,7 @@ export default function BooksPage() {
         <section className="overflow-hidden">
           <div className="mx-auto max-w-[1350px] px-4 py-10 relative">
             <div className="md:flex hidden absolute -right-48 top-44">
-              <img src="assets/plane.png" className="w-46" />
+              <img src="assets/plane-3.png" className="w-46" />
             </div>
             <div className="md:flex hidden absolute -left-48 bottom-30">
               <img src="assets/ballon.png" className="w-46" />
