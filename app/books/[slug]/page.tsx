@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
@@ -8,9 +8,12 @@ import { useParams } from "next/navigation";
 import { booksData } from "@/utils/constants";
 import { RootState } from "@/redux/rootReducer";
 import { useSelector } from "react-redux";
+import HTMLFlipBook from "react-pageflip";
 
 export default function BookDetailPage() {
   const user = useSelector((state: RootState) => state.api.user);
+  const imageURL = process.env.NEXT_PUBLIC_IMAGEURL;
+  const book = useRef<any>(null);
 
   const [activeTab, setActiveTab] = useState<
     | "Overview"
@@ -21,6 +24,7 @@ export default function BookDetailPage() {
 
   const { slug } = useParams();
   const [bookDetail, setBookDetail] = useState<any>("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     if (booksData && slug) {
@@ -28,6 +32,36 @@ export default function BookDetailPage() {
       setBookDetail(findBook);
     }
   }, [booksData, slug]);
+
+  function useWindowSize() {
+    const [width, setWidth] = useState(0); // start with 0 (no window yet)
+
+    useEffect(() => {
+      // ✅ run only in browser
+      const handleResize = () => setWidth(window.innerWidth);
+
+      handleResize(); // set initial width
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return width;
+  }
+
+  const width = useWindowSize();
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, [modalOpen]);
 
   return (
     <>
@@ -68,7 +102,10 @@ export default function BookDetailPage() {
                     Read sample pages
                   </a>
                   {user?.premiumSubscription ? (
-                    <button className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                    <button
+                      className="inline-flex items-center justify-center rounded-2xl cursor-pointer bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      onClick={() => setModalOpen(true)}
+                    >
                       Join to Read Book
                     </button>
                   ) : (
@@ -159,6 +196,83 @@ export default function BookDetailPage() {
             </div>
           </div>
         </section>
+        {modalOpen && (
+          <div className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-md">
+            <div className="mx-auto flex flex-col gap-2 px-4 py-3 md:px-8">
+              {/* Bottom Row — Author & Publisher */}
+              <div className="flex justify-between items-center z-[999]">
+                <p className="text-xl sm:text-2xl md:text-3xl uppercase text-white truncate max-w-[80%] font-grobold">
+                  {bookDetail?.title}
+                </p>
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="text-white text-2xl md:text-3xl font-bold cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="fixed inset-0 z-50 bg-black flex flex-col items-start p-4">
+                <div className="flex justify-center w-full flex-1 pt-20">
+                  <div className="w-full">
+                    <HTMLFlipBook
+                      width={2400}
+                      height={1250}
+                      size="stretch"
+                      minWidth={950}
+                      maxWidth={2400}
+                      minHeight={700}
+                      maxHeight={1250}
+                      ref={book}
+                      usePortrait={true}
+                      showPageCorners={false}
+                      showCover={false}
+                      mobileScrollSupport={true}
+                      drawShadow={width < 600 ? false : true}
+                      swipeDistance={width < 600 ? 0 : 30}
+                      className="shadow-2xl rounded-xl w-full h-full"
+                    >
+                      {(bookDetail?.pages).map((page: any, index: any) => (
+                        <div
+                          key={index}
+                          className="w-full h-full flex justify-center no-hover pb-8 rounded-lg"
+                        >
+                          <img
+                            src={imageURL + page.page}
+                            alt={`Page ${index + 1}`}
+                            style={{
+                              width:
+                                width < 400
+                                  ? "40%"
+                                  : width < 450
+                                  ? "50%"
+                                  : width < 500
+                                  ? "55%"
+                                  : width < 550
+                                  ? "60%"
+                                  : width < 600
+                                  ? "65%"
+                                  : width < 650
+                                  ? "70%"
+                                  : width < 700
+                                  ? "74%"
+                                  : width < 750
+                                  ? "80%"
+                                  : "100%",
+                              objectFit: "contain",
+                              paddingRight: width < 750 ? "80px" : "0",
+                              borderRadius: "20px",
+                            }}
+                            className="w-full h-auto max-h-[85vh] object-contain"
+                          />
+                        </div>
+                      ))}
+                    </HTMLFlipBook>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Tabs */}
         <section className="border-b border-white/60 bg-white/90 backdrop-blur">

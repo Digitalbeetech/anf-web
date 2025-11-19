@@ -68,7 +68,7 @@ export default function Header({ shadow }: any) {
         <div className="flex items-center max-w-7xl mx-auto relative flex-wrap md:flex-nowrap">
           {/* White header content */}
           <div
-            className={`bg-white flex items-center w-full md:grow relative py-10 md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
+            className={`bg-white flex items-center w-full md:grow relative py-9 md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
           >
             {/* Absolute logo on the left */}
             <Link
