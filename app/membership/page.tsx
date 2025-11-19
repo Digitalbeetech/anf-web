@@ -186,19 +186,15 @@ const MembershipPage: React.FC = () => {
 
                     <button
                       type="button"
-                      className={`mt-6 w-full rounded-2xl px-4 py-2.5 text-white cursor-pointer font-grobold ${
-                        plan.ctaVariant === "primary"
-                          ? "bg-red-400 hover:bg-red-500"
-                          : "bg-gray-100 text-gray-700"
-                      }  ${
-                        plan.ctaVariant === "primary"
-                          ? user?.premiumSubscription
-                            ? "bg-gray-400 text-gray-100 cursor-not-allowed"
-                            : "bg-red-400 hover:bg-red-500"
-                          : user?.premiumSubscription
-                          ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
-                          : "border border-sky-500 bg-white text-sky-700 hover:bg-sky-50"
-                      }`}
+                      disabled={user?.premiumSubscription}
+                      className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
+
+  ${
+    user?.premiumSubscription
+      ? "bg-gray-400 text-gray-100 cursor-not-allowed"
+      : "bg-red-400 text-white hover:bg-red-500"
+  }
+`}
                       onClick={async () => {
                         try {
                           const res = await fetch("/api/create-subscription", {
