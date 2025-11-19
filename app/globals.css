@@ -120,7 +120,7 @@ body {
   }
 }
 
-.hover-img1:hover img {
+/* .hover-img1:hover img {
   content: url('/assets/hero-sec-1-outline.svg');
 }
 
@@ -138,4 +138,4 @@ body {
 
 .hover-img5:hover img {
   content: url('/assets/hero-sec-5-outline.svg');
-}
+} */

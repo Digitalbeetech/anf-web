@@ -26,71 +26,106 @@ export default function Home() {
               <div className="relative w-full h-full">
                 {/* Image 1 */}
                 <Link
-                  href={"/videos"}
-                  className="absolute bottom-[48%] md:bottom-[35%] left-0 sm:left-0 md:left-1 lg:left-0 xl:left-22 2xl:left-48 horizontal-bounce hover-img1"
+                  href="/videos"
+                  className="absolute group bottom-[48%] md:bottom-[35%] left-0 sm:left-0 md:left-1 lg:left-0 xl:left-22 2xl:left-48 horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-1.svg"
                     alt=""
                     width={200}
                     height={180}
-                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto "
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto group-hover:hidden"
+                  />
+                  <Image
+                    src="/assets/hero-sec-1-outline.svg"
+                    alt=""
+                    width={200}
+                    height={180}
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto hidden group-hover:block"
                   />
                 </Link>
 
                 {/* Image 2 */}
                 <Link
                   href={"/activities"}
-                  className="absolute bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[27%] 2xl:left-[30%] horizontal-bounce hover-img2"
+                  className="absolute group bottom-[64%] md:bottom-[48%] left-24 sm:left-44 md:left-48 lg:left-64 xl:left-[27%] 2xl:left-[30%] horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-2.svg"
                     alt=""
                     width={200}
                     height={180}
-                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto group-hover:hidden"
+                  />
+                  <Image
+                    src="/assets/hero-sec-2-outline.svg"
+                    alt=""
+                    width={200}
+                    height={180}
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto hidden group-hover:block"
                   />
                 </Link>
 
                 {/* Image 3 */}
                 <Link
                   href={"/videos"}
-                  className="absolute bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[28%] 2xl:right-[34%] horizontal-bounce hover-img3"
+                  className="absolute group bottom-[64%] md:bottom-[48%] right-24 sm:right-44 md:right-48 lg:right-64 xl:right-[28%] 2xl:right-[34%] horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-3.svg"
                     alt=""
                     width={200}
                     height={180}
-                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto group-hover:hidden"
+                  />
+                  <Image
+                    src="/assets/hero-sec-3-outline.svg"
+                    alt=""
+                    width={200}
+                    height={180}
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto hidden group-hover:block"
                   />
                 </Link>
 
                 {/* Image 4 */}
                 <Link
                   href={"/books"}
-                  className="absolute bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-0 xl:right-[4%] 2xl:right-[10%] horizontal-bounce hover-img4"
+                  className="absolute group bottom-[44%] md:bottom-[40%] right-0 sm:right-0 md:right-1 lg:right-0 xl:right-[4%] 2xl:right-[10%] horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-4.svg"
                     alt=""
                     width={200}
                     height={180}
-                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto"
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto group-hover:hidden"
+                  />
+                  <Image
+                    src="/assets/hero-sec-4-outline.svg"
+                    alt=""
+                    width={200}
+                    height={180}
+                    className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto hidden group-hover:block"
                   />
                 </Link>
 
                 {/* Image 5 */}
                 <Link
                   href={"/games"}
-                  className="absolute bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce hover-img5"
+                  className="absolute group bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-5.svg"
                     alt=""
                     width={140}
                     height={180}
-                    className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto"
+                    className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto group-hover:hidden"
+                  />
+                  <Image
+                    src="/assets/hero-sec-5-outline.svg"
+                    alt=""
+                    width={140}
+                    height={180}
+                    className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto hidden group-hover:block"
                   />
                 </Link>
               </div>
