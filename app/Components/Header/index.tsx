@@ -179,12 +179,12 @@ export default function Header({ shadow, padding }: any) {
                     >
                       Logout
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => alert("Profile Clicked")}
                       className="w-full cursor-pointer text-left px-4 py-2 hover:bg-gray-100 transition"
                     >
                       Profile
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </>

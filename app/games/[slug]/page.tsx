@@ -211,22 +211,14 @@ const GameDetailPage: React.FC = () => {
                 <h2 className="text-xl font-grobold text-slate-900">
                   How to play
                 </h2>
-                <ul className="mt-3 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                  <li>Use the arrow keys or on-screen buttons to move.</li>
-                  <li>Collect helpful items and avoid unsafe choices.</li>
-                  <li>Look out for small reflection prompts between levels.</li>
-                </ul>
+                <p className="font-comic mt-4">{gameDetail?.how_to_play}</p>
               </div>
 
               <div>
                 <h2 className="text-xl font-grobold text-slate-900">
                   Learning notes
                 </h2>
-                <ul className="mt-3 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                  <li>Practising everyday safety and adab in a playful way.</li>
-                  <li>Seeing consequences of rushed vs thoughtful choices.</li>
-                  <li>Connecting small in-game choices to real-life habits.</li>
-                </ul>
+                <p className="font-comic mt-4">{gameDetail?.learning_notes}</p>
               </div>
             </div>
 
@@ -234,16 +226,9 @@ const GameDetailPage: React.FC = () => {
               <h3 className="text-lg font-grobold text-slate-900">
                 For parents &amp; teachers
               </h3>
-              <ul className="mt-3 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                <li>
-                  Play or watch the first level together, then let children
-                  explore.
-                </li>
-                <li>
-                  Pause after a level and ask: “What did you choose? Why?”
-                </li>
-                <li>Link game choices to school, masjid and home moments.</li>
-              </ul>
+              <p className="font-comic mt-4">
+                {gameDetail?.for_parents_teachers}
+              </p>
             </div>
           </div>
         </section>
