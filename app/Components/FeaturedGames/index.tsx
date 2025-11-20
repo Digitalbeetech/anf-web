@@ -1,14 +1,28 @@
 "use client";
-import { RootState } from "@/redux/rootReducer";
+import { getUser } from "@/redux/apiSlice";
+import { AppDispatch, RootState } from "@/redux/rootReducer";
 import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const FeaturedGames = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
   const user = useSelector((state: RootState) => state.api.user);
   const [selectedGame, setSelectedGame] = useState<any>(null);
+    const hit = async () => {
+      try {
+        await dispatch(getUser("")).unwrap();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      hit();
+    }, []);
 
   const games = [
     {

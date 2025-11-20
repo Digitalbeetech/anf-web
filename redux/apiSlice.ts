@@ -52,10 +52,15 @@ axios.interceptors.response.use(
       try {
         const refreshInstance = axios.create({
           baseURL: process.env.NEXT_PUBLIC_API_URL,
+          withCredentials: true,
+          headers: {
+            Authorization: "",
+          },
         });
+
         const refreshToken = localStorage.getItem("accessToken");
         const { data } = await refreshInstance.post("auth/refresh", {
-          refreshToken,
+          withCredentials: true,
         });
 
         // Save new token if received
@@ -76,7 +81,7 @@ axios.interceptors.response.use(
           localStorage.setItem("refreshToken", data.refreshToken);
 
         // Retry original request
-        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        // originalRequest.headers.Authorization = `Bearer ${newToken}`;
         console.log("[Axios] Retrying original request:", originalRequest.url);
         return axios(originalRequest);
       } catch (err) {

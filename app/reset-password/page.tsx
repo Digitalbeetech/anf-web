@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -8,11 +8,14 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
-import { getUser } from "@/redux/apiSlice";
+import { setUser } from "@/redux/apiSlice";
+import { jwtDecode } from "jwt-decode";
 
 export default function ResetPassword() {
   const dispatch = useDispatch<AppDispatch>();
-  const { email } = useParams();
+  const {email} = useParams();
+  // const email = searchParams.get("email");
+
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -33,8 +36,11 @@ export default function ResetPassword() {
     );
 
     const data = await res.json();
-    await dispatch(getUser("")).unwrap();
-
+    if (data?.accessToken) {
+      const decodedUser: any = jwtDecode(data?.accessToken);
+      dispatch(setUser(decodedUser?.user));
+      localStorage.setItem("user", JSON.stringify(decodedUser?.user));
+    }
     if (data?.success) {
       setMessage("🎉 Your password has been set successfully!");
     } else {

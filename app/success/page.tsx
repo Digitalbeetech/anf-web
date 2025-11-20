@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -10,7 +11,7 @@ import Input from "../Components/Input";
 import Button from "../Components/Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
-import { getUser, signUp } from "@/redux/apiSlice";
+import { getUser, setUser, signUp } from "@/redux/apiSlice";
 import moment from "moment";
 
 export default function SuccessPage() {
@@ -21,8 +22,6 @@ export default function SuccessPage() {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<any>(null);
   const [error, setError] = useState("");
-
-  console.log(session);
 
   const [emailState, setEmailState] = useState<String>("");
 
@@ -46,8 +45,11 @@ export default function SuccessPage() {
     );
 
     const data = await res.json();
-    await dispatch(getUser("")).unwrap();
-
+    if (data?.accessToken) {
+      const decodedUser: any = jwtDecode(data?.accessToken);
+      dispatch(setUser(decodedUser?.user));
+      localStorage.setItem("user", JSON.stringify(decodedUser?.user));
+    }
     if (data?.success) {
       setMessage("🎉 Your password has been set successfully!");
       router.push("/");

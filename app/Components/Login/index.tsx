@@ -45,7 +45,6 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
         password: data.password,
       };
       const response = await dispatch(signIn(payload)).unwrap();
-      console.log("check>>>", response);
       setOpenModal(false);
       reset();
       if (response?.accessToken) {
@@ -89,7 +88,7 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
 
       <p className="text-center mt-4 font-comic font-semibold text-md">
         New on our platform?{" "}
-        <Link href="membership" className="text-[#9acb4e] cursor-pointer">
+        <Link href="/membership" className="text-[#9acb4e] cursor-pointer">
           Create an account
         </Link>
       </p>
