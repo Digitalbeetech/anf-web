@@ -10,9 +10,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface LoginProps {
-  modalType: string;
-  setModalType: any;
-  setOpenModal: any;
+  modalType?: string;
+  setModalType?: any;
+  setOpenModal?: any;
 }
 
 const schema = yup.object().shape({

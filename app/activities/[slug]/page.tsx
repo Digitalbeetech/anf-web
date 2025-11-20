@@ -86,7 +86,6 @@ const ActivityDetailPage: React.FC = () => {
                   <Tag>Age 5–7 · 8–12</Tag>
                   <Tag>1-page printable (A4)</Tag>
                   <Tag>PDF · 0.5 MB</Tag>
-                  <Pill>Free</Pill>
                 </div>
 
                 {user?.premiumSubscription ? (

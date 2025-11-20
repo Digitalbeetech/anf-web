@@ -7,6 +7,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
   children?: React.ReactNode;
   loader?: boolean;
+  bgColor?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,12 +17,15 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   children,
   loader = false,
+  bgColor,
 }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`hidden text-center lg:flex relative cursor-pointer font-grobold border-3 bg-[#ff625a] text-white px-6 md:px-8 py-2.5 rounded-2xl hover:bg-red-600 transition ml-2 md:ml-0 ${className}`}
+      className={`hidden text-center lg:flex relative cursor-pointer font-grobold ${
+        bgColor ? bgColor : "bg-[#ff625a] hover:bg-red-600 border-3"
+      } text-white px-6 md:px-8 py-2.5 rounded-2xl transition ml-2 md:ml-0 ${className}`}
       disabled={loader}
     >
       {!loader && children}

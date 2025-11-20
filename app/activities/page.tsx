@@ -83,9 +83,6 @@ function ActivityCard({ activity }: any) {
           <span className="px-4 py-2 border text-sm font-comic font-bold rounded-full">
             Rahmah
           </span>
-          <span className="px-4 py-2 border text-sm font-comic font-bold rounded-full">
-            Free
-          </span>
         </div>
 
         {user?.premiumSubscription ? (

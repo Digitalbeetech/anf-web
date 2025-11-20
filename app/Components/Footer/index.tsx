@@ -1,6 +1,62 @@
+"use client";
+import * as yup from "yup";
 import Link from "next/link";
+import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/rootReducer";
+import { logout, newsLetter, setUser } from "@/redux/apiSlice";
+import Button from "../Button";
+import Input from "../Input";
+import Modal from "../Modal";
+import Login from "../Login";
 
 const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useSelector((state: RootState) => state.api.user);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [openModal2, setOpenModal2] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await dispatch(logout(""))?.unwrap();
+      dispatch(setUser(null));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email("Enter a valid email")
+      .required("Email is required"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data: any) => {
+    try {
+      const payload = {
+        email: data.email,
+      };
+      const response = await dispatch(newsLetter(payload)).unwrap();
+      reset();
+      setOpenModal(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div
@@ -33,21 +89,32 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
                 Join the Abdullah & Fatima circle
               </p>
 
-              <p className="text-white mb-6 text-lg sm:text-xl font-comic px-4 sm:px-8 md:px-24">
+              <p className="text-white mb-6 text-lg sm:text-xl font-comic px-4 sm:px-8 md:px-38">
                 Get new releases, free printables, and behind-the-scenes updates
                 in your inbox.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md mb-4 px-4 sm:px-0">
-                <input
+              <form
+                className="flex flex-col sm:flex-row gap-3 w-full max-w-md mb-4 px-4 sm:px-0"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <Input
                   type="email"
+                  bgColor={true}
+                  {...register("email")}
                   placeholder="Enter your email"
-                  className="px-4 py-2.5 rounded-full outline-none bg-white text-gray-800 flex-1 min-w-0"
+                  className="rounded-full font-comic font-semibold outline-none text-gray-800 flex-1 min-w-0 h-12"
+                  errorMessage={errors.email?.message}
                 />
-                <button className="bg-[#1dbeff] text-white px-6 py-2.5 rounded-full font-comic hover:bg-[#1aa8e0] transition">
+                <Button
+                  type="submit"
+                  loader={isSubmitting}
+                  bgColor="bg-[#1dbeff]"
+                  className=" text-white px-6 py-2.5 rounded-full font-comic font-semibold hover:bg-[#1aa8e0] transition cursor-pointer"
+                >
                   Subscribe
-                </button>
-              </div>
+                </Button>
+              </form>
 
               <p className="font-comic text-base sm:text-lg underline text-white">
                 You can unsubscribe anytime.
@@ -118,12 +185,21 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
             >
               Shop
             </a>
-            <a
-              href="#"
-              className="bg-[#ff6d3a] px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
-            >
-              Login
-            </a>
+            {user ? (
+              <button
+                className="bg-[#ff6d3a] cursor-pointer px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                className="bg-[#ff6d3a] cursor-pointer px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
+                onClick={() => setOpenModal2(true)}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
 
@@ -138,6 +214,24 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
           </Link>
         </div>
       </footer>
+      <Modal
+        modalIsOpen={openModal}
+        closeModal={() => setOpenModal(false)}
+        title="Subscribed Successfully"
+        size="medium"
+      >
+        <p className="font-comic text-center text-2xl font-semibold">
+          Thanks for subscribing! You’ll get our future updates.
+        </p>
+      </Modal>
+      <Modal
+        modalIsOpen={openModal2}
+        closeModal={() => setOpenModal2(false)}
+        title="Login"
+        size="medium"
+      >
+        <Login setOpenModal={setOpenModal2} />
+      </Modal>
     </>
   );
 };

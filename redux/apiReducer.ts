@@ -63,7 +63,7 @@ export const extraReducersBuilder = (builder: any) => {
       state.error = null;
       localStorage.removeItem("user");
       Cookies.remove("token");
-      toast.success(action?.payload?.message);
+      toast.success("Logout Successfully");
     })
     .addCase(logout.rejected, (state: any, action: any) => {
       state.status = "failed";

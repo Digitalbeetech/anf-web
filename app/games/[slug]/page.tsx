@@ -157,7 +157,7 @@ const GameDetailPage: React.FC = () => {
                               value="annual"
                               className="text-black bg-white font-comic font-semibold"
                             >
-                              Annual – £39.99
+                              Annual – £39
                             </option>
                           </select>
 

@@ -191,6 +191,18 @@ export const refreshToken = createAsyncThunk(
   }
 );
 
+export const newsLetter = createAsyncThunk(
+  "/newsletter",
+  async (bodyData: any, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`newsletter`, bodyData);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const apiSlice = createSlice({
   name: "api",
   initialState: { ...initialState },
