@@ -32,50 +32,16 @@ const SectionValuePromise = () => {
   return (
     <>
       <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center">
-        <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
-          <span
-            className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-            style={{
-              WebkitTextStroke: "2px white",
-              paintOrder: "stroke fill",
-            }}
-          >
-            Value
-          </span>{" "}
-          <span
-            className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-            style={{
-              WebkitTextStroke: "2px white",
-              paintOrder: "stroke fill",
-            }}
-          >
+        <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+          <span className="inline-block mx-3">
+            <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+              Value
+            </span>
+          </span>
+          <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
             Promise
           </span>
         </h1>
-        {/* <h1 className="text-center text-7xl font-black leading-tight font-grobold">
-        <span className="inline-block">
-          <span 
-            className="inline-block text-[#f9be49]"
-            style={{
-              textShadow: '3px 3px 0 #ff9933, 6px 6px 0 rgba(0,0,0,0.1)',
-              WebkitTextStroke: '2px #ff9933',
-            }}
-          >
-            Value
-          </span>
-        </span>
-        {' '}
-        {' '}
-        <span 
-          className="inline-block text-[#9acb4e]"
-          style={{
-            textShadow: '3px 3px 0 #88cc33, 6px 6px 0 rgba(0,0,0,0.1)',
-            WebkitTextStroke: '1.5px #88cc33',
-          }}
-        >
-          Promise
-        </span>
-      </h1> */}
 
         <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
           A joyful universe where children learn through Islamic values and

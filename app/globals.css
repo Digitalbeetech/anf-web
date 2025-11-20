@@ -120,6 +120,18 @@ body {
   }
 }
 
+.text-shadow-yellow {
+  text-shadow: 0px 3px 0 #f6605c, -1px 5px 0 #ffffff, 1px 5px 0 #ffffff,
+    -1px 5px 0 #ffffff, 1px 5px 0 #ffffff, 1px 7px 4px #b0b0b0;
+  -webkit-text-stroke: 0.002px #f6605c;
+}
+
+.text-shadow-green {
+  text-shadow: 0px 3px 0 #34842f, -1px 5px 0 #ffffff, 1px 5px 0 #ffffff,
+    -1px 5px 0 #ffffff, 1px 5px 0 #ffffff, 1px 7px 4px #b0b0b0;
+  -webkit-text-stroke: 0.002px #34842f;
+}
+
 /* .hover-img1:hover img {
   content: url('/assets/hero-sec-1-outline.svg');
 }

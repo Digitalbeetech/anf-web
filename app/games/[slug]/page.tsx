@@ -6,6 +6,9 @@ import Footer from "@/app/Components/Footer";
 import StickyHeader from "@/app/Components/StickyHeader/page";
 import { GAMES } from "@/utils/data";
 import { useParams } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
+import { X } from "lucide-react";
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -15,7 +18,10 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 
 const GameDetailPage: React.FC = () => {
   const { slug } = useParams();
+  const user = useSelector((state: RootState) => state.api.user);
+  const [selectedGame, setSelectedGame] = useState<any>(null);
   const [gameDetail, setGameDetail] = useState<any>("");
+
   useEffect(() => {
     if (GAMES && slug) {
       const findBook = GAMES.find((item: any) => item.slug === slug);
@@ -64,12 +70,105 @@ const GameDetailPage: React.FC = () => {
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/play/abdullah-fatima-adventures"
-                    className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                  >
-                    Play on Web
-                  </Link>
+                  <div className="pt-2 w-full mb-4">
+                    {user?.premiumSubscription || gameDetail?.free ? (
+                      <button
+                        className="inline-flex cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedGame(gameDetail);
+                        }}
+                      >
+                        Play Now
+                      </button>
+                    ) : (
+                      <div className="mt-3 flex flex-row flex-wrap items-center gap-3">
+                        <div className="">
+                          {gameDetail?.platforms?.includes("Web") && (
+                            <div
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedGame(gameDetail);
+                              }}
+                              className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
+                            >
+                              Play Demo
+                            </div>
+                          )}
+                        </div>
+                        <div
+                          className="relative"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <select
+                            className="appearance-none bg-sky-600 w-full text-white px-5 py-3 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                            defaultValue=""
+                            onChange={async (e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              const selected = e.target.value;
+                              if (!selected) return;
+
+                              try {
+                                const priceId =
+                                  selected === "monthly"
+                                    ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                    : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+
+                                const res = await fetch(
+                                  "/api/create-subscription",
+                                  {
+                                    method: "POST",
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({ priceId }),
+                                  }
+                                );
+
+                                const data = await res.json();
+
+                                if (data.url) {
+                                  window.location.href = data.url; // Redirect to Stripe checkout
+                                } else {
+                                  alert("Error: " + data.error);
+                                }
+                              } catch (err) {
+                                console.error(err);
+                              }
+                            }}
+                          >
+                            <option
+                              value=""
+                              disabled
+                              className="text-black bg-white font-comic"
+                            >
+                              Join to Play Full Game
+                            </option>
+
+                            <option
+                              value="monthly"
+                              className="text-black bg-white font-comic font-semibold"
+                            >
+                              Monthly – £3.99
+                            </option>
+
+                            <option
+                              value="annual"
+                              className="text-black bg-white font-comic font-semibold"
+                            >
+                              Annual – £39.99
+                            </option>
+                          </select>
+
+                          {/* Custom Arrow */}
+                          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                            ▼
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
                   <div className="flex flex-wrap gap-2">
                     <button
@@ -152,6 +251,30 @@ const GameDetailPage: React.FC = () => {
       <div className="bg-[#EAF7FF]">
         <Footer bgWhite={true} />
       </div>
+      {selectedGame && (
+        <div className="fixed inset-0 z-50 bg-black flex flex-col">
+          {/* Close Button - Top Right */}
+          <button
+            onClick={() => setSelectedGame(null)}
+            className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
+            aria-label="Close Game"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Game Iframe */}
+          <iframe
+            src={
+              user && user?.premiumSubscription
+                ? selectedGame?.premiumUrl
+                : selectedGame.url
+            }
+            title={selectedGame.title}
+            className="w-full h-full border-none"
+            allow="autoplay; fullscreen"
+          />
+        </div>
+      )}
     </>
   );
 };

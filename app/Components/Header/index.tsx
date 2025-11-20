@@ -41,8 +41,7 @@ export default function Header({ shadow, padding }: any) {
 
   const handleLogout = async () => {
     try {
-      // await dispatch(logout(""))?.unwrap();
-      Cookies.remove("token");
+      await dispatch(logout(""))?.unwrap();
       dispatch(setUser(null));
     } catch (error) {
       console.log(error);
@@ -86,7 +85,7 @@ export default function Header({ shadow, padding }: any) {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[200px] lg:pl-[220px] mx-4 md:mx-12 font-grobold">
+            <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[150px] lg:pl-[180px] mx-4 md:mx-8 lg:mx-6 xl:mx-16 font-grobold">
               {navLinks.map((item) => (
                 <Link
                   key={item.name}

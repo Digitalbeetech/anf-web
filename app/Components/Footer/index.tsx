@@ -23,15 +23,10 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
         >
           {hideNewLetter && (
             <div className="relative bg-[#9f69b4] rounded-b-[144px] rounded-t-[194px] p-6 sm:p-8 md:p-12 flex flex-col items-center text-center max-w-3xl mx-auto z-10">
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl font-grobold tracking-tight mb-3 md:mb-4"
-                style={{
-                  color: "#f9be49",
-                  WebkitTextStroke: "2px white",
-                  paintOrder: "stroke fill",
-                }}
-              >
-                Newsletter
+              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+                  Newsletter
+                </span>
               </h1>
 
               <p className="text-white mb-2 font-comic text-2xl sm:text-3xl">

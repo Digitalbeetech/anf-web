@@ -100,27 +100,17 @@ export default function BooksPage() {
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-books.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-              <h1 className="text-5xl sm:text-4xl md:text-6xl inline-block text-center">
-                <span
-                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
-                  Abdullah & Fatima:
-                </span>{" "}
-                <span
-                  className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
+              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <span className="inline-block mx-3">
+                  <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+                    <span className="tracking-[0.01em]">Abdullah</span> &
+                    Fatima:
+                  </span>
+                </span>
+                <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
                   Books
                 </span>
               </h1>
-
               <p className="mt-3 font-comic text-xl text-center w-full md:max-w-[50%] mx-auto">
                 Gentle, story-led adventures that nurture Sabr, Shukr, Adab,
                 Amanah, Rahmah, Sidq and Ihsan for children ages 5–12.

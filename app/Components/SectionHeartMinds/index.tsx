@@ -42,23 +42,13 @@ const SectionHeartMinds = () => {
   return (
     <>
       <div className="bg-[#e8f7fc] flex flex-col items-center justify-center text-center px-4 mb-4">
-        <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
-          <span
-            className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-            style={{
-              WebkitTextStroke: "2px white",
-              paintOrder: "stroke fill",
-            }}
-          >
-            Made for Hearts
-          </span>{" "}
-          <span
-            className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-            style={{
-              WebkitTextStroke: "2px white",
-              paintOrder: "stroke fill",
-            }}
-          >
+        <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+          <span className="inline-block mx-3">
+            <span className="inline-block text-[#ffdb5a] tracking-[-0.02em] text-shadow-yellow">
+              <span className="tracking-[0.03em]">Made</span> for Hearts
+            </span>
+          </span>
+          <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
             and Minds
           </span>
         </h1>

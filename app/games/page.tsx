@@ -156,15 +156,25 @@ function GameCard({ game }: any) {
                       }
                     }}
                   >
-                    <option value="" disabled className="text-black bg-white font-comic">
+                    <option
+                      value=""
+                      disabled
+                      className="text-black bg-white font-comic"
+                    >
                       Join to Play Full Game
                     </option>
 
-                    <option value="monthly" className="text-black bg-white font-comic font-semibold">
+                    <option
+                      value="monthly"
+                      className="text-black bg-white font-comic font-semibold"
+                    >
                       Monthly – £3.99
                     </option>
 
-                    <option value="annual" className="text-black bg-white font-comic font-semibold">
+                    <option
+                      value="annual"
+                      className="text-black bg-white font-comic font-semibold"
+                    >
                       Annual – £39.99
                     </option>
                   </select>
@@ -253,27 +263,16 @@ export default function GamesPage() {
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-games.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-              <h1 className="text-5xl sm:text-4xl md:text-6xl inline-block text-center">
-                <span
-                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
-                  Play & Learn:
-                </span>{" "}
-                <span
-                  className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
+              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <span className="inline-block mx-3">
+                  <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
+                    Play & Learn:
+                  </span>
+                </span>
+                <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
                   Games
                 </span>
               </h1>
-
               <p className="mt-3 font-comic text-xl text-center w-full md:max-w-[50%] mx-auto">
                 Short, joyful web and mobile games that practice real-life
                 skills and Islamic values in a safe, ad-free space.

@@ -235,14 +235,8 @@ export default function VideosPage() {
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-videos.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-              <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
-                <span
-                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
+              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
                   Videos
                 </span>
               </h1>

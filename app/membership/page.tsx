@@ -57,23 +57,13 @@ const MembershipPage: React.FC = () => {
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12">
               <div className="space-y-4 text-center">
-                <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
-                  <span
-                    className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                    style={{
-                      WebkitTextStroke: "2px white",
-                      paintOrder: "stroke fill",
-                    }}
-                  >
-                    Join the Abdullah &
-                  </span>{" "}
-                  <span
-                    className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                    style={{
-                      WebkitTextStroke: "2px white",
-                      paintOrder: "stroke fill",
-                    }}
-                  >
+                <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                  <span className="inline-block mx-3">
+                    <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+                      Join the Abdullah &
+                    </span>
+                  </span>
+                  <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
                     Fatima Family
                   </span>
                 </h1>
@@ -118,23 +108,13 @@ const MembershipPage: React.FC = () => {
               </div>
               <div className="px-4 py-12">
                 <div className="mb-6 text-center">
-                  <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center">
-                    <span
-                      className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                      style={{
-                        WebkitTextStroke: "2px white",
-                        paintOrder: "stroke fill",
-                      }}
-                    >
-                      Choose your
-                    </span>{" "}
-                    <span
-                      className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                      style={{
-                        WebkitTextStroke: "2px white",
-                        paintOrder: "stroke fill",
-                      }}
-                    >
+                  <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                    <span className="inline-block mx-3">
+                      <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
+                        Choose your
+                      </span>
+                    </span>
+                    <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
                       membership
                     </span>
                   </h1>
@@ -237,25 +217,14 @@ const MembershipPage: React.FC = () => {
         <section className="w-full bg-[#e8f7ff] py-20 px-4">
           <div className="max-w-6xl mx-auto text-center bg-white rounded-2xl h-50 relative">
             {/* TITLE */}
-            <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center pt-4">
-              {" "}
-              <span
-                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                style={{
-                  WebkitTextStroke: "2px white",
-                  paintOrder: "stroke fill",
-                }}
-              >
-                How it{" "}
+            <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+              <span className="inline-block mx-3">
+                <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+                  How it
+                </span>
               </span>
-              <span
-                className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                style={{
-                  WebkitTextStroke: "2px white",
-                  paintOrder: "stroke fill",
-                }}
-              >
-                works{" "}
+              <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
+                works
               </span>
             </h1>
 
@@ -306,15 +275,8 @@ const MembershipPage: React.FC = () => {
             <img src="assets/cloud-1.png" className="w-20" />
           </div>
           <div className="mx-auto max-w-6xl px-4 py-12">
-            <h1 className="text-5xl sm:text-3xl md:text-6xl inline-block text-center pt-4">
-              {" "}
-              <span
-                className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                style={{
-                  WebkitTextStroke: "2px white",
-                  paintOrder: "stroke fill",
-                }}
-              >
+            <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+              <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
                 FAQs
               </span>
             </h1>

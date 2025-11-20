@@ -27,23 +27,13 @@ const WatchLearn = () => {
 
   return (
     <div className="flex flex-col px-4 py-8 relative h-full">
-      <h1 className="text-5xl sm:text-5xl md:text-6xl inline-block text-center">
-        <span
-          className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight"
-          style={{
-            WebkitTextStroke: "2px white",
-            paintOrder: "stroke fill",
-          }}
-        >
-          Watch &
-        </span>{" "}
-        <span
-          className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight"
-          style={{
-            WebkitTextStroke: "2px white",
-            paintOrder: "stroke fill",
-          }}
-        >
+      <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+        <span className="inline-block mx-3">
+          <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+            Watch
+          </span>
+        </span>
+        <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
           Learn
         </span>
       </h1>

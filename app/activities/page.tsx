@@ -198,23 +198,13 @@ export default function ActivitiesPage() {
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-activities.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl text-center px-4 py-12">
-              <h1 className="text-5xl sm:text-5xl md:text-5xl inline-block text-center">
-                <span
-                  className="text-[#f9be49] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
-                  Activities &
-                </span>{" "}
-                <span
-                  className="text-[#9acb4e] drop-shadow-lg font-grobold tracking-tight inline-block transform-gpu"
-                  style={{
-                    WebkitTextStroke: "2px white",
-                    paintOrder: "stroke fill",
-                  }}
-                >
+              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <span className="inline-block mx-3">
+                  <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
+                    Activities &
+                  </span>
+                </span>
+                <span className="inline-block text-[#a8d034] tracking-[0.01em] text-shadow-green">
                   Printables
                 </span>
               </h1>
