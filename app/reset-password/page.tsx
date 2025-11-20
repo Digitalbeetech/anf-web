@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -13,8 +13,8 @@ import { jwtDecode } from "jwt-decode";
 
 export default function ResetPassword() {
   const dispatch = useDispatch<AppDispatch>();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const {email} = useParams();
+  // const email = searchParams.get("email");
 
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
