@@ -33,6 +33,7 @@ export default function Home() {
                     src="/assets/hero-sec-1.svg"
                     alt=""
                     width={200}
+                    priority
                     height={180}
                     className="object-contain w-24 sm:w-36 md:w-44 lg:w-48 xl:w-52 h-auto group-hover:hidden"
                   />
@@ -111,21 +112,21 @@ export default function Home() {
                 {/* Image 5 */}
                 <Link
                   href={"/games"}
-                  className="absolute group bottom-[48%] md:bottom-[30%] left-[40%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce"
+                  className="absolute group bottom-[38%] md:bottom-[30%] left-[42%] sm:left-[40%] md:left-1/2 transform md:-translate-x-2/3 horizontal-bounce"
                 >
                   <Image
                     src="/assets/hero-sec-5.svg"
                     alt=""
                     width={140}
                     height={180}
-                    className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto group-hover:hidden"
+                    className="object-contain w-14 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto group-hover:hidden"
                   />
                   <Image
                     src="/assets/hero-sec-5-outline.svg"
                     alt=""
                     width={140}
                     height={180}
-                    className="object-contain w-20 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto hidden group-hover:block"
+                    className="object-contain w-14 sm:w-28 md:w-30 lg:w-36 xl:w-32 h-auto hidden group-hover:block"
                   />
                 </Link>
               </div>
@@ -212,7 +213,11 @@ export default function Home() {
 
         <div className="bg-[#e8f7fc] pt-32 sm:pt-36 md:pt-28 lg:pt-20 relative">
           <div className="hidden md:flex absolute left-6 top-4">
-            <img src="/assets/plane.png" alt="" width={310} />
+            <img
+              src="/assets/plane.png"
+              alt=""
+              className="w-40 md:w-42 lg:w-52 xl:w-72"
+            />
           </div>
           <div className="mt-12">
             <SectionValuePromise />

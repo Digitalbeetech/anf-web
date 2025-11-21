@@ -23,22 +23,25 @@ const FeaturedBooks = () => {
           <div className="md:flex hidden absolute -left-28 bottom-0">
             <img src="assets/cloud-1.png" className="w-20" />
           </div>
-          <div className="md:flex hidden absolute -right-18 -top-26">
-            <img src="assets/ballon.png" className="w-40" />
+          <div className="lg:flex hidden absolute -right-18 -top-26">
+            <img
+              src="assets/ballon.png"
+              className="w-40 md:w-24 lg:w-30 xl:w-30 2xl:w-40"
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-28 lg:gap-8 mt-16">
             {booksData?.slice(0, 4)?.map((book, index) => (
               <Link
                 href={`books/${book?.slug}`}
                 key={index}
-                className="relative w-full flex flex-col"
+                className="relative w-full flex flex-col mb-14"
               >
                 {/* Book Image */}
                 <div className="absolute left-1/2 -translate-x-1/2 -top-6 sm:-top-8 md:-top-12 z-10">
                   <img
                     src={book.featuredImage}
                     alt={book.title}
-                    className="w-56 sm:w-72 md:w-80 lg:w-136 xl:w-[20rem] h-auto object-contain drop-shadow-lg max-w-none -mt-6"
+                    className="w-56 sm:w-72 md:w-80 lg:w-80 xl:w-[20rem] h-auto object-contain drop-shadow-lg max-w-none -mt-6"
                   />
                 </div>
                 <div className="bg-white mt-24 sm:mt-32 rounded-3xl rounded-br-[44px] px-4 sm:px-6 pt-20 sm:pt-18 pb-4 h-full flex flex-col justify-between">

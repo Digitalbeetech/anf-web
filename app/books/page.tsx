@@ -30,7 +30,7 @@ function BookCard({ book }: any) {
         <img
           src={book.featuredImage}
           alt={book.title}
-          className="w-56 sm:w-72 md:w-80 lg:w-136 xl:w-[20rem] h-auto object-contain drop-shadow-lg max-w-none -mt-6"
+          className="w-56 sm:w-72 md:w-80 lg:w-80 xl:w-[20rem] h-auto object-contain drop-shadow-lg max-w-none -mt-6"
         />
       </div>
       <div className="bg-white mt-24 sm:mt-32 rounded-3xl rounded-br-[44px] px-4 sm:px-6 pt-20 sm:pt-18 pb-4 h-full flex flex-col justify-between">
@@ -84,7 +84,7 @@ export default function BooksPage() {
         ? true
         : b.title.toLowerCase().includes(q) ||
           b.tagline.toLowerCase().includes(q);
-      const matchesAge = age === "All Ages" ? true : b.age_group == (age);
+      const matchesAge = age === "All Ages" ? true : b.age_group == age;
       const matchesSeries =
         series === "All Series" ? true : b.series === series;
       return matchesQuery && matchesAge && matchesSeries;

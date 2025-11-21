@@ -9,7 +9,6 @@ import Signup from "../Signup";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/rootReducer";
 import { logout, setUser } from "@/redux/apiSlice";
-import Cookies from "js-cookie";
 import { usePathname } from "next/navigation";
 
 export default function Header({ shadow, padding }: any) {
@@ -39,6 +38,24 @@ export default function Header({ shadow, padding }: any) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    handleResize(); // Run once on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const openLoginModal = () => {
+    setOpenModal(true);
+    setModalType("login");
+    setMenuOpen(false);
+  };
+
   const handleLogout = async () => {
     try {
       await dispatch(logout(""))?.unwrap();
@@ -63,94 +80,130 @@ export default function Header({ shadow, padding }: any) {
 
   return (
     <>
-      <header className="py-6 sticky z-10 top-0">
+      <header className={`${menuOpen ? "" : `py-6 `} sticky z-10 top-0`}>
         <div className="flex items-center max-w-7xl mx-auto relative flex-wrap md:flex-nowrap">
           {/* White header content */}
-          <div
-            className={`bg-white flex items-center w-full md:grow relative ${padding} md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
-          >
-            {/* Absolute logo on the left */}
-            <Link
-              href={"/"}
-              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10"
+          {!menuOpen && (
+            <div
+              className={`bg-white flex items-center w-full md:grow relative ${padding} md:py-3.5 mx-2 rounded-xl ${shadow} px-6 md:mx-2`}
             >
-              <Image
-                src="/assets/main-logo.png"
-                alt="Main Logo"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="object-contain w-32 sm:w-36 md:w-40 lg:w-[200px]"
-              />
-            </Link>
+              {/* Absolute logo on the left */}
+              <Link
+                href={"/"}
+                className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-10"
+              >
+                <Image
+                  src="/assets/main-logo.png"
+                  alt="Main Logo"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="object-contain w-32 sm:w-36 md:w-40 lg:w-[200px]"
+                />
+              </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[150px] lg:pl-[180px] mx-4 md:mx-8 lg:mx-6 xl:mx-16 font-grobold">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.link}
-                  target={item.external ? "_blank" : "_self"}
-                  className={`${
-                    pathname === item?.link
-                      ? "text-[#f9be49]"
-                      : "text-[#365a77]"
-                  } text-lg lg:text-xl`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex justify-between gap-4 lg:gap-8 w-full pl-[180px] md:pl-[150px] lg:pl-[180px] mx-4 md:mx-8 lg:mx-6 xl:mx-16 font-grobold">
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.link}
+                    target={item.external ? "_blank" : "_self"}
+                    className={`${
+                      pathname === item?.link
+                        ? "text-[#f9be49]"
+                        : "text-[#365a77]"
+                    } text-lg lg:text-xl`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </nav>
 
-            {/* Mobile Menu Icon */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden absolute right-4 text-gray-700 z-20"
-            >
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="md:hidden absolute right-4 text-gray-700 z-20"
+              >
+                {menuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+              {/* Mobile Dropdown Menu */}
+            </div>
+          )}
 
-            {/* Mobile Dropdown Menu */}
-            {menuOpen && (
-              <div className="absolute top-full left-0 right-0 bg-white border-t shadow-md flex flex-col items-start gap-4 px-6 py-4 md:hidden z-50 mt-2 mx-2 rounded-b-xl">
-                <Link
-                  href="/"
-                  className="text-black transition w-full text-lg"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Home
+          {menuOpen && (
+            <div className="min-h-screen absolute top-full left-0 right-0 bg-white shadow-md flex flex-col items-start gap-4 px-6 py-4 md:hidden z-50 rounded-b-xl">
+              <div className="flex justify-between items-center w-full">
+                <Link href={"/"} className="">
+                  <Image
+                    src="/assets/main-logo.png"
+                    alt="Main Logo"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    className="object-contain w-32 sm:w-36 md:w-40 lg:w-[200px]"
+                  />
                 </Link>
-                <Link
-                  href="/books"
-                  className="text-black transition w-full text-lg"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Books
-                </Link>
-                <Link
-                  href="/games"
-                  className="text-black transition w-full text-lg"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Games
-                </Link>
-                <Link
-                  href="/videos"
-                  className="text-black transition w-full text-lg"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Videos
-                </Link>
-                <Link
-                  href="/activities"
-                  className="text-black transition w-full text-lg"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Activities
-                </Link>
+                <X size={28} onClick={() => setMenuOpen(!menuOpen)} />
               </div>
-            )}
-          </div>
+              {!user && (
+                <div
+                  className="text-black transition w-full text-lg font-medium border-b py-2"
+                  onClick={openLoginModal}
+                >
+                  Login
+                </div>
+              )}
+              <Link
+                href="/books"
+                className="text-black transition w-full text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Books
+              </Link>
+              <Link
+                href="/games"
+                className="text-black transition w-full text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Games
+              </Link>
+              <Link
+                href="/videos"
+                className="text-black transition w-full text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Videos
+              </Link>
+              <Link
+                href="/activities"
+                className="text-black transition w-full text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Activities
+              </Link>
+              <Link
+                href="/activities"
+                className="text-black transition w-full text-lg"
+                onClick={() => setMenuOpen(false)}
+              >
+                Membership
+              </Link>
+              <Link
+                href="https://shop.sidr.productions/collections/abdullah-and-fatima"
+                className="text-black transition w-full text-lg"
+              >
+                Shop
+              </Link>
+              {user && (
+                <div
+                  className="text-black transition w-full text-lg font-medium border-t py-2"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </div>
+              )}
+            </div>
+          )}
           <div ref={dropdownRef}>
             {user ? (
               <>

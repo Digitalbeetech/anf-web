@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`hidden text-center lg:flex relative cursor-pointer font-grobold ${
+      className={`text-center lg:flex relative cursor-pointer font-grobold ${
         bgColor ? bgColor : "bg-[#ff625a] hover:bg-red-600 border-3"
       } text-white px-6 md:px-8 py-2.5 rounded-2xl transition ml-2 md:ml-0 ${className}`}
       disabled={loader}

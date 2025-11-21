@@ -49,7 +49,6 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
       reset();
       if (response?.accessToken) {
         const decodedUser: any = jwtDecode(response?.accessToken);
-        console.log("check decode>>>>>", decodedUser?.user);
         dispatch(setUser(decodedUser?.user));
         localStorage.setItem("user", JSON.stringify(decodedUser?.user));
       }
@@ -59,7 +58,7 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
   };
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Input
@@ -79,7 +78,7 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
           />
         </div>
 
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-8">
           <Button type="submit" loader={isSubmitting}>
             Login
           </Button>
@@ -92,7 +91,7 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
           Create an account
         </Link>
       </p>
-    </>
+    </div>
   );
 };
 

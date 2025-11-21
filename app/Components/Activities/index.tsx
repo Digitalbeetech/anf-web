@@ -21,8 +21,11 @@ const Activities = () => {
           home or school.
         </p>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-4">
-          <div className="absolute left-10 top-1 hidden lg:flex">
-            <img src="/assets/plane-2.png" width={270} />
+          <div className="absolute left-10 lg:-top-14 xl:-top-5 hidden lg:flex">
+            <img
+              src="/assets/plane-2.png"
+              className="w-40 md:w-24 lg:w-30 xl:w-50 2xl:w-60"
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
             {activityData.slice(0, 3).map((item, index) => (

@@ -92,7 +92,7 @@ const MembershipPage: React.FC = () => {
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12">
               <div className="space-y-4 text-center">
-                <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                <h1 className="text-center text-4xl md:text-6xl font-black leading-tight font-grobold">
                   <span className="inline-block mx-3">
                     <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
                       Join the Abdullah &
@@ -111,7 +111,7 @@ const MembershipPage: React.FC = () => {
           </section>
         </div>
 
-        <div className="relative bg-[#EAF7FF] -mt-4">
+        <div className="relative bg-[#EAF7FF] -mt-1 lg:-mt-4">
           <section className="mx-auto max-w-6xl py-6 relative -pt-18">
             <div className="md:flex hidden absolute -left-20 top-60 z-10">
               <img src="assets/cloud-1.png" className="w-20" />
@@ -119,19 +119,19 @@ const MembershipPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
               <img
                 src="/assets/membership-1.svg"
-                className="w-16 sm:w-20 md:w-66"
+                className="w-56 sm:w-20 md:w-66"
               />
               <img
                 src="/assets/membership-2.svg"
-                className="w-16 sm:w-20 md:w-66"
+                className="w-56 sm:w-20 md:w-66"
               />
               <img
                 src="/assets/membership-3.svg"
-                className="w-16 sm:w-20 md:w-66"
+                className="w-56 sm:w-20 md:w-66"
               />
               <img
                 src="/assets/membership-4.svg"
-                className="w-16 sm:w-20 md:w-66"
+                className="w-56 sm:w-20 md:w-66"
               />
             </div>
 
@@ -163,7 +163,7 @@ const MembershipPage: React.FC = () => {
                   {PLANS.map((plan) => (
                     <article
                       key={plan.id}
-                      className="relative flex flex-col items-center rounded-3xl bg-white p-6 shadow-sm w-72 sm:w-80 md:w-96"
+                      className="relative flex flex-col items-center rounded-3xl bg-white p-6 shadow-sm w-72 sm:w-80 md:w-96 mb-16"
                     >
                       <div className="w-52 h-52 -mt-24 rounded-full">
                         <img
@@ -306,9 +306,13 @@ const MembershipPage: React.FC = () => {
         </section>
 
         {/* FAQ */}
-        <section className="relative pt-8 mx-auto text-center">
-          <div className="md:flex hidden absolute right-40 top-0">
-            <img src="assets/plane-3.png" className="w-46" />
+        <section className="relative pt-8 mx-auto text-center mt-64 md:mt-24">
+          <div className="lg:flex hidden absolute right-40 top-0">
+             <img
+              src="/assets/plane-3.png"
+              alt=""
+              className="w-40 md:w-42 lg:w-52 xl:w-54"
+            />
           </div>
           <div className="md:flex hidden absolute right-40 top-60">
             <img src="assets/cloud-1.png" className="w-20" />
