@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 import { activityData } from "@/utils/activity";
@@ -302,7 +302,9 @@ export default function ActivitiesPage() {
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {activityData.map((activity, index) => (
-                <ActivityCard key={index} activity={activity} />
+                <Suspense>
+                  <ActivityCard key={index} activity={activity} />
+                </Suspense>
               ))}
               {/* {filtered.length === 0 && (
                 <div className="col-span-full rounded-3xl border border-white/60 bg-white/90 p-8 text-center font-comic text-slate-600 shadow-md">

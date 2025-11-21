@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
-
 import { loadStripe, Stripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
-import StickyHeader from "../Components/StickyHeader/page";
 import { Minus, Plus } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useModal } from "@/context/ModalContext";
+import StickyHeader from "../Components/StickyHeader/page";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -30,7 +29,6 @@ const PLANS = [
     features: ["All premium content", "Cancel anytime"],
     ctaLabel: "Start monthly",
     alreadySubcribed: "Already Subscribed",
-    ctaVariant: "primary",
   },
   {
     id: "annual",
@@ -41,38 +39,55 @@ const PLANS = [
     features: ["All premium content", "2 months free vs monthly"],
     ctaLabel: "Start annual",
     alreadySubcribed: "Already Subscribed",
-    ctaVariant: "primary",
   },
 ];
+
+/* ────────────────────── Inline Component to Fix useSearchParams ────────────────────── */
+function CancelHandler() {
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
+  const { openModal } = useModal();
+
+  useEffect(() => {
+    if (cancel === "true" || cancel === "1") {
+      openModal(
+        "Payment Failed",
+        <p className="text-center font-comic text-lg font-semibold">
+          Something went wrong while processing your payment. Please try again.
+        </p>
+      );
+
+      // Clean URL after showing modal
+      const url = new URL(window.location.href);
+      url.searchParams.delete("cancel");
+      window.history.replaceState({}, "", url);
+    }
+  }, [cancel, openModal]);
+
+  return null;
+}
+/* ─────────────────────────────────────────────────────────────────────────────────── */
 
 const MembershipPage: React.FC = () => {
   const user = useSelector((state: RootState) => state.api.user);
   const pathname = usePathname();
-  const { openModal } = useModal();
-  const searchParams = useSearchParams();
-  const cancel = searchParams.get("cancel");
-
-  const handleFail = () => {
-    openModal(
-      "Payment Failed",
-      <p className="text-center font-comic text-lg font-semibold">
-        Something went wrong while processing your payment. Please try again.
-      </p>
-    );
-  };
-  useEffect(() => {
-    if (cancel) {
-      handleFail();
-    }
-  }, [cancel]);
 
   return (
     <>
+      {/* This fixes the build error – must be here */}
+      <Suspense fallback={null}>
+        <CancelHandler />
+      </Suspense>
+
       <main className="min-h-dvh bg-[#EAF7FF] overflow-hidden">
+        {/* Sticky Header */}
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
-          <StickyHeader />
+          <Suspense>
+            <StickyHeader />
+          </Suspense>
         </div>
 
+        {/* Hero Banner */}
         <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-membership.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12">
@@ -95,6 +110,7 @@ const MembershipPage: React.FC = () => {
             </div>
           </section>
         </div>
+
         <div className="relative bg-[#EAF7FF] -mt-4">
           <section className="mx-auto max-w-6xl py-6 relative -pt-18">
             <div className="md:flex hidden absolute -left-20 top-60 z-10">
@@ -174,13 +190,13 @@ const MembershipPage: React.FC = () => {
                         type="button"
                         disabled={user?.premiumSubscription}
                         className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
-
-  ${
-    user?.premiumSubscription
-      ? "bg-gray-400 text-gray-100 cursor-not-allowed"
-      : "bg-red-400 text-white hover:bg-red-500"
-  }
-`}
+       
+         ${
+           user?.premiumSubscription
+             ? "bg-gray-400 text-gray-100 cursor-not-allowed"
+             : "bg-red-400 text-white hover:bg-red-500"
+         }
+       `}
                         onClick={async () => {
                           try {
                             const previousPage = pathname;
@@ -344,8 +360,11 @@ const MembershipPage: React.FC = () => {
         </section>
       </main>
 
+      {/* Footer */}
       <div className="bg-[#EAF7FF]">
-        <Footer bgWhite={true} />
+        <Suspense>
+          <Footer bgWhite={true} />
+        </Suspense>
       </div>
     </>
   );

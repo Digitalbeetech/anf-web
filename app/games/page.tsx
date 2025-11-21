@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 import { X } from "lucide-react";
@@ -405,7 +405,9 @@ export default function GamesPage() {
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((game) => (
-                <GameCard key={game.id} game={game} />
+                <Suspense>
+                  <GameCard key={game.id} game={game} />
+                </Suspense>
               ))}
               {filtered.length === 0 && (
                 <div className="col-span-full rounded-3xl border border-white/60 bg-white/90 p-8 text-center font-comic text-slate-600 shadow-md">

@@ -1,8 +1,5 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { activityData } from "@/utils/activity";
@@ -13,12 +10,6 @@ import { useModal } from "@/context/ModalContext";
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
-    {children}
-  </span>
-);
-
-const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-grobold text-emerald-700 ring-1 ring-emerald-200">
     {children}
   </span>
 );
