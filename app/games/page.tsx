@@ -89,8 +89,14 @@ function GameCard({ game }: any) {
               "An exciting and educational game for kids to learn Islamic values through play."}
           </p>
           <div className="flex flex-wrap gap-2 mb-3 font-comic font-semibold">
-            <button className="border px-3 text-sm rounded-3xl">Sidq</button>
-            <button className="border px-3 text-sm rounded-3xl">5-9</button>
+            {game?.values?.map((item: any) => (
+              <button className="border px-3 text-sm rounded-3xl">
+                {item}
+              </button>
+            ))}
+            <button className="border px-3 text-sm rounded-3xl">
+              {game?.age}
+            </button>
           </div>
 
           {/* Play Button */}
@@ -229,10 +235,7 @@ export default function GamesPage() {
   const filtered = useMemo(() => {
     return GAMES.filter((g) => {
       const q = query.trim().toLowerCase();
-      const matchesQuery = !q
-        ? true
-        : g.title.toLowerCase().includes(q) ||
-          g.blurb.toLowerCase().includes(q);
+      const matchesQuery = !q ? true : g.title.toLowerCase().includes(q);
 
       const matchesType =
         type === "All Types" ? true : g.type === (type as GameType);
@@ -426,23 +429,6 @@ export default function GamesPage() {
             </div>
           </section>
         </section>
-
-        {/* Teaching strip */}
-        {/* <section className="border-t border-white/60 bg-linear-to-b from-[#FFEAA0] to-[#FFB580]">
-          <div className="mx-auto max-w-6xl px-4 py-8">
-            <p className="text-sm font-comic text-slate-900">
-              Stories plant the idea. Games let kids practice. Reflection
-              prompts (for parents &amp; teachers) help turn play into real-life
-              habits.{" "}
-              <Link
-                href="/insights"
-                className="font-grobold text-sky-800 underline-offset-2 hover:text-sky-900 hover:underline"
-              >
-                Learn how to use our games in class &amp; at home →
-              </Link>
-            </p>
-          </div>
-        </section> */}
       </main>
       <div className="bg-[#EAF7FF]">
         <Footer bgWhite={true} />

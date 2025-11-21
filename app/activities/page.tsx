@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const TYPE_OPTIONS = ["All Types", "Coloring", "Maze", "Worksheet"] as const;
 const VALUE_OPTIONS = [
@@ -23,6 +24,7 @@ const VALUE_OPTIONS = [
 const AGE_OPTIONS = ["All Ages", "5–7", "8–12"] as const;
 
 function ActivityCard({ activity }: any) {
+  const pathname = usePathname();
   const user = useSelector((state: RootState) => state.api.user);
 
   const handleDownload = async (fileurl: any) => {
@@ -114,15 +116,14 @@ function ActivityCard({ activity }: any) {
                     selected === "monthly"
                       ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                       : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
-
+                  const previousPage = pathname;
                   const res = await fetch("/api/create-subscription", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ priceId }),
+                    body: JSON.stringify({ priceId, previousPage }),
                   });
-
                   const data = await res.json();
 
                   if (data.url) {

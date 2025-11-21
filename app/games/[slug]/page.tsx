@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Footer from "@/app/Components/Footer";
 import StickyHeader from "@/app/Components/StickyHeader/page";
 import { GAMES } from "@/utils/data";
@@ -56,17 +55,17 @@ const GameDetailPage: React.FC = () => {
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Badge>Sabr</Badge>
-                  <Badge>Adab</Badge>
-                  <Badge>Rahmah</Badge>
-                  <Badge>Age 5–12</Badge>
+                  {gameDetail?.values?.map((item: any) => (
+                    <Badge>{item}</Badge>
+                  ))}
+                  <Badge>Age {gameDetail?.age}</Badge>
                   <Badge>Story Adventure</Badge>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2 text-xs font-comic text-slate-700/90">
                   <span>Story &amp; Mini-quests</span>
                   <span>•</span>
-                  <span>Web · iOS · Android</span>
+                  <span>Web</span>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -170,7 +169,7 @@ const GameDetailPage: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  {/* <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
                       className="inline-flex items-center justify-center rounded-2xl border border-sky-500 bg-white px-4 py-2 text-xs font-grobold text-sky-700 hover:bg-sky-50"
@@ -183,7 +182,7 @@ const GameDetailPage: React.FC = () => {
                     >
                       Android
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

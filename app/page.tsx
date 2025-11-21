@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Header from "./Components/Header";
 import SectionValuePromise from "./Components/SectionValuePromise";
 import SectionHeartMinds from "./Components/SectionHeartMinds";
 import SectionWeTeach from "./Components/SectionWeTeach";

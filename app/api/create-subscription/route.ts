@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 export async function POST(req: Request) {
   try {
-    const { priceId, customerId } = await req.json();
+    const { priceId, customerId, previousPage } = await req.json();
 
     if (!priceId) {
       return NextResponse.json({ error: "Missing priceId" }, { status: 400 });
@@ -18,13 +18,13 @@ export async function POST(req: Request) {
       line_items: [{ price: priceId, quantity: 1 }],
       ...(customerId && { customer: customerId }),
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/membership`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}${previousPage}?cancel=true`,
     });
 
-    console.log("🎉 CHECKOUT SUCCESS!");
-    console.log("Email:", session.customer_details?.email);
-    console.log("Customer ID:", session.customer);
-    console.log("Subscription ID:", session.subscription);
+    // console.log("🎉 CHECKOUT SUCCESS!");
+    // console.log("Email:", session.customer_details?.email);
+    // console.log("Customer ID:", session.customer);
+    // console.log("Subscription ID:", session.subscription);
 
     return NextResponse.json({ url: session.url });
   } catch (error: any) {

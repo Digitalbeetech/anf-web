@@ -6,7 +6,7 @@ import Footer from "../Components/Footer";
 import { booksData } from "@/utils/constants";
 import StickyHeader from "../Components/StickyHeader/page";
 
-const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–9"] as const;
+const AGE_OPTIONS = ["All Ages", "5 - 7", "8 - 12", "5 - 8"] as const;
 const VALUE_OPTIONS = [
   "All Values",
   "Sabr",
@@ -84,7 +84,7 @@ export default function BooksPage() {
         ? true
         : b.title.toLowerCase().includes(q) ||
           b.tagline.toLowerCase().includes(q);
-      const matchesAge = age === "All Ages" ? true : b.age_group === age;
+      const matchesAge = age === "All Ages" ? true : b.age_group == (age);
       const matchesSeries =
         series === "All Series" ? true : b.series === series;
       return matchesQuery && matchesAge && matchesSeries;
@@ -209,41 +209,6 @@ export default function BooksPage() {
             </div>
           </div>
         </section>
-
-        {/* Series Highlight */}
-        {/* <section className="relative">
-          <div className="relative mx-auto max-w-6xl px-4 py-12">
-            <div className="rounded-3xl border border-sky-200 bg-white/90 p-8 shadow-md backdrop-blur">
-              <h2 className="text-2xl font-grobold text-slate-900">
-                Illustrated Series 1 — 12-Book Box Set
-              </h2>
-              <p className="mt-3 max-w-3xl font-comic text-slate-700/90">
-                Twelve heart-rooted stories in one keepsake box. Each story
-                focuses on a core Islamic value with discussion prompts and
-                educator notes included online.
-              </p>
-              <ul className="mt-4 space-y-2 font-comic text-slate-800/90">
-                <li>
-                  • Covers everyday moments: salah, fasting, Eid, anger,
-                  kindness, masjid manners and more.
-                </li>
-                <li>• Perfect for families, schools and libraries.</li>
-                <li>
-                  • Includes <strong>1-year online membership</strong> for
-                  launch pre-orders.
-                </li>
-              </ul>
-              <div className="mt-6">
-                <Link
-                  href="https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
-                  className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                >
-                  Pre-order the full box
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section> */}
       </main>
       <div className="bg-[#EAF7FF]">
         <Footer bgWhite={true} />

@@ -3,17 +3,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Footer from "@/app/Components/Footer";
-import { useParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { booksData } from "@/utils/constants";
 import { RootState } from "@/redux/rootReducer";
 import { useSelector } from "react-redux";
 import HTMLFlipBook from "react-pageflip";
 import StickyHeader from "@/app/Components/StickyHeader/page";
+import { useModal } from "@/context/ModalContext";
 
 export default function BookDetailPage() {
   const user = useSelector((state: RootState) => state.api.user);
   const imageURL = process.env.NEXT_PUBLIC_IMAGEURL;
   const book = useRef<any>(null);
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const cancel = searchParams.get("cancel");
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p>
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   const [activeTab, setActiveTab] = useState<
     | "Overview"
@@ -124,6 +143,7 @@ export default function BookDetailPage() {
                               selected === "monthly"
                                 ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                                 : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+                            const previousPage = pathname;
 
                             const res = await fetch(
                               "/api/create-subscription",
@@ -132,7 +152,7 @@ export default function BookDetailPage() {
                                 headers: {
                                   "Content-Type": "application/json",
                                 },
-                                body: JSON.stringify({ priceId }),
+                                body: JSON.stringify({ priceId, previousPage }),
                               }
                             );
 
@@ -156,11 +176,17 @@ export default function BookDetailPage() {
                           Join to Read Book
                         </option>
 
-                        <option value="monthly" className="text-black bg-white font-comic font-semibold">
+                        <option
+                          value="monthly"
+                          className="text-black bg-white font-comic font-semibold"
+                        >
                           Monthly – £3.99
                         </option>
 
-                        <option value="annual" className="text-black bg-white font-comic font-semibold">
+                        <option
+                          value="annual"
+                          className="text-black bg-white font-comic font-semibold"
+                        >
                           Annual – £39
                         </option>
                       </select>

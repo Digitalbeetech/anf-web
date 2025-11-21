@@ -1,14 +1,34 @@
 "use client";
+import { useModal } from "@/context/ModalContext";
 import { RootState } from "@/redux/rootReducer";
 import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const FeaturedGames = () => {
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
+  const pathname = usePathname();
   const user = useSelector((state: RootState) => state.api.user);
   const [selectedGame, setSelectedGame] = useState<any>(null);
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p>
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   const games = [
     {
@@ -176,6 +196,8 @@ const FeaturedGames = () => {
                                     ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                                     : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
+                                const previousPage = pathname;
+
                                 const res = await fetch(
                                   "/api/create-subscription",
                                   {
@@ -183,7 +205,10 @@ const FeaturedGames = () => {
                                     headers: {
                                       "Content-Type": "application/json",
                                     },
-                                    body: JSON.stringify({ priceId }),
+                                    body: JSON.stringify({
+                                      priceId,
+                                      previousPage,
+                                    }),
                                   }
                                 );
 

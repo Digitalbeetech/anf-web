@@ -4,6 +4,8 @@ import "./globals.css";
 import ReduxProvider from "./providers/ReduxProvider";
 import { Toaster } from "react-hot-toast";
 import InitializeAuth from "./Components/InitializeAuth/InitializeAuth";
+import { ModalProvider } from "@/context/ModalContext";
+import GlobalModal from "./Components/GlobalModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +47,10 @@ export default function RootLayout({
         />
         <ReduxProvider>
           <InitializeAuth />
-          {children}
+          <ModalProvider>
+            <GlobalModal />
+            {children}
+          </ModalProvider>
         </ReduxProvider>
       </body>
     </html>

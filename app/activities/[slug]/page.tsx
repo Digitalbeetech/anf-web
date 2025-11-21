@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { activityData } from "@/utils/activity";
 import { RootState } from "@/redux/rootReducer";
 import { useSelector } from "react-redux";
@@ -24,6 +24,7 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
 
 const ActivityDetailPage: React.FC = () => {
   const { slug } = useParams();
+  const pathname = usePathname();
   const [activity, setActivity] = useState<any>("");
   const user = useSelector((state: RootState) => state.api.user);
 
@@ -112,12 +113,14 @@ const ActivityDetailPage: React.FC = () => {
                               ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                               : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
+                          const previousPage = pathname;
+
                           const res = await fetch("/api/create-subscription", {
                             method: "POST",
                             headers: {
                               "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ priceId }),
+                            body: JSON.stringify({ priceId, previousPage }),
                           });
 
                           const data = await res.json();
