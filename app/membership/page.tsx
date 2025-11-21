@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 
@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import { Minus, Plus } from "lucide-react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useModal } from "@/context/ModalContext";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -45,6 +47,24 @@ const PLANS = [
 
 const MembershipPage: React.FC = () => {
   const user = useSelector((state: RootState) => state.api.user);
+  const pathname = usePathname();
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p className="text-center font-comic text-lg font-semibold">
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   return (
     <>
@@ -163,6 +183,8 @@ const MembershipPage: React.FC = () => {
 `}
                         onClick={async () => {
                           try {
+                            const previousPage = pathname;
+
                             const res = await fetch(
                               "/api/create-subscription",
                               {
@@ -175,6 +197,7 @@ const MembershipPage: React.FC = () => {
                                     plan.id === "monthly"
                                       ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                                       : process.env.NEXT_PUBLIC_YEARLY_PRICEID,
+                                  previousPage,
                                 }),
                               }
                             );

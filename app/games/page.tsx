@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 import { X } from "lucide-react";
@@ -9,6 +9,8 @@ import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
 import { GAMES } from "@/utils/data";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useModal } from "@/context/ModalContext";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
 type ValueTag =
@@ -59,8 +61,27 @@ const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–12"] as const;
 const PLATFORM_OPTIONS = ["All Platforms", "Web", "iOS", "Android"] as const;
 
 function GameCard({ game }: any) {
+  const pathname = usePathname();
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
+
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const user = useSelector((state: RootState) => state.api.user);
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p className="text-center font-comic text-lg font-semibold">
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   return (
     <>
@@ -142,12 +163,14 @@ function GameCard({ game }: any) {
                             ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                             : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
+                        const previousPage = pathname;
+
                         const res = await fetch("/api/create-subscription", {
                           method: "POST",
                           headers: {
                             "Content-Type": "application/json",
                           },
-                          body: JSON.stringify({ priceId }),
+                          body: JSON.stringify({ priceId, previousPage }),
                         });
 
                         const data = await res.json();

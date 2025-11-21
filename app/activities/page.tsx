@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
 import { activityData } from "@/utils/activity";
@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useModal } from "@/context/ModalContext";
 
 const TYPE_OPTIONS = ["All Types", "Coloring", "Maze", "Worksheet"] as const;
 const VALUE_OPTIONS = [
@@ -25,6 +26,9 @@ const AGE_OPTIONS = ["All Ages", "5–7", "8–12"] as const;
 
 function ActivityCard({ activity }: any) {
   const pathname = usePathname();
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
   const user = useSelector((state: RootState) => state.api.user);
 
   const handleDownload = async (fileurl: any) => {
@@ -48,6 +52,20 @@ function ActivityCard({ activity }: any) {
       console.error("Download failed:", err);
     }
   };
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p className="text-center font-comic text-lg font-semibold">
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   return (
     <Link

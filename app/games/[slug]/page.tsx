@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 import Footer from "@/app/Components/Footer";
 import StickyHeader from "@/app/Components/StickyHeader/page";
 import { GAMES } from "@/utils/data";
-import { useParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import { X } from "lucide-react";
+import { useModal } from "@/context/ModalContext";
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -17,6 +18,10 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 
 const GameDetailPage: React.FC = () => {
   const { slug } = useParams();
+  const pathname = usePathname();
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
   const user = useSelector((state: RootState) => state.api.user);
   const [selectedGame, setSelectedGame] = useState<any>(null);
   const [gameDetail, setGameDetail] = useState<any>("");
@@ -27,6 +32,21 @@ const GameDetailPage: React.FC = () => {
       setGameDetail(findBook);
     }
   }, [GAMES, slug]);
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p className="text-center font-comic text-lg font-semibold">
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
+
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
@@ -114,6 +134,8 @@ const GameDetailPage: React.FC = () => {
                                     ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
                                     : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
+                                const previousPage = pathname;
+
                                 const res = await fetch(
                                   "/api/create-subscription",
                                   {
@@ -121,7 +143,10 @@ const GameDetailPage: React.FC = () => {
                                     headers: {
                                       "Content-Type": "application/json",
                                     },
-                                    body: JSON.stringify({ priceId }),
+                                    body: JSON.stringify({
+                                      priceId,
+                                      previousPage,
+                                    }),
                                   }
                                 );
 

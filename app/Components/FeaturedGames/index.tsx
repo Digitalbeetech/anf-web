@@ -19,7 +19,7 @@ const FeaturedGames = () => {
   const handleFail = () => {
     openModal(
       "Payment Failed",
-      <p>
+      <p className="text-center font-comic text-lg font-semibold">
         Something went wrong while processing your payment. Please try again.
       </p>
     );

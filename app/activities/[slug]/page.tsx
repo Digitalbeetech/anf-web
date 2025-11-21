@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "@/app/Components/Header";
 import Footer from "@/app/Components/Footer";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { activityData } from "@/utils/activity";
 import { RootState } from "@/redux/rootReducer";
 import { useSelector } from "react-redux";
 import StickyHeader from "@/app/Components/StickyHeader/page";
+import { useModal } from "@/context/ModalContext";
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-md bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -26,6 +27,9 @@ const ActivityDetailPage: React.FC = () => {
   const { slug } = useParams();
   const pathname = usePathname();
   const [activity, setActivity] = useState<any>("");
+  const { openModal } = useModal();
+  const searchParams = useSearchParams();
+  const cancel = searchParams.get("cancel");
   const user = useSelector((state: RootState) => state.api.user);
 
   useEffect(() => {
@@ -56,6 +60,20 @@ const ActivityDetailPage: React.FC = () => {
       console.error("Download failed:", err);
     }
   };
+
+  const handleFail = () => {
+    openModal(
+      "Payment Failed",
+      <p className="text-center font-comic text-lg font-semibold">
+        Something went wrong while processing your payment. Please try again.
+      </p>
+    );
+  };
+  useEffect(() => {
+    if (cancel) {
+      handleFail();
+    }
+  }, [cancel]);
 
   return (
     <>
