@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import SectionValuePromise from "./Components/SectionValuePromise";
 import SectionHeartMinds from "./Components/SectionHeartMinds";
 import SectionWeTeach from "./Components/SectionWeTeach";
@@ -224,7 +225,9 @@ export default function Home() {
           <SectionWeTeach />
           <FeaturedBooks />
         </div>
-        <FeaturedGames />
+        <Suspense>
+          <FeaturedGames />
+        </Suspense>
         <WatchLearn />
         <Activities />
         <div className="bg-[#c7e560]">

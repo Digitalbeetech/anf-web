@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
