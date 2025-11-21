@@ -144,16 +144,16 @@ const ActivityDetailPage: React.FC = () => {
                         }
                       }}
                     >
-                      <option value="" disabled className="text-black bg-white">
+                      <option value="" disabled className="text-black bg-white font-comic">
                         Join to Download PDF
                       </option>
 
-                      <option value="monthly" className="text-black bg-white">
+                      <option value="monthly" className="text-black bg-white font-comic">
                         Monthly – £3.99
                       </option>
 
-                      <option value="annual" className="text-black bg-white">
-                        Annual – £39.99
+                      <option value="annual" className="text-black bg-white font-comic">
+                        Annual – £39
                       </option>
                     </select>
 
