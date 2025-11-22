@@ -116,7 +116,7 @@ const MembershipPage: React.FC = () => {
             <div className="md:flex hidden absolute -left-20 top-60 z-10">
               <img src="assets/cloud-1.png" className="w-20" />
             </div>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-3">
+            <div className="flex flex-wrap justify-center gap-0 sm:gap-3">
               <img
                 src="/assets/membership-1.svg"
                 className="w-56 sm:w-20 md:w-66"
@@ -144,7 +144,7 @@ const MembershipPage: React.FC = () => {
               </div>
               <div className="px-4 py-12">
                 <div className="mb-6 text-center">
-                  <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+                  <h1 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
                     <span className="inline-block mx-3">
                       <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
                         Choose your
@@ -246,7 +246,7 @@ const MembershipPage: React.FC = () => {
             >
               <img src="/assets/online-order.png" alt="" className="" />
             </Link>
-            <div className="md:flex hidden absolute -left-48 bottom-10">
+            <div className="md:flex hidden absolute -left-48 bottom-10 mx-4">
               <img src="assets/cloud-2.png" className="w-40" />
             </div>
           </section>
@@ -254,9 +254,9 @@ const MembershipPage: React.FC = () => {
 
         {/* How it works */}
         <section className="w-full bg-[#e8f7ff] py-20 px-4">
-          <div className="max-w-6xl mx-auto text-center bg-white rounded-2xl h-50 relative">
+          <div className="max-w-6xl mx-auto text-center bg-white rounded-2xl h-36 md:h-50 relative py-4">
             {/* TITLE */}
-            <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+            <h1 className="text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
               <span className="inline-block mx-3">
                 <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
                   How it
@@ -318,7 +318,7 @@ const MembershipPage: React.FC = () => {
             <img src="assets/cloud-1.png" className="w-20" />
           </div>
           <div className="mx-auto max-w-6xl px-4 py-12">
-            <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+            <h1 className="text-center text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
               <span className="inline-block text-[#ffdb5a] tracking-[-0.01em] text-shadow-yellow">
                 FAQs
               </span>
