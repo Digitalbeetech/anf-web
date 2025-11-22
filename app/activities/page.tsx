@@ -211,10 +211,10 @@ export default function ActivitiesPage() {
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full bg-[#EAF7FF]">
           <StickyHeader />
         </div>
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] bg-[url('/assets/banner-activities.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[46vh] sm:h-[60vh] md:h-[75vh] lg:h-[605px] md:bg-[url('/assets/banner-activities.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl text-center px-4 py-12">
-              <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+              <h1 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
                 <span className="inline-block mx-3">
                   <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
                     Activities &
@@ -224,7 +224,7 @@ export default function ActivitiesPage() {
                   Printables
                 </span>
               </h1>
-              <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+              <p className="mt-3 font-comic text-base sm:text-lg md:text-xl text-center w-full md:max-w-[50%] mx-auto">
                 Color, solve, reflect and create—simple activities that turn
                 stories into everyday habits.
               </p>

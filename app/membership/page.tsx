@@ -88,11 +88,11 @@ const MembershipPage: React.FC = () => {
         </div>
 
         {/* Hero Banner */}
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] bg-[url('/assets/banner-membership.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="relative w-full h-[46vh] sm:h-[60vh] md:h-[75vh] lg:h-[650px] md:bg-[url('/assets/banner-membership.jpg')] bg-cover bg-center bg-no-repeat">
           <section className="relative pt-24">
             <div className="mx-auto max-w-6xl px-4 py-12">
               <div className="space-y-4 text-center">
-                <h1 className="text-center text-4xl md:text-6xl font-black leading-tight font-grobold">
+                <h1 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
                   <span className="inline-block mx-3">
                     <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
                       Join the Abdullah &
@@ -102,7 +102,7 @@ const MembershipPage: React.FC = () => {
                     Fatima Family
                   </span>
                 </h1>
-                <p className="mt-3 font-comic text-xl text-center max-w-[50%] mx-auto">
+                <p className="mt-3 font-comic text-base sm:text-lg md:text-xl text-center w-full md:max-w-[50%] mx-auto">
                   Unlock premium stories, videos, games and activities that keep
                   children growing in faith and character.
                 </p>
@@ -308,7 +308,7 @@ const MembershipPage: React.FC = () => {
         {/* FAQ */}
         <section className="relative pt-8 mx-auto text-center mt-64 md:mt-24">
           <div className="lg:flex hidden absolute right-40 top-0">
-             <img
+            <img
               src="/assets/plane-3.png"
               alt=""
               className="w-40 md:w-42 lg:w-52 xl:w-54"

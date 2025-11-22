@@ -78,7 +78,7 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
           }`}
         >
           {hideNewLetter && (
-            <div className="relative bg-[#9f69b4] rounded-b-[144px] rounded-t-[194px] p-6 sm:p-8 md:p-12 flex flex-col items-center text-center max-w-3xl mx-auto z-10">
+            <div className="relative bg-[#9f69b4] rounded-none md:rounded-b-[144px] md:rounded-t-[194px] p-6 sm:p-8 md:p-12 flex flex-col items-center text-center max-w-3xl mx-auto z-10">
               <h1 className="text-center text-6xl font-black leading-tight font-grobold">
                 <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
                   Newsletter

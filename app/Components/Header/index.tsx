@@ -182,7 +182,7 @@ export default function Header({ shadow, padding }: any) {
                 Activities
               </Link>
               <Link
-                href="/activities"
+                href="/membership"
                 className="text-black transition w-full text-lg"
                 onClick={() => setMenuOpen(false)}
               >
