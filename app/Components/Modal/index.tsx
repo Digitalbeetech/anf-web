@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   return (
     <div
-      className={`fixed inset-0 z-50  bg-[#FCF7EC]/40 backdrop-blur-xs px-4 py-8 transition-opacity ${
+      className={`fixed min-h-screen inset-0 z-50 bg-[#FCF7EC]/40 backdrop-blur-xs px-4 py-8 transition-opacity ${
         modalIsOpen ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       aria-hidden={!modalIsOpen}

@@ -111,7 +111,7 @@ const MembershipPage: React.FC = () => {
           </section>
         </div>
 
-        <div className="relative bg-[#EAF7FF] -mt-1 lg:-mt-4">
+        <div className="relative bg-[#EAF7FF] -mt-1 lg:-mt-4" id="membership">
           <section className="mx-auto max-w-6xl py-6 relative -pt-18">
             <div className="md:flex hidden absolute -left-20 top-60 z-10">
               <img src="assets/cloud-1.png" className="w-20" />
@@ -190,13 +190,12 @@ const MembershipPage: React.FC = () => {
                         type="button"
                         disabled={user?.premiumSubscription}
                         className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
-       
-         ${
-           user?.premiumSubscription
-             ? "bg-gray-400 text-gray-100 cursor-not-allowed"
-             : "bg-red-400 text-white hover:bg-red-500"
-         }
-       `}
+                            ${
+                              user?.premiumSubscription
+                                ? "bg-gray-400 text-gray-100 cursor-not-allowed"
+                                : "bg-red-400 text-white hover:bg-red-500"
+                            }
+                            `}
                         onClick={async () => {
                           try {
                             const previousPage = pathname;

@@ -5,7 +5,7 @@ import Input from "../Input";
 import Button from "../Button";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/rootReducer";
-import { getUser, setUser, signIn } from "@/redux/apiSlice";
+import { setUser, signIn } from "@/redux/apiSlice";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -84,7 +84,11 @@ const Login = ({ modalType, setModalType, setOpenModal }: LoginProps) => {
 
       <p className="text-center mt-4 font-comic font-semibold text-md">
         New on our platform?{" "}
-        <Link href="/membership" className="text-[#9acb4e] cursor-pointer">
+        <Link
+          href="/membership#membership"
+          className="text-[#9acb4e] cursor-pointer"
+          onClick={() => setOpenModal(false)}
+        >
           Create an account
         </Link>
       </p>
