@@ -254,7 +254,7 @@ export default function BookDetailPage() {
                       usePortrait={true}
                       showPageCorners={false}
                       showCover={false}
-                      // mobileScrollSupport={true}
+                      mobileScrollSupport={true}
                       drawShadow={width < 600 ? false : true}
                       swipeDistance={width < 600 ? 0 : 30}
                       className="shadow-2xl rounded-0 md:rounded-xl w-full h-full"
