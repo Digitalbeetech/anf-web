@@ -27,7 +27,7 @@ const WatchLearn = () => {
 
   return (
     <div className="flex flex-col px-4 py-8 relative h-full">
-      <h1 className="text-center text-6xl font-black leading-tight font-grobold">
+      <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-black leading-tight font-grobold">
         <span className="inline-block mx-3">
           <span className="inline-block text-[#ffdb5a] tracking-[-0.04em] text-shadow-yellow">
             Watch

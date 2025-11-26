@@ -144,9 +144,9 @@ export default function Home() {
             </div>
 
             {/* Cards Container */}
-            <div className="mb-18 absolute left-1/2 -translate-x-1/2 flex flex-wrap justify-center items-center gap-1 md:gap-2 -top-20 lg:-top-40 w-full max-w-5xl">
+            <div className="mb-18 absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-0 md:flex-row md:flex-wrap md:justify-center md:gap-4 -top-20 lg:-top-40 w-full max-w-5xl">
               {/* Big Circle */}
-              <div className="bg-[#ff625a] rounded-full w-56 sm:w-74 h-56 sm:h-74 flex flex-col items-center justify-center text-center p-2 border-16 border-[#e8f7fc]">
+              <div className="bg-[#ff625a] rounded-full w-[60vw] h-[60vw] [@media(max-width:700px)]:w-[35vh] [@media(max-width:700px)]:h-[35vh] sm:w-[40vw] sm:h-[40vw] md:w-72 md:h-72 lg:w-80 lg:h-80 flex flex-col items-center justify-center text-center p-2 border-16 border-[#e8f7fc]">
                 <h2 className="text-white px-3.5 text-sm md:text-3xl font-grobold leading-tight text-center mx-auto">
                   the <br /> Abdullah & Fatima way
                 </h2>
@@ -156,48 +156,50 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Small Circles */}
-              <Link
-                href={"/books"}
-                className="bg-[#1dbeff] rounded-full w-28 sm:w-44 md:w-44 md:h-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center border-16 border-[#e8f7fc] overflow-hidden"
-              >
-                <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
-                  Read
-                </h2>
-                <img
-                  src="/assets/read.png"
-                  alt="Read"
-                  className="object-contain w-10 sm:w-30 h-10 sm:h-20"
-                />
-              </Link>
+              {/* Small Circles Container */}
+              <div className="flex flex-wrap justify-center items-center gap-1">
+                <Link
+                  href={"/books"}
+                  className="bg-[#1dbeff] rounded-full w-32 sm:w-44 md:w-44 h-32 sm:h-44 flex flex-col items-center justify-center text-center border-16 border-[#e8f7fc] overflow-hidden"
+                >
+                  <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
+                    Read
+                  </h2>
+                  <img
+                    src="/assets/read.png"
+                    alt="Read"
+                    className="object-contain w-10 sm:w-30 h-10 sm:h-20"
+                  />
+                </Link>
 
-              <Link
-                href={"/games"}
-                className="bg-[#ffe649] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]"
-              >
-                <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
-                  Play
-                </h2>
-                <img
-                  src="/assets/play.png"
-                  alt="Play"
-                  className="object-contain w-10 sm:w-30 h-10 sm:h-20"
-                />
-              </Link>
+                <Link
+                  href={"/games"}
+                  className="bg-[#ffe649] rounded-full w-32 sm:w-44 h-32 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]"
+                >
+                  <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
+                    Play
+                  </h2>
+                  <img
+                    src="/assets/play.png"
+                    alt="Play"
+                    className="object-contain w-10 sm:w-30 h-10 sm:h-20"
+                  />
+                </Link>
 
-              <Link
-                href={"/videos"}
-                className="bg-[#9acb4e] rounded-full w-28 sm:w-44 h-28 sm:h-44 flex flex-col items-center justify-center text-center p-3 border-16 border-[#e8f7fc]"
-              >
-                <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
-                  Watch
-                </h2>
-                <img
-                  src="/assets/watch.png"
-                  alt="Watch"
-                  className="object-contain w-10 sm:w-30 h-10 sm:h-20"
-                />
-              </Link>
+                <Link
+                  href={"/videos"}
+                  className="bg-[#9acb4e] rounded-full w-32 sm:w-44 h-32 sm:h-44 flex flex-col items-center justify-center text-center border-16 border-[#e8f7fc]"
+                >
+                  <h2 className="text-xs sm:text-xl font-grobold text-[#365a77] mb-2 sm:mb-3">
+                    Watch
+                  </h2>
+                  <img
+                    src="/assets/watch.png"
+                    alt="Watch"
+                    className="object-contain w-10 sm:w-30 h-10 sm:h-20"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -206,12 +208,11 @@ export default function Home() {
           href={
             "https://shop.sidr.productions/products/abdullah-fatima-illustrated-series-12-book-box-set"
           }
-          className="flex justify-center mx-2 -mt-14 sm:-mt-5 md:-mt-10 lg:-mt-20 cursor-pointer"
+          className="flex justify-center mx-2 [@media(max-width:400px)]:pt-34 mt-14 sm:-mt-5 md:-mt-10 lg:-mt-10 cursor-pointer"
         >
           <img src="/assets/online-order.png" alt="" className="" />
         </Link>
-
-        <div className="bg-[#e8f7fc] pt-32 sm:pt-36 md:pt-28 lg:pt-20 relative">
+        <div className="bg-[#e8f7fc] pt-6 sm:pt-10 md:pt-28 lg:pt-20 relative">
           <div className="hidden md:flex absolute left-6 top-4">
             <img
               src="/assets/plane.png"
