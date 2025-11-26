@@ -256,7 +256,7 @@ export default function BookDetailPage() {
                       showCover={false}
                       mobileScrollSupport={true}
                       drawShadow={width < 600 ? false : true}
-                      swipeDistance={width < 600 ? 0 : 30}
+                      swipeDistance={width < 600 ? 10 : 30}
                       className="shadow-2xl rounded-0 md:rounded-xl w-full h-full"
                     >
                       {(bookDetail?.pages).map((page: any, index: any) => (
