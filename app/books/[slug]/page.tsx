@@ -254,27 +254,27 @@ export default function BookDetailPage() {
                       usePortrait={true}
                       showPageCorners={false}
                       showCover={false}
-                      mobileScrollSupport={true}
+                      // mobileScrollSupport={true}
                       drawShadow={width < 600 ? false : true}
                       swipeDistance={width < 600 ? 0 : 30}
-                      className="shadow-2xl rounded-xl w-full h-full"
+                      className="shadow-2xl rounded-0 md:rounded-xl w-full h-full"
                     >
                       {(bookDetail?.pages).map((page: any, index: any) => (
                         <div
                           key={index}
-                          className="w-full h-full flex justify-center no-hover pb-8 rounded-lg"
+                          className="w-full h-full flex justify-center no-hover pb-8 rounded-0 md:rounded-lg"
                         >
                           <img
                             src={imageURL + page.page}
                             alt={`Page ${index + 1}`}
                             style={{
                               width:
-                                width < 400
-                                  ? "40%"
+                                width < 425
+                                  ? "38%"
                                   : width < 450
-                                  ? "50%"
+                                  ? "42%"
                                   : width < 500
-                                  ? "55%"
+                                  ? "49%"
                                   : width < 550
                                   ? "60%"
                                   : width < 600
@@ -285,9 +285,11 @@ export default function BookDetailPage() {
                                   ? "74%"
                                   : width < 750
                                   ? "80%"
+                                  : width < 770
+                                  ? "78%"
                                   : "100%",
                               objectFit: "contain",
-                              paddingRight: width < 750 ? "80px" : "0",
+                              // paddingRight: width < 750 ? "80px" : "0",
                               borderRadius: "20px",
                             }}
                             className="w-full h-auto max-h-[85vh] object-contain"
