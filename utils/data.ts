@@ -12,7 +12,7 @@ export const GAMES = [
     thumbUrl: "/assets/game-1.jpg",
     platforms: ["Web", "iOS", "Android"],
     url: "https://tourmaline-treacle-839185.netlify.app/",
-    premiumUrl: "",
+    premiumUrl: "https://tourmaline-treacle-839185.netlify.app/",
     free: true,
     how_to_play:
       "Use the arrow keys or on-screen controls to move Abdullah and Fatima around each scene. Gather useful items and avoid unsafe or unkind actions as you progress. Pause at the mini reflection prompts that appear between stages and talk about them.",
