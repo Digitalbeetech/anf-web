@@ -7,6 +7,7 @@ import InitializeAuth from "./Components/InitializeAuth/InitializeAuth";
 import { ModalProvider } from "@/context/ModalContext";
 import GlobalModal from "./Components/GlobalModal";
 import { Suspense } from "react";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SJ4PGG4P52"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SJ4PGG4P52');
+          `}
+        </Script>
         <Toaster
           position="top-center"
           reverseOrder={false}
@@ -50,7 +63,7 @@ export default function RootLayout({
           <InitializeAuth />
           <ModalProvider>
             <Suspense>
-            <GlobalModal />
+              <GlobalModal />
             </Suspense>
             {children}
           </ModalProvider>
