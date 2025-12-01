@@ -148,7 +148,7 @@ export default function Home() {
               {/* Big Circle */}
               <div className="bg-[#ff625a] rounded-full w-[60vw] h-[60vw] [@media(max-width:700px)]:w-[35vh] [@media(max-width:700px)]:h-[35vh] sm:w-[40vw] sm:h-[40vw] md:w-72 md:h-72 lg:w-80 lg:h-80 flex flex-col items-center justify-center text-center p-2 border-16 border-[#e8f7fc]">
                 <h2 className="text-white px-3.5 text-sm md:text-3xl font-grobold leading-tight text-center mx-auto">
-                  the <br /> Abdullah & Fatima way
+                  The <br /> Abdullah & Fatima way
                 </h2>
                 <p className="text-white text-md mt-2 overflow-hidden font-comic line-clamp-3 text-center px-2">
                   Faith‑rooted stories, games, and activities that build

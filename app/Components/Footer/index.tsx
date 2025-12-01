@@ -150,10 +150,10 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
               Games
             </a>
             <a
-              href="/membership"
+              href="/videos"
               className="hover:underline font-comic text-2xl font-semibold"
             >
-              Membership
+              Videos
             </a>
           </div>
 
@@ -167,16 +167,16 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
 
           <div className="flex space-x-6">
             <a
-              href="/videos"
-              className="hover:underline font-comic text-2xl font-semibold"
-            >
-              Videos
-            </a>
-            <a
               href="/activities"
               className="hover:underline font-comic text-2xl font-semibold"
             >
               Activities
+            </a>
+            <a
+              href="/membership"
+              className="hover:underline font-comic text-2xl font-semibold"
+            >
+              Membership
             </a>
             <a
               href="https://shop.sidr.productions/collections/abdullah-and-fatima"
@@ -185,7 +185,7 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
             >
               Shop
             </a>
-            {user ? (
+            {/* {user ? (
               <button
                 className="bg-[#ff6d3a] cursor-pointer px-4 py-2 rounded-full font-comic hover:bg-orange-500 transition"
                 onClick={handleLogout}
@@ -199,7 +199,7 @@ const Footer = ({ bgWhite = false, hideNewLetter = true }) => {
               >
                 Login
               </button>
-            )}
+            )} */}
           </div>
         </div>
 
