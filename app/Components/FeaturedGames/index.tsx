@@ -283,7 +283,7 @@ const FeaturedGames = () => {
               />
             </div>
           )}
-          <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
+          {/* <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
             Just released:{" "}
             <span className="font-semibold"> Escape & Road Cross </span>
             (September 2025)
@@ -294,7 +294,7 @@ const FeaturedGames = () => {
             (October 2025) ·{" "}
             <span className="font-semibold"> Save from Bees </span> (November
             2025)
-          </p>
+          </p> */}
         </div>
         <Link href={"/games"} className="flex justify-center">
           <button className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
