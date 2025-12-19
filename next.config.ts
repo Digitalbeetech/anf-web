@@ -5,6 +5,4 @@ const nextConfig: NextConfig = {
     domains: ["res.cloudinary.com"], // add your external image domain here
   },
 };
-
-
 export default nextConfig;
