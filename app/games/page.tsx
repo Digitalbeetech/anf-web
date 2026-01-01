@@ -83,6 +83,14 @@ function GameCard({ game }: any) {
     }
   }, [cancel]);
 
+  useEffect(() => {
+    if (selectedGame) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+  }, [selectedGame]);
+
   return (
     <>
       <Link

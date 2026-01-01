@@ -1,0 +1,84 @@
+{
+  "name": "Abdullah & Fatima - The Run - Web Export (Free)",
+  "short_name": "Abdullah & Fatima - The Run - Web Export (Free)",
+  "id": "productions.sidr.therun",
+  "description": "Step into the shoes of Abdullah and Fatima in The Run, an exciting endless runner adventure! Dash through vibrant worlds, jump over tricky obstacles, and collect shiny coins to boost your score. Test your reflexes, beat your best runs, and see how far you can go in this fast-paced, family-friendly game.",
+  "orientation": "landscape",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": [{
+        "src": "30b5b1fdc1974e91164eb688c5e1db68bcf3e35c162aa384bb85f42f648da2c2-ios-icon-20.png.png",
+        "sizes": "20x20"
+      },{
+        "src": "25672ff06911c0199cf969dbd8def99c8d5bb3149bc5204f1baa76354719114f-ios-icon-29.png.png",
+        "sizes": "29x29"
+      },{
+        "src": "55fd343653fbb718bdc70e3ce74b0ea85203da45dd6541cac9ed03809c565847-android-icon-36.png.png",
+        "sizes": "36x36"
+      },{
+        "src": "501f75bda7cfdd0119be63973ce6b8bef1196e2b1b5a04b1f9754926112f9e59-ios-icon-40.png.png",
+        "sizes": "40x40"
+      },{
+        "src": "657b6028441b03dd97f0bb39c16053cf4e91cb3f7be4b86f3f508eac5bca7d09-android-icon-48.png.png",
+        "sizes": "48x48"
+      },{
+        "src": "92a91336b087b534433db3a979d1710335b636c42d0276aacbb773a9b3fd813f-ios-icon-50.png.png",
+        "sizes": "50x50"
+      },{
+        "src": "6bbe05f842e60ae5a00c499d0605de725f72b8ebe786c785ea31a6f68c1315c5-ios-icon-57.png.png",
+        "sizes": "57x57"
+      },{
+        "src": "3abf25cc406abf749360818a06e742d569bb246ae973800f887b2895f8a3071c-ios-icon-58.png.png",
+        "sizes": "58x58"
+      },{
+        "src": "8c5e995476755799c9de8bc2f4725179134ba75f302687b9f698acfb832c79f2-ios-icon-60.png.png",
+        "sizes": "60x60"
+      },{
+        "src": "aa8881535f9e380e79eed9a8ff2cf9cfa5eef885feabddd29b897f3784102d21-android-icon-72.png.png",
+        "sizes": "72x72"
+      },{
+        "src": "c0df88fa4c0f04672fd0efa930c310b2f8e0130655874f4db655362bc78842fb-ios-icon-76.png.png",
+        "sizes": "76x76"
+      },{
+        "src": "817777cae4746fe0e090d4d570309059175e1ae11a615632b0b36c0cdf983531-ios-icon-80.png.png",
+        "sizes": "80x80"
+      },{
+        "src": "83a9417ee5f82c415db05746eabce5987b0c88fdd7ea78e3226ebad8f6f459f3-ios-icon-87.png.png",
+        "sizes": "87x87"
+      },{
+        "src": "2fe8d45c09374f2a12e7baefa52f2068959377a68c40f5d757228c00420a321c-android-icon-96.png.png",
+        "sizes": "96x96"
+      },{
+        "src": "3049d0943b049cc14582a64341544fae860b4ebd1810457ae98b693a6fc5c43a-ios-icon-100.png.png",
+        "sizes": "100x100"
+      },{
+        "src": "0d75e876c94febd01c8b775e499f6b8a5f028bd1d7d1c78a681545ab90df15d1-ios-icon-114.png.png",
+        "sizes": "114x114"
+      },{
+        "src": "3b1a58d530410e457f019164ab585ca23086ecddf1900769acfebed681e1fb76-ios-icon-120.png.png",
+        "sizes": "120x120"
+      },{
+        "src": "6a723dee5c53ea3c4a8c6415ee953986d77f26d45ac2da5529c13c8f9d79e46c-android-icon-144.png.png",
+        "sizes": "144x144"
+      },{
+        "src": "4bbc46c114e904cb12da4d85452612b9be6cd8013243bb8561aa83fc93639d31-ios-icon-152.png.png",
+        "sizes": "152x152"
+      },{
+        "src": "e1c21ab4c014340b8d42ba96aafa697d3673106203cc507f625a1e29aa22cdaa-ios-icon-167.png.png",
+        "sizes": "167x167"
+      },{
+        "src": "16ab2835274851bda0265237266367f1122eb30a04ee9b552ed0c4bbb24ede77-ios-icon-180.png.png",
+        "sizes": "180x180"
+      },{
+        "src": "e89cdd9bb5011ba2d1dad31b4eb5a4abc892ca85b4014ac06bc13197e2b8f7b0-android-icon-192.png.png",
+        "sizes": "192x192"
+      },{
+        "src": "6bf53bf8621e933f7a58da45e210f6c4c687e7f0bfebb281ed18cbd052c1e470-desktop-icon-512.png.png",
+        "sizes": "512x512"
+      },{
+        "src": "038b505b01964e432df3e52d1231aa5912e9330ee183b41a92b6ae0ee3ec2296-ios-icon-1024.png.png",
+        "sizes": "1024x1024"
+      }]
+}

@@ -1,6 +1,7 @@
 "use client";
 import { useModal } from "@/context/ModalContext";
 import { RootState } from "@/redux/rootReducer";
+import { GAMES } from "@/utils/data";
 import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,70 +31,14 @@ const FeaturedGames = () => {
     }
   }, [cancel]);
 
-  const games = [
-    {
-      id: "g1",
-      slug: "abdullah-fatima-adventures",
-      title: "Abdullah & Fatima Adventures",
-      blurb:
-        "Explore, help and learn across connected quests inspired by everyday Muslim life.",
-      type: "Story",
-      values: ["Sabr", "Adab", "Rahmah"],
-      age: "5–12",
-      mode: "Story & Mini-quests",
-      thumbUrl: "/assets/game-img.png",
-      platforms: ["Web", "iOS", "Android"],
-      image: "/assets/game-1.jpg",
-      url: "https://tourmaline-treacle-839185.netlify.app/",
-      premiumUrl: "",
-      free: true,
-    },
-    {
-      id: "g2",
-      slug: "the-run",
-      title: "The Run",
-      blurb:
-        "Dash, dodge and make quick choices while keeping adab and safety in mind.",
-      type: "Runner",
-      values: ["Adab", "Amanah"],
-      age: "8–12",
-      mode: "Endless runner · Levels",
-      image: "/assets/game-4.jpg",
-      platforms: ["Web"],
-      url: "https://starlit-dodol-9596c0.netlify.app/",
-      premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
-    },
-    {
-      id: "g3",
-      slug: "road-cross",
-      title: "The Escape",
-      blurb:
-        "Practice safe crossing, patience and awareness at a busy junction.",
-      type: "Puzzle",
-      values: ["Sabr", "Amanah"],
-      age: "5–7",
-      mode: "Level-based safety puzzles",
-      image: "/assets/game-3.jpg",
-      platforms: ["Web", "Android"],
-      url: "https://fantastic-biscuit-f72cfd.netlify.app/",
-      premiumUrl: "https://storied-pika-64151a.netlify.app/",
-    },
-    {
-      id: "g3",
-      slug: "road-cross",
-      title: "Road Cross",
-      blurb:
-        "Practice safe crossing, patience and awareness at a busy junction.",
-      type: "Puzzle",
-      values: ["Sabr", "Amanah"],
-      age: "5–7",
-      image: "/assets/gamde-3.png",
-      mode: "Level-based safety puzzles",
-      platforms: ["Web", "Android"],
-      url: "https://wonderful-rugelach-0d3354.netlify.app/",
-      premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
-    },
-  ];
+  useEffect(() => {
+    if (selectedGame) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
+  }, [selectedGame]);
+
   return (
     <>
       <div className="flex flex-col px-4 py-8 relative h-full">
@@ -115,7 +60,7 @@ const FeaturedGames = () => {
             <img src="assets/cloud-2.png" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-            {games?.slice(0, 3).map((item, index) => (
+            {GAMES?.slice(0, 3).map((item, index) => (
               <Link
                 href={`/games/${item?.slug}`}
                 key={index}
@@ -123,7 +68,7 @@ const FeaturedGames = () => {
               >
                 <div className="relative overflow-hidden">
                   <Image
-                    src={item?.image}
+                    src={item?.thumbUrl}
                     alt={item?.title || "Game"}
                     width={900}
                     height={900}
@@ -261,7 +206,6 @@ const FeaturedGames = () => {
           </div>
           {selectedGame && (
             <div className="fixed inset-0 z-50 bg-black flex flex-col">
-              {/* Close Button - Top Right */}
               <button
                 onClick={() => setSelectedGame(null)}
                 className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
@@ -270,7 +214,6 @@ const FeaturedGames = () => {
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Game Iframe */}
               <iframe
                 src={
                   user && user?.premiumSubscription
@@ -283,18 +226,6 @@ const FeaturedGames = () => {
               />
             </div>
           )}
-          {/* <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
-            Just released:{" "}
-            <span className="font-semibold"> Escape & Road Cross </span>
-            (September 2025)
-          </p>
-          <p className="mt-3 text-sm sm:text-2xl text-center font-comic">
-            Coming next:{" "}
-            <span className="font-semibold">Mosque Jam & Relief Packages</span>{" "}
-            (October 2025) ·{" "}
-            <span className="font-semibold"> Save from Bees </span> (November
-            2025)
-          </p> */}
         </div>
         <Link href={"/games"} className="flex justify-center">
           <button className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
