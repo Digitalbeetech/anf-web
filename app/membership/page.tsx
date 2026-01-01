@@ -189,11 +189,11 @@ const MembershipPage: React.FC = () => {
                       <button
                         type="button"
                         disabled={user?.premiumSubscription}
-                        className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold cursor-pointer
+                        className={`mt-6 w-full rounded-2xl px-4 py-2.5 font-grobold
                             ${
                               user?.premiumSubscription
                                 ? "bg-gray-400 text-gray-100 cursor-not-allowed"
-                                : "bg-red-400 text-white hover:bg-red-500"
+                                : "bg-red-400 text-white hover:bg-red-500 cursor-pointer"
                             }
                             `}
                         onClick={async () => {

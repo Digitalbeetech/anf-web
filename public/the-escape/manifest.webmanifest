@@ -1,0 +1,84 @@
+{
+  "name": "Abdullah & Fatima - The Escape - Web Export (Free)",
+  "short_name": "Abdullah & Fatima - The Escape - Web Export (Free)",
+  "id": "productions.sidr.theescape",
+  "description": "Join Abdullah & Fatima in The Escape, a fun and safe puzzle platformer!\nRun, jump, and solve exciting challenges designed for kids and families to enjoy.\nBright graphics and simple controls make it easy and entertaining for everyone.",
+  "orientation": "landscape",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": [{
+        "src": "2a2ad190bd884d3524d93aef7cd06839e4b6e192eb08744fbed92c9d237059a6-ios-icon-20.png.png",
+        "sizes": "20x20"
+      },{
+        "src": "2187a14a3605a4edcef1b72f70d055f8d49eb634c0fb8983d3e4c1a93745d534-ios-icon-29.png.png",
+        "sizes": "29x29"
+      },{
+        "src": "839a53d3ea0d326c18b75f1c73151e37656a4167fe088ffae27258443df29e64-android-icon-36.png.png",
+        "sizes": "36x36"
+      },{
+        "src": "ed8d88351950c7e1a8bdb09965dd7f73e816e560925f6462094338dbf50ccd1d-ios-icon-40.png.png",
+        "sizes": "40x40"
+      },{
+        "src": "fc8cc7427ee0270793a89cf592a46bf7516b2559d6764974534df5ccc7a6d29c-android-icon-48.png.png",
+        "sizes": "48x48"
+      },{
+        "src": "cabdd6346a2699bbea1c8688c8d55855c727242b0340fe5901d1fa709ba0c937-ios-icon-50.png.png",
+        "sizes": "50x50"
+      },{
+        "src": "2f20b2ba7799c0b995962e4f790efaf4e183b5515dd61cf7c9b3259f27ccb0f2-ios-icon-57.png.png",
+        "sizes": "57x57"
+      },{
+        "src": "b06c235bfcee5e6285a3a76f7c474018fd5ed0678762074926f006019977e523-ios-icon-58.png.png",
+        "sizes": "58x58"
+      },{
+        "src": "cedd80904c5fb0b61d18bd7753efa3dc18a47aeeae701d29bdcb9a020accbd0e-ios-icon-60.png.png",
+        "sizes": "60x60"
+      },{
+        "src": "7e90d408be8d40fcd173c7cdfc57010f99a32ca506752085632115d3c1c17e11-android-icon-72.png.png",
+        "sizes": "72x72"
+      },{
+        "src": "357c51b7a36cd8fab183a833028b31549065b81e781e3deefbf24170568e796e-ios-icon-76.png.png",
+        "sizes": "76x76"
+      },{
+        "src": "8b274fcb02ce793a5d02c0be748e870065ee09371a1966e4e4510f7ce4c21c7a-ios-icon-80.png.png",
+        "sizes": "80x80"
+      },{
+        "src": "7c916e9d436116b2ddb04b05e564961df560bf60f759290bb6d806fdecdfc74b-ios-icon-87.png.png",
+        "sizes": "87x87"
+      },{
+        "src": "06ff619ac4a0a2b634b8261a7484c26b25af72bcd3aac5163a7179e0de00c1ad-android-icon-96.png.png",
+        "sizes": "96x96"
+      },{
+        "src": "411d6ba1f164609c79c1aed64b0318ea35937bd34c90b0bbb6a4c9dabd88a1ce-ios-icon-100.png.png",
+        "sizes": "100x100"
+      },{
+        "src": "46706a63658af3d475ebade7bc0db4133870ab8042a071b97c50bdcafddb9300-ios-icon-114.png.png",
+        "sizes": "114x114"
+      },{
+        "src": "48e8d0da798a10062b72517dcfdafe583c0bbc78ec620a2f107ee4927811655b-ios-icon-120.png.png",
+        "sizes": "120x120"
+      },{
+        "src": "18598d2b9b67da822ffd13bfd982ec72ed824cc8c22461a029afd72be4d51a2a-android-icon-144.png.png",
+        "sizes": "144x144"
+      },{
+        "src": "508f330df3651a172b2874185d13192e834709b593c73d1a00c957930fda3a7c-ios-icon-152.png.png",
+        "sizes": "152x152"
+      },{
+        "src": "362152b8f364787f56e5ac78652ede619f7dd4cea78d3b1008d74aeec2285c28-ios-icon-167.png.png",
+        "sizes": "167x167"
+      },{
+        "src": "965622554fc2b676a1d144e64f7605ec4af52dbb9059e9e05afbff0f8934068d-ios-icon-180.png.png",
+        "sizes": "180x180"
+      },{
+        "src": "1ce4b09f30908681e53bdc842793276b846e739d1a73257f85f6d095de328b0f-android-icon-192.png.png",
+        "sizes": "192x192"
+      },{
+        "src": "21f56f39c6b589a0353f175a6f05625abe25941fe90304c7266c9babf1ac5eb4-desktop-icon-512.png.png",
+        "sizes": "512x512"
+      },{
+        "src": "f263b9d6d97857e10bd2bcd153523c1eec70d692b0a47c352f7d12dbe5bb9883-ios-icon-1024.png.png",
+        "sizes": "1024x1024"
+      }]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "Abdullah & Fatima - Road Cross - Web Export (Free)",
+  "short_name": "Abdullah & Fatima - Road Cross - Web Export (Free)",
+  "id": "productions.sidr.roadcross",
+  "description": "",
+  "orientation": "portrait",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": [{
+        "src": "d07fb7bbaabad7a99c383ca6a26fcbe33cb26a6e59e6e0b04426700431f4bd75-ios-icon-20.png.png",
+        "sizes": "20x20"
+      },{
+        "src": "f58e840e4ee1e5c27e0d76b996280acac60ad47cabcea83efa80d948c9c58bed-ios-icon-29.png.png",
+        "sizes": "29x29"
+      },{
+        "src": "cc26f4e05fa7f4f790bec592f80156a68882714a369dad37cd98349d5d6b1079-android-icon-36.png.png",
+        "sizes": "36x36"
+      },{
+        "src": "8b0d55048e31bdea1ad3b8499f394a56f62ad98eb827edede56ebefec9406c3b-ios-icon-40.png.png",
+        "sizes": "40x40"
+      },{
+        "src": "b5b18fc66efadceaea13d261eff8d854a66947d5e1e68529afb6d19dc1b3f606-android-icon-48.png.png",
+        "sizes": "48x48"
+      },{
+        "src": "9769722121434cb67016437e91761f2f17ba43184b41d371e2b2df0b069e1503-ios-icon-50.png.png",
+        "sizes": "50x50"
+      },{
+        "src": "702c588ab5604ef2439d3ae0c6581694ece5bfa77180babbb8d6b38baf3fedd9-ios-icon-57.png.png",
+        "sizes": "57x57"
+      },{
+        "src": "308f34efb557c8efb7ae956ffd41c67c9e42ff3e61460e2352a4728aa7527e3a-ios-icon-58.png.png",
+        "sizes": "58x58"
+      },{
+        "src": "48ccbd2d7933b061bc827bc7e71e5a21a26e8ffe00c6e373949453dd42227633-ios-icon-60.png.png",
+        "sizes": "60x60"
+      },{
+        "src": "fb2b442f1f1f9e6ef6020eab23569d144dc74df456c85155ff66f0ed35ff01e9-android-icon-72.png.png",
+        "sizes": "72x72"
+      },{
+        "src": "9ff6b159d0986a3cd7c8bfda92aca1de0f217b118d4b61237098bde7b2194d45-ios-icon-76.png.png",
+        "sizes": "76x76"
+      },{
+        "src": "d14a3f8d76b3dbcf8c786e52b83b7bed60ed1d31724421914907387595368d95-ios-icon-80.png.png",
+        "sizes": "80x80"
+      },{
+        "src": "a9dfe985bdb799352a5ad11a805e6d6bab82a601002c88314ab8ee874ece0615-ios-icon-87.png.png",
+        "sizes": "87x87"
+      },{
+        "src": "a708620e5193a425f13efd931215c4289e6a704457765db7c9a90897cceed22d-android-icon-96.png.png",
+        "sizes": "96x96"
+      },{
+        "src": "42be9507e4539cd51fbd5e2addf583658770f09d25b2b1dfee05fd6558a80435-ios-icon-100.png.png",
+        "sizes": "100x100"
+      },{
+        "src": "343698692084ada26f37da378ede8d2c45294000a7ff035c975dd9fde48dba45-ios-icon-114.png.png",
+        "sizes": "114x114"
+      },{
+        "src": "2b54bae871499b4f6de7a5f4d2447d458bfd380b5fa8389f2e15956724ec64d6-ios-icon-120.png.png",
+        "sizes": "120x120"
+      },{
+        "src": "70c5b0a01447e94e98d3bcb904b963293c43f32bf408358948db991e868b160e-android-icon-144.png.png",
+        "sizes": "144x144"
+      },{
+        "src": "10c4ef88c42f5b1fdff3d87d78d8d34171b07a921afc285bbdabc7965325cc92-ios-icon-152.png.png",
+        "sizes": "152x152"
+      },{
+        "src": "bdf6db3c83eae8905abc407367bdb0e12e15042038bced2da35682e4d18148a6-ios-icon-167.png.png",
+        "sizes": "167x167"
+      },{
+        "src": "6f4c61411e1a79ace298489da689dbe21e5e6bb0e577e48816fa6d4a17273e31-ios-icon-180.png.png",
+        "sizes": "180x180"
+      },{
+        "src": "4094e1b4ebd109c176c22e6894cf563714bfca4452bf0515fa4133e31f0b9e51-android-icon-192.png.png",
+        "sizes": "192x192"
+      },{
+        "src": "bbd297fd7486593d1b0ad0062d697debffb9f129086c98de62cfef3215841509-desktop-icon-512.png.png",
+        "sizes": "512x512"
+      },{
+        "src": "2cbb441aae516afa2fd9dae1638ab5e7f9a8ae81b6fd9b76ff43bf9477f757d7-ios-icon-1024.png.png",
+        "sizes": "1024x1024"
+      }]
+}

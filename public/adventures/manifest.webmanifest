@@ -1,0 +1,84 @@
+{
+  "name": "Abdullah & Fatima",
+  "short_name": "Abdullah & Fatima",
+  "id": "productions.sidr.abdullahnfatima",
+  "description": "Join Abdullah & Fatima on an exciting adventure in this charming 2D platformer designed for Muslim kids! Explore vibrant neighborhoods, collect tokens by doing good deeds, and rush to prayers at your local mosque. Foster kindness, generosity, and community spirit through interactive gameplay and fun missions. Featuring beautiful cartoon visuals and simple, engaging mechanics suitable for all ages. Abdullah & Fatima's Adventures—learning Islamic values has never been so much fun!",
+  "orientation": "landscape",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "black",
+  "categories": ["games", "entertainment"],
+  "icons": [{
+        "src": "bd98e6bb4e77a629ada29fc16f393b9aba7ac82c4cf953d3ab3ac408fe2881d0-ios-icon-20.png.png",
+        "sizes": "20x20"
+      },{
+        "src": "cfda73f79b44b84c40a72650d0c0e3e2505898ad626ebd209fd9ed717e7fa377-ios-icon-29.png.png",
+        "sizes": "29x29"
+      },{
+        "src": "9fc3f10e21746a1fd305eeaf6555897b58379a80706fecca066323e4a8094303-android-icon-36.png.png",
+        "sizes": "36x36"
+      },{
+        "src": "03aea12c100c9d27436e9e9cfc30a25f5264148fe55f8a045e287cc5a6a1ef09-ios-icon-40.png.png",
+        "sizes": "40x40"
+      },{
+        "src": "d3542f6963aee96f520890d9790544e228448dd19162d6ccdc02e221bc87e019-android-icon-48.png.png",
+        "sizes": "48x48"
+      },{
+        "src": "8071f98ce599b51fdea65434e73d70f68ebbea56ed9c623ed88bca7e5a2f9614-ios-icon-50.png.png",
+        "sizes": "50x50"
+      },{
+        "src": "9af5441da7920b4bf8e0b0379cea057a4f117ee62514528264b38932d15e1388-ios-icon-57.png.png",
+        "sizes": "57x57"
+      },{
+        "src": "03d0b9973216f0e26ff2ead40a4ea415753a05c394044355ed35a40dfe0529ab-ios-icon-58.png.png",
+        "sizes": "58x58"
+      },{
+        "src": "be6f23fead39bf7cd38239de8e8a6b0caa05de03bc36e83a8e900d527aa452f6-ios-icon-60.png.png",
+        "sizes": "60x60"
+      },{
+        "src": "316e4a48e6279d4b190409f0b4e64229ab9d3e00cf712035ce0a5dd756f163dd-android-icon-72.png.png",
+        "sizes": "72x72"
+      },{
+        "src": "0d562ace675ba155fb126b990e19f5e71012936f7c1aeeda4780bc93dadf54db-ios-icon-76.png.png",
+        "sizes": "76x76"
+      },{
+        "src": "f050db57a913310c07ab5c6561ec1e1bc4e5a645fbc3143a9b79e8c7cab64d08-ios-icon-80.png.png",
+        "sizes": "80x80"
+      },{
+        "src": "50aa04284471e30227cf44dea0fd16aa805b2e59deefe922d860819cda63be38-ios-icon-87.png.png",
+        "sizes": "87x87"
+      },{
+        "src": "261f01402745998c94b6537664e288790eda9a15e16ee53b86fa2751524030fa-android-icon-96.png.png",
+        "sizes": "96x96"
+      },{
+        "src": "11221b04d5dabd8e66b243f5f35532a69bd47c6a14bf5411a99c062d4f1836b2-ios-icon-100.png.png",
+        "sizes": "100x100"
+      },{
+        "src": "d5e0575e18c98306c7c3515cdbb906c6bc8080475d8e71ed6c9cffaae2fbbf57-ios-icon-114.png.png",
+        "sizes": "114x114"
+      },{
+        "src": "81e0b4d1c89fdf4eae9bf8881fb147a4e0e9902a25b95ad2113b3d62bde0a785-ios-icon-120.png.png",
+        "sizes": "120x120"
+      },{
+        "src": "b5e2d9199c7c2498c738da21a8ba1a4d8799fa30241bc028fae35fe9b56dca21-android-icon-144.png.png",
+        "sizes": "144x144"
+      },{
+        "src": "bb23da74af82a2d1711ce03521f912cd01e35d5341bb1c03182ff143c8f1a08e-ios-icon-152.png.png",
+        "sizes": "152x152"
+      },{
+        "src": "ee69eadf88e6a1bc1e34345f8db48053eedd524d51f5ba1bbad1e5d4d6dbc3f0-ios-icon-167.png.png",
+        "sizes": "167x167"
+      },{
+        "src": "786e7f7d2395e631caa40e24a804991836a05f339c4ef63db17031f01a82a7ea-ios-icon-180.png.png",
+        "sizes": "180x180"
+      },{
+        "src": "b91b704b23aa49098095909801b59897a5b21fb3bf7731a096d2b40ca685f7ac-android-icon-192.png.png",
+        "sizes": "192x192"
+      },{
+        "src": "ecaad247f66557a6a43d04c637f35e5225f7787415f6351dd61be8aa07cbcaed-desktop-icon-512.png.png",
+        "sizes": "512x512"
+      },{
+        "src": "3ddea20625e66462aa3e0e141ac4dd3ba7ccdf02242d79530d22975b38f0cd38-ios-icon-1024.png.png",
+        "sizes": "1024x1024"
+      }]
+}

@@ -11,8 +11,8 @@ export const GAMES = [
     mode: "Story & Mini-quests",
     thumbUrl: "/assets/game-1.jpg",
     platforms: ["Web", "iOS", "Android"],
-    url: "https://tourmaline-treacle-839185.netlify.app/",
-    premiumUrl: "https://tourmaline-treacle-839185.netlify.app/",
+    url: "adventures/index.html",
+    premiumUrl: "adventures/index.html",
     free: true,
     how_to_play:
       "Use the arrow keys or on-screen controls to move Abdullah and Fatima around each scene. Gather useful items and avoid unsafe or unkind actions as you progress. Pause at the mini reflection prompts that appear between stages and talk about them.",
@@ -33,8 +33,8 @@ export const GAMES = [
     mode: "Endless runner · Levels",
     thumbUrl: "/assets/game-4.jpg",
     platforms: ["Web"],
-    url: "https://starlit-dodol-9596c0.netlify.app/",
-    premiumUrl: "https://verdant-cocada-8a5ac3.netlify.app/",
+    url: "the-run/index.html",
+    premiumUrl: "the-run-premium/index.html",
     how_to_play:
       "Move the character using the keyboard arrows or the on-screen movement buttons. Collect helpful items while steering away from unsafe options and obstacles. Watch for short reflection prompts that pop up between levels and think about your choices.",
     learning_notes:
@@ -53,8 +53,8 @@ export const GAMES = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
-    url: "https://startling-treacle-fb8a93.netlify.app/",
-    premiumUrl: "https://effortless-selkie-b4945c.netlify.app/",
+    url: "the-escape/index.html",
+    premiumUrl: "the-escape-premium/index.html",
     how_to_play:
       "Control the character with arrow keys or tap controls to move and navigate each area. Pick up helpful items and stay away from actions or routes that seem risky or unsafe. Pay attention to the short reflection prompts between levels and use them as discussion breaks.",
     learning_notes:
@@ -73,8 +73,8 @@ export const GAMES = [
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
     thumbUrl: "/assets/game-2.jpg",
-    url: "https://wonderful-rugelach-0d3354.netlify.app/",
-    premiumUrl: "https://curious-kulfi-2ef0d8.netlify.app/",
+    url: "road-cross/index.html",
+    premiumUrl: "road-cross-premium/index.html",
     how_to_play:
       "Use the arrows or touch buttons to move Abdullah and Fatima safely across roads and paths. Collect useful items and avoid dangerous moves, obstacles, or unsafe crossing points. When reflection prompts appear between levels, stop for a moment and talk about the scenario.",
     learning_notes:
