@@ -3,13 +3,12 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Footer from "../Components/Footer";
-import { X } from "lucide-react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
 import { GAMES } from "@/utils/data";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useModal } from "@/context/ModalContext";
 
 type GameType = "Runner" | "Puzzle" | "Strategy" | "Story";
@@ -23,22 +22,6 @@ type ValueTag =
   | "Ihsan";
 type AgeBand = "5–7" | "8–12" | "5–12";
 type Platform = "Web" | "iOS" | "Android";
-
-type Game = {
-  id: string;
-  slug: string;
-  title: string;
-  blurb: string;
-  type: GameType;
-  values: ValueTag[];
-  age: AgeBand;
-  mode: string;
-  platforms: Platform[];
-  thumbUrl?: string;
-  url?: string;
-  premiumUrl?: string;
-  free?: boolean;
-};
 
 const TYPE_OPTIONS = [
   "All Types",
@@ -61,12 +44,12 @@ const AGE_OPTIONS = ["All Ages", "5–7", "8–12", "5–12"] as const;
 const PLATFORM_OPTIONS = ["All Platforms", "Web", "iOS", "Android"] as const;
 
 function GameCard({ game }: any) {
+  const router = useRouter();
   const pathname = usePathname();
   const { openModal } = useModal();
   const searchParams = useSearchParams();
   const cancel = searchParams.get("cancel");
 
-  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const user = useSelector((state: RootState) => state.api.user);
 
   const handleFail = () => {
@@ -82,14 +65,6 @@ function GameCard({ game }: any) {
       handleFail();
     }
   }, [cancel]);
-
-  useEffect(() => {
-    if (selectedGame) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "auto";
-    }
-  }, [selectedGame]);
 
   return (
     <>
@@ -135,7 +110,13 @@ function GameCard({ game }: any) {
                 className="inline-flex w-full cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                 onClick={(e) => {
                   e.preventDefault();
-                  setSelectedGame(game);
+                  router.push(
+                    `/game/${
+                      user && user?.premiumSubscription
+                        ? game?.premiumUrl
+                        : game.url
+                    }`
+                  );
                 }}
               >
                 Play Now
@@ -147,7 +128,13 @@ function GameCard({ game }: any) {
                     <div
                       onClick={(e) => {
                         e.preventDefault();
-                        setSelectedGame(game);
+                        router.push(
+                          `/game/${
+                            user && user?.premiumSubscription
+                              ? game?.premiumUrl
+                              : game.url
+                          }`
+                        );
                       }}
                       className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                     >
@@ -226,30 +213,6 @@ function GameCard({ game }: any) {
           </div>
         </div>
       </Link>
-      {selectedGame && (
-        <div className="fixed inset-0 z-50 bg-black flex flex-col">
-          {/* Close Button - Top Right */}
-          <button
-            onClick={() => setSelectedGame(null)}
-            className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
-            aria-label="Close Game"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          {/* Game Iframe */}
-          <iframe
-            src={
-              user && user?.premiumSubscription
-                ? selectedGame?.premiumUrl
-                : selectedGame.url
-            }
-            title={selectedGame.title}
-            className="w-full h-full border-none"
-            allow="autoplay; fullscreen"
-          />
-        </div>
-      )}
     </>
   );
 }

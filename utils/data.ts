@@ -11,8 +11,8 @@ export const GAMES = [
     mode: "Story & Mini-quests",
     thumbUrl: "/assets/game-1.jpg",
     platforms: ["Web", "iOS", "Android"],
-    url: "adventures/index.html",
-    premiumUrl: "adventures/index.html",
+    url: "adventures",
+    premiumUrl: "adventures",
     free: true,
     how_to_play:
       "Use the arrow keys or on-screen controls to move Abdullah and Fatima around each scene. Gather useful items and avoid unsafe or unkind actions as you progress. Pause at the mini reflection prompts that appear between stages and talk about them.",
@@ -33,8 +33,8 @@ export const GAMES = [
     mode: "Endless runner · Levels",
     thumbUrl: "/assets/game-4.jpg",
     platforms: ["Web"],
-    url: "the-run/index.html",
-    premiumUrl: "the-run-premium/index.html",
+    url: "the-run",
+    premiumUrl: "the-run-premium",
     how_to_play:
       "Move the character using the keyboard arrows or the on-screen movement buttons. Collect helpful items while steering away from unsafe options and obstacles. Watch for short reflection prompts that pop up between levels and think about your choices.",
     learning_notes:
@@ -53,8 +53,8 @@ export const GAMES = [
     age: "5–7",
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
-    url: "the-escape/index.html",
-    premiumUrl: "the-escape-premium/index.html",
+    url: "the-escape",
+    premiumUrl: "the-escape-premium",
     how_to_play:
       "Control the character with arrow keys or tap controls to move and navigate each area. Pick up helpful items and stay away from actions or routes that seem risky or unsafe. Pay attention to the short reflection prompts between levels and use them as discussion breaks.",
     learning_notes:
@@ -73,8 +73,8 @@ export const GAMES = [
     mode: "Level-based safety puzzles",
     platforms: ["Web", "Android"],
     thumbUrl: "/assets/game-2.jpg",
-    url: "road-cross/index.html",
-    premiumUrl: "road-cross-premium/index.html",
+    url: "road-cross",
+    premiumUrl: "road-cross-premium",
     how_to_play:
       "Use the arrows or touch buttons to move Abdullah and Fatima safely across roads and paths. Collect useful items and avoid dangerous moves, obstacles, or unsafe crossing points. When reflection prompts appear between levels, stop for a moment and talk about the scenario.",
     learning_notes:
