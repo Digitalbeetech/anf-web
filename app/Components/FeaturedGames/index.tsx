@@ -2,20 +2,19 @@
 import { useModal } from "@/context/ModalContext";
 import { RootState } from "@/redux/rootReducer";
 import { GAMES } from "@/utils/data";
-import { X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const FeaturedGames = () => {
+  const router = useRouter();
   const { openModal } = useModal();
   const searchParams = useSearchParams();
   const cancel = searchParams.get("cancel");
   const pathname = usePathname();
   const user = useSelector((state: RootState) => state.api.user);
-  const [selectedGame, setSelectedGame] = useState<any>(null);
 
   const handleFail = () => {
     openModal(
@@ -30,14 +29,6 @@ const FeaturedGames = () => {
       handleFail();
     }
   }, [cancel]);
-
-  useEffect(() => {
-    if (selectedGame) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "auto";
-    }
-  }, [selectedGame]);
 
   return (
     <>
@@ -102,7 +93,13 @@ const FeaturedGames = () => {
                         className="inline-flex w-full cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                         onClick={(e) => {
                           e.preventDefault();
-                          setSelectedGame(item);
+                          router.push(
+                            `/game/${
+                              user && user?.premiumSubscription
+                                ? item?.premiumUrl
+                                : item.url
+                            }`
+                          );
                         }}
                       >
                         Play Now
@@ -114,7 +111,13 @@ const FeaturedGames = () => {
                             <div
                               onClick={(e) => {
                                 e.preventDefault();
-                                setSelectedGame(item);
+                                router.push(
+                                  `/game/${
+                                    user && user?.premiumSubscription
+                                      ? item?.premiumUrl
+                                      : item.url
+                                  }`
+                                );
                               }}
                               className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                             >
@@ -204,28 +207,6 @@ const FeaturedGames = () => {
               </Link>
             ))}
           </div>
-          {selectedGame && (
-            <div className="fixed inset-0 z-50 bg-black flex flex-col">
-              <button
-                onClick={() => setSelectedGame(null)}
-                className="absolute top-4 cursor-pointer right-4 z-50 bg-black text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg transition-all duration-200"
-                aria-label="Close Game"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <iframe
-                src={
-                  user && user?.premiumSubscription
-                    ? selectedGame?.premiumUrl
-                    : selectedGame.url
-                }
-                title={selectedGame.title}
-                className="w-full h-full border-none"
-                allow="autoplay; fullscreen"
-              />
-            </div>
-          )}
         </div>
         <Link href={"/games"} className="flex justify-center">
           <button className="bg-[#f9be49] text-white px-6 py-2.5 rounded-full transition font-comic cursor-pointer">
