@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/rootReducer";
 import { logout, setUser } from "@/redux/apiSlice";
 import { usePathname } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Header({ shadow, padding }: any) {
   const pathname = usePathname();
@@ -56,13 +57,19 @@ export default function Header({ shadow, padding }: any) {
     setMenuOpen(false);
   };
 
-  const handleLogout = async () => {
-    try {
-      await dispatch(logout(""))?.unwrap();
-      dispatch(setUser(null));
-    } catch (error) {
-      console.log(error);
-    }
+  // const handleLogout = async () => {
+  //   try {
+  //     await dispatch(logout(""))?.unwrap();
+  //     dispatch(setUser(null));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const handleLogout = () => {
+    dispatch(setUser(null));
+    localStorage.removeItem("user");
+    Cookies.remove("token");
   };
 
   const navLinks = [
