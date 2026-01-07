@@ -5,6 +5,11 @@ import Footer from "../Components/Footer";
 import StickyHeader from "../Components/StickyHeader/page";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { VIDEOS } from "@/utils/videos";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
+import { usePathname, useRouter } from "next/navigation";
 
 type ValueTag =
   | "Sabr"
@@ -17,183 +22,144 @@ type ValueTag =
 type AgeBand = "5–7" | "8–12";
 type LengthBand = "Under 5 min" | "5–10 min" | "Over 10 min";
 
-type Video = {
-  id: string;
-  slug: string;
-  title: string;
-  blurb: string;
-  values: ValueTag[];
-  age: AgeBand[];
-  length: LengthBand;
-  free?: boolean;
-  thumbnailUrl?: string;
-};
-
-const VIDEOS: Video[] = [
-  {
-    id: "v1",
-    slug: "meet-abdullah-fatima",
-    title: "Meet Abdullah & Fatima",
-    blurb:
-      "Introduction to the siblings, their world, and the values they live by.",
-    values: ["Adab", "Rahmah"],
-    age: ["5–7", "8–12"],
-    length: "Under 5 min",
-    free: true,
-  },
-  {
-    id: "v2",
-    slug: "fatimas-first-fast-episode-1",
-    title: "Fatima's First Fast – Episode 1",
-    blurb:
-      "A gentle look at preparing hearts and bodies for the first Ramadan fast.",
-    values: ["Sabr", "Shukr"],
-    age: ["5–7", "8–12"],
-    length: "5–10 min",
-    free: false,
-  },
-  {
-    id: "v3",
-    slug: "angry-day-reflection",
-    title: "Abdullah’s Angry Day – Reflection Time",
-    blurb:
-      "Talking about big feelings, apologies, and Rahmah after a hard day.",
-    values: ["Rahmah", "Adab"],
-    age: ["8–12"],
-    length: "5–10 min",
-    free: false,
-  },
-];
-
-const VALUE_OPTIONS = [
+export const VALUE_OPTIONS = [
   "All Values",
-  "Sabr",
-  "Shukr",
-  "Adab",
-  "Amanah",
-  "Rahmah",
-  "Sidq",
-  "Ihsan",
+  ...Array.from(new Set(VIDEOS.flatMap((video) => video.values))),
 ] as const;
-const AGE_OPTIONS = ["All Ages", "5–7", "8–12"] as const;
+
+const AGE_OPTIONS = ["All Ages", "5–8", "8–12"] as const;
 const LENGTH_OPTIONS = ["Any length", "Under 5 min", "5–10 min"] as const;
 
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-md bg-white/80 px-2 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
-      {children}
-    </span>
-  );
-}
-
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-grobold text-emerald-700 ring-1 ring-emerald-200">
-      {children}
-    </span>
-  );
-}
-
-const watchLearn = [
-  {
-    image: "/assets/video-img.jpg",
-    text: "Mini‑episodes and trailers",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Behind‑the‑scenes peeks at books & games",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-  {
-    image: "/assets/video-img.jpg",
-    text: "Discussion prompts with each video",
-    videoUrl: "https://www.youtube.com/embed/XHOmBV4js_E",
-  },
-];
-
 function VideoCard({ video }: any) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const user = useSelector((state: RootState) => state.api.user);
+
   return (
-    <div className="rounded-3xl bg-white shadow-lg overflow-hidden flex flex-col transition-transform p-4 sm:p-5">
-      <div className="flex flex-col grow">
-        {/* {
-        playingIndex === index ? (
-          item.videoUrl.includes("youtube") ? (
-            <iframe
-              className="w-full aspect-video rounded-2xl"
-              src={`${video.videoUrl}?autoplay=1`}
-              title="YouTube video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+    <>
+      <Link
+        href={`/videos/${video?.slug}`}
+        className="rounded-3xl bg-white shadow-lg overflow-hidden flex flex-col transition-transform p-4 sm:p-5"
+      >
+        <div className="flex flex-col grow">
+          <div className="relative w-full aspect-video cursor-pointer rounded-2xl overflow-hidden h-70">
+            <Image
+              src={video?.image}
+              alt={video.text || "Video thumbnail"}
+              fill
+              className="object-fill"
             />
-          ) : (
-            <video
-              className="w-full aspect-video object-cover rounded-2xl"
-              src={video.videoUrl}
-              controls
-              autoPlay
-            />
-          )
-        ) : ( */}
-        <div
-          className="relative w-full aspect-video cursor-pointer rounded-2xl overflow-hidden"
-          // onClick={() => setPlayingIndex(index)}
-        >
-          <Image
-            src={video.image}
-            alt={video.text || "Video thumbnail"}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-            <Play className="w-14 h-14 text-white drop-shadow-lg" />
+            <div
+              className="absolute inset-0 flex items-center justify-center bg-black/20"
+              onClick={(e) => {
+                e.preventDefault();
+                (user?.premiumSubscription || video?.free) &&
+                  router.push(`/video/${video?.slug}`);
+              }}
+            >
+              <Play className="w-14 h-14 text-white drop-shadow-lg" />
+            </div>
+          </div>
+
+          {/* ---------- TEXT ---------- */}
+          <p className="w-full font-comic text-xl font-semibold text-start mt-4">
+            {video.title}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 font-comic font-semibold mt-3">
+            {video?.values?.map((item: any) => (
+              <button className="border px-3 text-sm rounded-3xl">
+                {item}
+              </button>
+            ))}
+            <button className="border px-3 text-sm rounded-3xl">
+              {video?.age}
+            </button>
           </div>
         </div>
-        {/* )} */}
 
-        {/* ---------- TEXT ---------- */}
-        <p className="w-full font-comic text-xl font-semibold text-start mt-4">
-          {video.text}
-        </p>
+        {/* ---------- BUTTON - Always at Bottom ---------- */}
+        {user?.premiumSubscription || video?.free ? (
+          <button
+            className="bg-[#ff625a] rounded-full w-full py-3 font-grobold text-white mt-4 cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(`/video/${video?.slug}`);
+            }}
+          >
+            Watch now
+          </button>
+        ) : (
+          <div className="relative mt-4" onClick={(e) => e.preventDefault()}>
+            <select
+              className="appearance-none bg-sky-600 w-full text-white px-5 py-3 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+              defaultValue=""
+              onChange={async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const selected = e.target.value;
+                if (!selected) return;
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 font-comic font-semibold mt-3">
-          <button className="border px-3 text-sm rounded-3xl">Sidq</button>
-          <button className="border px-3 text-sm rounded-3xl">Rahmah</button>
-          <button className="border px-3 text-sm rounded-3xl">Free</button>
-        </div>
-      </div>
+                try {
+                  const priceId =
+                    selected === "monthly"
+                      ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                      : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
 
-      {/* ---------- BUTTON - Always at Bottom ---------- */}
-      <button className="bg-[#ff625a] rounded-full w-full py-3 font-grobold text-white mt-4">
-        Watch now
-      </button>
-    </div>
+                  const previousPage = pathname;
+
+                  const res = await fetch("/api/create-subscription", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ priceId, previousPage }),
+                  });
+
+                  const data = await res.json();
+
+                  if (data.url) {
+                    window.location.href = data.url; // Redirect to Stripe checkout
+                  } else {
+                    alert("Error: " + data.error);
+                  }
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+            >
+              <option
+                value=""
+                disabled
+                className="text-black bg-white font-comic"
+              >
+                Join to Watch
+              </option>
+
+              <option
+                value="monthly"
+                className="text-black bg-white font-comic font-semibold"
+              >
+                Monthly – £3.99
+              </option>
+
+              <option
+                value="annual"
+                className="text-black bg-white font-comic font-semibold"
+              >
+                Annual – £39
+              </option>
+            </select>
+
+            {/* Custom Arrow */}
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+              ▼
+            </span>
+          </div>
+        )}
+      </Link>
+    </>
   );
 }
 
@@ -208,11 +174,7 @@ export default function VideosPage() {
   const filtered = useMemo(() => {
     return VIDEOS.filter((v) => {
       const q = query.trim().toLowerCase();
-      const matchesQuery =
-        !q ||
-        v.title.toLowerCase().includes(q) ||
-        v.blurb.toLowerCase().includes(q);
-
+      const matchesQuery = !q || v.title.toLowerCase().includes(q);
       const matchesValue =
         value === "All Values" ? true : v.values.includes(value as ValueTag);
 
@@ -330,7 +292,7 @@ export default function VideosPage() {
               <img src="assets/ballon.png" className="w-46" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {watchLearn.map((video, index) => (
+              {filtered.map((video, index) => (
                 <VideoCard key={index} video={video} />
               ))}
               {filtered.length === 0 && (

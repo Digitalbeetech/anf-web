@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import Footer from "@/app/Components/Footer";
-import Header from "@/app/Components/Header";
 import StickyHeader from "@/app/Components/StickyHeader/page";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { VIDEOS } from "@/utils/videos";
+import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/rootReducer";
 
 const Chip = ({ children }: { children: React.ReactNode }) => (
   <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-comic text-slate-800 shadow-sm ring-1 ring-white/60">
@@ -13,6 +16,19 @@ const Chip = ({ children }: { children: React.ReactNode }) => (
 );
 
 const VideoDetailPage: React.FC = () => {
+  const router = useRouter();
+  const { slug } = useParams();
+  const pathname = usePathname();
+  const user = useSelector((state: RootState) => state.api.user);
+  const [videoDetail, setVideoDetail] = useState<any>("");
+
+  useEffect(() => {
+    if (VIDEOS && slug) {
+      const findBook = VIDEOS.find((item: any) => item.slug === slug);
+      setVideoDetail(findBook);
+    }
+  }, [VIDEOS, slug]);
+
   return (
     <>
       <main className="min-h-dvh bg-[#EAF7FF]">
@@ -29,45 +45,137 @@ const VideoDetailPage: React.FC = () => {
                 </span>
 
                 <h1 className="mt-4 text-3xl md:text-4xl font-grobold text-slate-900 drop-shadow-sm">
-                  Meet Abdullah &amp; Fatima
+                  {videoDetail?.title}
                 </h1>
 
                 <p className="mt-3 font-comic text-slate-700/90">
-                  Introduction to the siblings, their world, and the values they
-                  live by.
+                  {videoDetail?.blurb}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <Chip>Adab</Chip>
-                  <Chip>Rahmah</Chip>
-                  <Chip>Age 5–7 · 8–12</Chip>
-                  <Chip>Under 5 min</Chip>
+                  {videoDetail?.values?.map((item: any) => (
+                    <Chip>{item}</Chip>
+                  ))}
+                  <Chip>{videoDetail?.age}</Chip>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/videos/meet-abdullah-fatima/watch"
-                    className="inline-flex items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
-                  >
-                    Watch now
-                  </Link>
+                  {user?.premiumSubscription || videoDetail?.free ? (
+                    <button
+                      className="inline-flex cursor-pointer items-center justify-center rounded-2xl bg-sky-600 px-5 py-2.5 text-sm font-grobold text-white shadow-sm hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        router.push(`/video/${videoDetail?.slug}`);
+                      }}
+                    >
+                      Watch now
+                    </button>
+                  ) : (
+                    <div
+                      className="relative"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <select
+                        className="appearance-none bg-sky-600 w-full text-white px-5 py-3 rounded-full text-sm font-grobold shadow-sm cursor-pointer hover:bg-sky-700 focus:outline-none pr-10"
+                        defaultValue=""
+                        onChange={async (e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const selected = e.target.value;
+                          if (!selected) return;
+
+                          try {
+                            const priceId =
+                              selected === "monthly"
+                                ? process.env.NEXT_PUBLIC_MONTHLY_PRICEID
+                                : process.env.NEXT_PUBLIC_YEARLY_PRICEID;
+
+                            const previousPage = pathname;
+
+                            const res = await fetch(
+                              "/api/create-subscription",
+                              {
+                                method: "POST",
+                                headers: {
+                                  "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                  priceId,
+                                  previousPage,
+                                }),
+                              }
+                            );
+
+                            const data = await res.json();
+
+                            if (data.url) {
+                              window.location.href = data.url; // Redirect to Stripe checkout
+                            } else {
+                              alert("Error: " + data.error);
+                            }
+                          } catch (err) {
+                            console.error(err);
+                          }
+                        }}
+                      >
+                        <option
+                          value=""
+                          disabled
+                          className="text-black bg-white font-comic"
+                        >
+                          Join to Watch Video
+                        </option>
+
+                        <option
+                          value="monthly"
+                          className="text-black bg-white font-comic font-semibold"
+                        >
+                          Monthly – £3.99
+                        </option>
+
+                        <option
+                          value="annual"
+                          className="text-black bg-white font-comic font-semibold"
+                        >
+                          Annual – £39
+                        </option>
+                      </select>
+
+                      {/* Custom Arrow */}
+                      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
+                        ▼
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* VIDEO MOCK */}
-              <div className="flex justify-center">
-                <div className="relative w-full max-w-md rounded-3xl border border-white/80 bg-slate-950 shadow-xl shadow-sky-200">
-                  <div className="relative aspect-video overflow-hidden rounded-2xl m-2 bg-linear-to-br from-sky-300 via-sky-500 to-purple-500">
-                    <div className="grid h-full w-full place-items-center text-4xl text-white/90">
-                      <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-sky-600 shadow-md">
+              <div className="flex justify-center h-90">
+                <div className="relative w-full max-w-xl h-full rounded-3xl border  bg-slate-950 shadow-xl shadow-sky-200">
+                  {/* Video container - 80% height */}
+                  <div className="relative h-[95%] rounded-3xl m-2">
+                    {/* Video thumbnail */}
+                    <Image
+                      src={videoDetail?.image}
+                      alt={videoDetail?.title || "Video thumbnail"}
+                      fill
+                      className="object-fill rounded-3xl"
+                    />
+
+                    {/* Play button */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        (user?.premiumSubscription || videoDetail?.free) &&
+                          router.push(`/video/${videoDetail?.slug}`);
+                      }}
+                    >
+                      <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-sky-600 text-3xl shadow-md cursor-pointer hover:scale-110 transition-transform">
                         ▶
                       </span>
                     </div>
-                  </div>
-
-                  <div className="flex items-center justify-between px-4 pb-3 pt-1 text-xs font-comic text-slate-200">
-                    <span>CC • Subtitles</span>
-                    <span>Safe · Ad-free</span>
                   </div>
                 </div>
               </div>
@@ -84,9 +192,7 @@ const VideoDetailPage: React.FC = () => {
                   Episode summary
                 </h2>
                 <p className="mt-3 font-comic text-slate-700/90">
-                  In this short episode, children meet Abdullah and Fatima, see
-                  their home, and discover how small everyday choices can be
-                  full of adab and Rahmah.
+                  {videoDetail?.Episode_summary}
                 </p>
               </div>
 
@@ -95,15 +201,9 @@ const VideoDetailPage: React.FC = () => {
                   Talking points
                 </h2>
                 <ul className="mt-3 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                  <li>
-                    What did you notice about how Abdullah and Fatima speak to
-                    each other?
-                  </li>
-                  <li>Which moment made you smile the most? Why?</li>
-                  <li>
-                    Is there a small thing from this episode that we can try at
-                    home today?
-                  </li>
+                  {videoDetail?.Talking_points?.map((item: any) => (
+                    <li>{item}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -112,19 +212,9 @@ const VideoDetailPage: React.FC = () => {
               <h3 className="text-lg font-grobold text-slate-900">
                 For parents &amp; teachers
               </h3>
-              <ul className="mt-3 list-disc space-y-1 pl-6 font-comic text-slate-700/90">
-                <li>
-                  Watch together the first time, with distractions put away.
-                </li>
-                <li>
-                  Pause once or twice to ask a gentle question instead of
-                  explaining everything.
-                </li>
-                <li>
-                  After watching, invite your child to act out a favourite
-                  scene.
-                </li>
-              </ul>
+              <p className="font-comic mt-4">
+                {videoDetail?.for_parents_teachers}
+              </p>
             </div>
           </div>
         </section>
