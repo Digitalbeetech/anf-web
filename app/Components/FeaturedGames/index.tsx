@@ -98,7 +98,7 @@ const FeaturedGames = () => {
                               user && user?.premiumSubscription
                                 ? item?.premiumUrl
                                 : item.url
-                            }`
+                            }?web=true`
                           );
                         }}
                       >
@@ -116,7 +116,7 @@ const FeaturedGames = () => {
                                     user && user?.premiumSubscription
                                       ? item?.premiumUrl
                                       : item.url
-                                  }`
+                                  }?web=true`
                                 );
                               }}
                               className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"

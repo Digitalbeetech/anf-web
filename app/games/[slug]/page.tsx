@@ -4,7 +4,12 @@ import React, { useEffect, useState } from "react";
 import Footer from "@/app/Components/Footer";
 import StickyHeader from "@/app/Components/StickyHeader/page";
 import { GAMES } from "@/utils/data";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/rootReducer";
 import { X } from "lucide-react";
@@ -17,6 +22,7 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 );
 
 const GameDetailPage: React.FC = () => {
+  const router = useRouter();
   const { slug } = useParams();
   const pathname = usePathname();
   const { openModal } = useModal();
@@ -95,7 +101,13 @@ const GameDetailPage: React.FC = () => {
                         className="inline-flex cursor-pointer mt-4 items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                         onClick={(e) => {
                           e.preventDefault();
-                          setSelectedGame(gameDetail);
+                          router.push(
+                            `/game/${
+                              user && user?.premiumSubscription
+                                ? gameDetail?.premiumUrl
+                                : gameDetail.url
+                            }?web=true`
+                          );
                         }}
                       >
                         Play Now
@@ -107,7 +119,13 @@ const GameDetailPage: React.FC = () => {
                             <div
                               onClick={(e) => {
                                 e.preventDefault();
-                                setSelectedGame(gameDetail);
+                                router.push(
+                                  `/game/${
+                                    user && user?.premiumSubscription
+                                      ? gameDetail?.premiumUrl
+                                      : gameDetail.url
+                                  }?web=true`
+                                );
                               }}
                               className="inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-sky-600 px-4 py-3.5 text-xs font-grobold text-white shadow-sm hover:bg-sky-700"
                             >
